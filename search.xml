@@ -19,4 +19,11 @@
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
   </entry>
+  <entry>
+    <title>测试用例</title>
+    <url>/2023/06/21/ce/</url>
+    <content><![CDATA[<p>可以方便的生成静态网页托管在GitHub和Coding上,是搭建博客的首选框架。</p>
+<span id="more"></span>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3>]]></content>
+  </entry>
 </search>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>慕杰blog</title>
+  
+  
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2023-06-21T09:06:04.192Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>John Doe</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>测试用例</title>
+    <link href="http://example.com/2023/06/21/ce/"/>
+    <id>http://example.com/2023/06/21/ce/</id>
+    <published>2023-06-21T08:49:36.832Z</published>
+    <updated>2023-06-21T09:06:04.192Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;可以方便的生成静态网页托管在GitHub和Coding上,是搭建博客的首选框架。&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo 基本使用</title>
+    <link href="http://example.com/2023/06/17/hexo/"/>
+    <id>http://example.com/2023/06/17/hexo/</id>
+    <published>2023-06-17T05:44:23.109Z</published>
+    <updated>2023-06-21T08:51:05.876Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Hexo是一款基于Node.js的静态博客框架,依赖少易于安装使用,可以方便的生成静态网页托管在GitHub和Coding上,是搭建博客的首选框架。&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+</feed>
