@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <title>
+    vue3+vite+ts项目笔记 |
+    
+    慕杰blog
+  </title>
+  <!-- Icon -->
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="慕杰blog" type="application/atom+xml">
+</head>
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-vue3笔记" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+  <h1 class="article-title" itemprop="name">
+    vue3+vite+ts项目笔记
+  </h1>
+  
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2023/07/12/vue3%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2023-07-12T01:50:27.789Z" itemprop="datePublished">2023-07-12</time>
+</a>
+      
+    </div>
+    
+
+    
+    
+<div class="tocbot"></div>
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        <p>Vite 和 Webpack 都是现代前端开发中的常见打包工具，但在实际使用过程中，它们存在五个主要区别：1.开发模式不同；2.打包效率不同；3.插件生态不同；4.配置复杂度不同；5.热更新机制不同。总的来说，Vite 的开发环境启动速度和模块热更新速度相比 Webpack 有显著提升，而 Webpack 的生态系统更为丰富。</p>
+<span id="more"></span>
+
+<h4 id="搭建项目-点击"><a href="#搭建项目-点击" class="headerlink" title="搭建项目: 点击"></a>搭建项目: <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_59916662/article/details/127331094">点击</a></h4><h2 id="数据代理"><a href="#数据代理" class="headerlink" title="数据代理"></a>数据代理</h2><p>vue2.x : Object.defineProperty()<br>vue3.x : Proxy</p>
+<h2 id="父子组件传值"><a href="#父子组件传值" class="headerlink" title="父子组件传值"></a>父子组件传值</h2><h3 id="1-父传子"><a href="#1-父传子" class="headerlink" title="1.父传子"></a>1.父传子</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;父组件</span><br><span class="line">  &lt;list :msg=<span class="string">&quot;msg&quot;</span>&gt;&lt;/list&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> msg = ref(<span class="string">&#x27;传过去的&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;这是子组件&#123;&#123;msg&#125;&#125;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">defineProps(&#123;</span><br><span class="line">    msg:&#123;</span><br><span class="line">        <span class="built_in">type</span>:String,</span><br><span class="line">        default:<span class="string">&quot;默认值&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-子传父"><a href="#2-子传父" class="headerlink" title="2.子传父"></a>2.子传父</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;这是子组件&#123;&#123;msg&#125;&#125;</span><br><span class="line">  &lt;button @click=<span class="string">&quot;changeNum&quot;</span>&gt;按钮&lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> num = ref(200)</span><br><span class="line">// const emit = defineEmits([<span class="string">&#x27;fn&#x27;</span>])</span><br><span class="line">const emit = defineEmits&lt;&#123;</span><br><span class="line">    (e:<span class="string">&quot;fn&quot;</span>, <span class="built_in">id</span>: number): void</span><br><span class="line">&#125;&gt;()</span><br><span class="line">const changeNum = ()=&gt;&#123;</span><br><span class="line">    emit(<span class="string">&quot;fn&quot;</span>,num)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;父组件</span><br><span class="line">  &lt;list @fn=<span class="string">&#x27;changeHome&#x27;</span>&gt;&lt;/list&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> changeHome = (n)=&gt;&#123;</span><br><span class="line">    console.log(n)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-v-model-传值"><a href="#3-v-model-传值" class="headerlink" title="3.v-model 传值"></a>3.v-model 传值</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;父组件</span><br><span class="line">  &lt;list v-model:num = <span class="string">&quot;num&quot;</span>&gt;&lt;/list&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> num = ref(1)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;这是子组件&#123;&#123;num&#125;&#125;</span><br><span class="line">  &lt;button @click=<span class="string">&quot;btn&quot;</span>&gt;按钮&lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">const props = refineProps(&#123;</span><br><span class="line">    num:&#123;</span><br><span class="line">        <span class="built_in">type</span>:Number,</span><br><span class="line">        default:100</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">const emit = defineEmits([<span class="string">&#x27;update:num&#x27;</span>])</span><br><span class="line">const btn = ()=&gt;&#123;</span><br><span class="line">    emit(<span class="string">&#x27;update:num&#x27;</span>,200)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="兄弟组件传值"><a href="#兄弟组件传值" class="headerlink" title="兄弟组件传值"></a>兄弟组件传值</h2><h3 id="1-通过父组件比较繁琐"><a href="#1-通过父组件比较繁琐" class="headerlink" title="1.通过父组件比较繁琐"></a>1.通过父组件比较繁琐</h3><h3 id="2-通过-mitt"><a href="#2-通过-mitt" class="headerlink" title="2.通过 mitt"></a>2.通过 mitt</h3><h4 id="1）-下载安装"><a href="#1）-下载安装" class="headerlink" title="1）.下载安装"></a>1）.下载安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install mitt -S</span><br></pre></td></tr></table></figure>
+
+<h4 id="2）-新建文件夹"><a href="#2）-新建文件夹" class="headerlink" title="2）.新建文件夹"></a>2）.新建文件夹</h4><p>src&#x2F;plugins&#x2F;Bus.js</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//bus.js内</span><br><span class="line">import mitt from <span class="string">&#x27;mitt&#x27;</span>;</span><br><span class="line">const emitter = mitt()</span><br><span class="line"><span class="built_in">export</span> default emitter;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//兄弟组件A中</span><br><span class="line">import emitter from <span class="string">&quot;@plugins/Bus.js&quot;</span></span><br><span class="line"><span class="built_in">let</span> str = ref(<span class="string">&quot;A值&quot;</span>)</span><br><span class="line">const btn = ()=&gt;&#123;</span><br><span class="line">    emitter.emit(<span class="string">&#x27;fn&#x27;</span>,str);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//兄弟组件B中 接收</span><br><span class="line">import emitter from <span class="string">&quot;@plugins/Bus.js&quot;</span></span><br><span class="line"><span class="built_in">let</span> s = ref(<span class="string">&quot;&quot;</span>)</span><br><span class="line">const btn = ()=&gt;&#123;</span><br><span class="line">    emitter.on(<span class="string">&#x27;fn&#x27;</span>,e=&gt;&#123;</span><br><span class="line">        s.value = e.value;</span><br><span class="line">        console.log(e.value)</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h2><h3 id="1-匿名插槽"><a href="#1-匿名插槽" class="headerlink" title="1.匿名插槽"></a>1.匿名插槽</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">父：</span><br><span class="line">&lt;A&gt;</span><br><span class="line">    这是xxx数据</span><br><span class="line">    这是yyy数据</span><br><span class="line">&lt;/A&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">子：</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;div&gt;头部&lt;/div&gt;</span><br><span class="line">    &lt;slot&gt;&lt;/slot&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;div&gt;底部&lt;/div&gt;</span><br><span class="line">    &lt;slot&gt;&lt;/slot&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-具名插槽"><a href="#2-具名插槽" class="headerlink" title="2.具名插槽"></a>2.具名插槽</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">父：</span><br><span class="line">&lt;A&gt;</span><br><span class="line">    &lt;template v-slot:xxx&gt;</span><br><span class="line">        这是xxx数据</span><br><span class="line">    &lt;/template&gt;</span><br><span class="line">    &lt;template <span class="comment">#yyy&gt;</span></span><br><span class="line">        这是yyy数据</span><br><span class="line">    &lt;/template&gt;</span><br><span class="line">&lt;/A&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">子：</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;div&gt;头部&lt;/div&gt;</span><br><span class="line">    &lt;slot name=<span class="string">&quot;xxx&quot;</span>&gt;&lt;/slot&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;div&gt;底部&lt;/div&gt;</span><br><span class="line">    &lt;slot name=<span class="string">&quot;yyy&quot;</span>&gt;&lt;/slot&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-作用域插槽"><a href="#3-作用域插槽" class="headerlink" title="3.作用域插槽"></a>3.作用域插槽</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">父：</span><br><span class="line">&lt;template v-slot=<span class="string">&quot;&#123;data&#125;&quot;</span>&gt;</span><br><span class="line">    &#123;&#123; data.name &#125;&#125;---&#123;&#123; data.age &#125;&#125;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">//可以简写成<span class="comment">#default</span></span><br><span class="line">&lt;template <span class="comment">#default=&quot;&#123;data&#125;&quot;&gt;</span></span><br><span class="line">    &#123;&#123; data.name &#125;&#125;---&#123;&#123; data.age &#125;&#125;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">子：</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;slot :data=<span class="string">&quot;item&quot;</span>&gt;&lt;/slot&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="4-动态插槽"><a href="#4-动态插槽" class="headerlink" title="4.动态插槽"></a>4.动态插槽</h3><p>就是通过数据动态切换插槽名</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">父：</span><br><span class="line">&lt;template <span class="comment">#[name]&gt;</span></span><br><span class="line">    这是xxx</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"><span class="built_in">let</span> name = ref(<span class="string">&#x27;xxx&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">子：</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;slot name=<span class="string">&quot;xxx&quot;</span>&gt;&lt;/slot&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="js-数组"><a href="#js-数组" class="headerlink" title="js 数组"></a>js 数组</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//使用slice()方法返回一个子数组，在进行reverse； 不会改变原数组</span><br><span class="line">time1 = time.slice().reverse()  //time1数组反转  time数组不变</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/07/12/vue3%E7%AC%94%E8%AE%B0/" data-id="clk0s9gau00061kv142q78mdm" class="article-share-link">
+        分享
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+  
+<nav class="article-nav">
+  
+  <a href="/2023/07/13/css%E7%AC%94%E8%AE%B0/" class="article-nav-link">
+    <strong class="article-nav-caption">前一篇</strong>
+    <div class="article-nav-title">
+      
+      CSS笔记
+      
+    </div>
+  </a>
+  
+  
+  <a href="/2023/07/07/%E6%97%B6%E9%97%B4%E5%A4%84%E7%90%86/" class="article-nav-link">
+    <strong class="article-nav-caption">后一篇</strong>
+    <div class="article-nav-title">Day.js时间处理</div>
+  </a>
+  
+</nav>
+
+  
+
+  
+  
+  
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '5c428a36d9a70c430942',
+    clientSecret: '3b4c82d3877613930437eeade7101706d718c5d8',
+    repo: 'gitalk',
+    owner: 'Augenestern',
+    admin: ['Augenestern'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+
+  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">852</span>字
+  &emsp;<i class="fe fe-clock"></i> <span class="post-count">4</span>分钟
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <!-- <ul class="list-inline">
+        <li>全站共<span class="post-count">3k</span>字</li>
+      </ul>        -->
+      <li>慕杰blog &copy; 2023</li>
+      
+        <li>
+          
+            <a href="https://beian.miit.gov.cn/" target="_blank"></a>
+            
+        </li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+    <p><!-- <ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt tooltip" data-tooltip="UV"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark tooltip" data-tooltip="PV"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul> -->
+<div class="powered-by">
+  
+	&emsp;<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">访客数:<span id="busuanzi_value_site_uv"></span></span>&emsp;
+  
+    <i class="fe fe-bookmark"></i>文章访问量:<span id="busuanzi_value_page_pv"></span>
+  
+</div>
+</p>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/shark.svg" alt="慕杰blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">首页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">相册</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/favorites">收藏</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="fe fe-feed"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+  });
+</script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+
+	
+<script src="/js/love.js"></script>
+
+ 
+
+
+</body>
+
+</html>
