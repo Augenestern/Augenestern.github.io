@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <title>
+    vue3异步组件 |
+    
+    慕杰blog
+  </title>
+  <!-- Icon -->
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="慕杰blog" type="application/atom+xml">
+</head>
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-vue3异步组件" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+  <h1 class="article-title" itemprop="name">
+    vue3异步组件
+  </h1>
+  
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2023/07/17/vue3%E5%BC%82%E6%AD%A5%E7%BB%84%E4%BB%B6/" class="article-date">
+  <time datetime="2023-07-17T01:36:43.762Z" itemprop="datePublished">2023-07-17</time>
+</a>
+      
+    </div>
+    
+
+    
+    
+<div class="tocbot"></div>
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        <p>在大型项目中，我们可能需要拆分应用为更小的块，并仅在需要时再从服务器加载相关组件。Vue 提供了 defineAsyncComponent 方法来实现此功能<br>异步组价打包时会分包</p>
+<span id="more"></span>
+
+<h2 id="场景一，按需引入"><a href="#场景一，按需引入" class="headerlink" title="场景一，按需引入"></a>场景一，按需引入</h2><p>下载包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @vueuse/core -S</span><br></pre></td></tr></table></figure>
+
+<p>向下滑出现这个 C 组件才会加载 C 组件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=<span class="string">&quot;home&quot;</span>&gt;</span><br><span class="line">        &lt;A&gt;&lt;/A&gt;</span><br><span class="line">        &lt;B&gt;&lt;/B&gt;</span><br><span class="line">        &lt;div ref=<span class="string">&quot;target&quot;</span>&gt;</span><br><span class="line">            &lt;C v-if=<span class="string">&quot;targetIsVisible&quot;</span>&gt;&lt;/C&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script setup lang=<span class="string">&quot;ts&quot;</span>&gt;</span><br><span class="line">import &#123; useIntersectionObserver &#125; from <span class="string">&#x27;@vueuse/core&#x27;</span></span><br><span class="line">import A from <span class="string">&#x27;./A.vue&#x27;</span></span><br><span class="line">import B from <span class="string">&#x27;./B.vue&#x27;</span></span><br><span class="line"></span><br><span class="line">const C = defineAsyncComponent(() =&gt;</span><br><span class="line">    import(&#x27;./C.vue&#x27;)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">const target = ref(null)</span><br><span class="line">const targetIsVisible = ref(false)</span><br><span class="line"></span><br><span class="line">useIntersectionObserver(</span><br><span class="line">    target,</span><br><span class="line">    ([&#123; isIntersecting &#125;]: any) =&gt; &#123;</span><br><span class="line">        if (isIntersecting) &#123;</span><br><span class="line">            targetIsVisible.value = isIntersecting</span><br><span class="line">            console.log(isIntersecting);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="场景二-异步依赖，搭配-Suspense-使用"><a href="#场景二-异步依赖，搭配-Suspense-使用" class="headerlink" title="场景二 异步依赖，搭配 Suspense 使用"></a>场景二 异步依赖，搭配 Suspense 使用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;Suspense&gt;</span><br><span class="line">    &lt;template <span class="comment">#default&gt;</span></span><br><span class="line">        &lt;A&gt;&lt;/A&gt;</span><br><span class="line">    &lt;/template&gt;</span><br><span class="line">    &lt;template <span class="comment">#fallback&gt;</span></span><br><span class="line">        加载中...</span><br><span class="line">    &lt;/template&gt;</span><br><span class="line">&lt;/Suspense&gt;</span><br><span class="line"></span><br><span class="line">const A = defineAsyncComponent(() =&gt;</span><br><span class="line">    import(&#x27;./A.vue&#x27;)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>一般是这种用法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;div ref=<span class="string">&quot;target&quot;</span>&gt;</span><br><span class="line">    &lt;Suspense v-if=<span class="string">&quot;targetIsVisible&quot;</span>&gt;</span><br><span class="line">        &lt;template <span class="comment">#default&gt;</span></span><br><span class="line">            &lt;C&gt;&lt;/C&gt;</span><br><span class="line">        &lt;/template&gt;</span><br><span class="line">        &lt;template <span class="comment">#fallback&gt;</span></span><br><span class="line">            加载中...</span><br><span class="line">        &lt;/template&gt;</span><br><span class="line">    &lt;/Suspense&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">import &#123; useIntersectionObserver &#125; from <span class="string">&#x27;@vueuse/core&#x27;</span></span><br><span class="line">const C = defineAsyncComponent(() =&gt;</span><br><span class="line">    import(&#x27;./C.vue&#x27;)</span><br><span class="line">)</span><br><span class="line">const target = ref(null)</span><br><span class="line">const targetIsVisible = ref(false)</span><br><span class="line">useIntersectionObserver(</span><br><span class="line">    target,</span><br><span class="line">    ([&#123; isIntersecting &#125;]: any) =&gt; &#123;</span><br><span class="line">        if (isIntersecting) &#123;</span><br><span class="line">            targetIsVisible.value = isIntersecting</span><br><span class="line">            console.log(isIntersecting);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h4 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a><em><a target="_blank" rel="noopener" href="https://cn.vuejs.org/guide/components/async.html">官方文档</a></em></h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/07/17/vue3%E5%BC%82%E6%AD%A5%E7%BB%84%E4%BB%B6/" data-id="clk6b5bal0006agv14ozddyls" class="article-share-link">
+        分享
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+  
+<nav class="article-nav">
+  
+  
+  <a href="/2023/07/13/css%E7%AC%94%E8%AE%B0/" class="article-nav-link">
+    <strong class="article-nav-caption">后一篇</strong>
+    <div class="article-nav-title">CSS笔记</div>
+  </a>
+  
+</nav>
+
+  
+
+  
+  
+  
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '5c428a36d9a70c430942',
+    clientSecret: '3b4c82d3877613930437eeade7101706d718c5d8',
+    repo: 'gitalk',
+    owner: 'Augenestern',
+    admin: ['Augenestern'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+
+  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">365</span>字
+  &emsp;<i class="fe fe-clock"></i> <span class="post-count">1</span>分钟
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <!-- <ul class="list-inline">
+        <li>全站共<span class="post-count">3.4k</span>字</li>
+      </ul>        -->
+      <li>慕杰blog &copy; 2023</li>
+      
+        <li>
+          
+            <a href="https://beian.miit.gov.cn/" target="_blank"></a>
+            
+        </li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+    <p><!-- <ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt tooltip" data-tooltip="UV"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark tooltip" data-tooltip="PV"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul> -->
+<div class="powered-by">
+  
+	&emsp;<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">访客数:<span id="busuanzi_value_site_uv"></span></span>&emsp;
+  
+    <i class="fe fe-bookmark"></i>文章访问量:<span id="busuanzi_value_page_pv"></span>
+  
+</div>
+</p>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/shark.svg" alt="慕杰blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">首页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">相册</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/favorites">收藏</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="fe fe-feed"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+  });
+</script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+
+	
+<script src="/js/love.js"></script>
+
+ 
+
+
+</body>
+
+</html>

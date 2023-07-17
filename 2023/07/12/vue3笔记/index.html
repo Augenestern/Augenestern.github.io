@@ -69,7 +69,7 @@
       
       
       
-        <p>Vite 和 Webpack 都是现代前端开发中的常见打包工具，但在实际使用过程中，它们存在五个主要区别：1.开发模式不同；2.打包效率不同；3.插件生态不同；4.配置复杂度不同；5.热更新机制不同。总的来说，Vite 的开发环境启动速度和模块热更新速度相比 Webpack 有显著提升，而 Webpack 的生态系统更为丰富。</p>
+        <p>包括搭建项目，父子组件传值，兄弟组件传值，插槽，Teleport 组件，依赖注入</p>
 <span id="more"></span>
 
 <h4 id="搭建项目-点击"><a href="#搭建项目-点击" class="headerlink" title="搭建项目: 点击"></a>搭建项目: <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_59916662/article/details/127331094">点击</a></h4><h2 id="数据代理"><a href="#数据代理" class="headerlink" title="数据代理"></a>数据代理</h2><p>vue2.x : Object.defineProperty()<br>vue3.x : Proxy</p>
@@ -105,15 +105,27 @@
 <h3 id="3-作用域插槽"><a href="#3-作用域插槽" class="headerlink" title="3.作用域插槽"></a>3.作用域插槽</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">父：</span><br><span class="line">&lt;template v-slot=<span class="string">&quot;&#123;data&#125;&quot;</span>&gt;</span><br><span class="line">    &#123;&#123; data.name &#125;&#125;---&#123;&#123; data.age &#125;&#125;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">//可以简写成<span class="comment">#default</span></span><br><span class="line">&lt;template <span class="comment">#default=&quot;&#123;data&#125;&quot;&gt;</span></span><br><span class="line">    &#123;&#123; data.name &#125;&#125;---&#123;&#123; data.age &#125;&#125;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">子：</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;slot :data=<span class="string">&quot;item&quot;</span>&gt;&lt;/slot&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
 <h3 id="4-动态插槽"><a href="#4-动态插槽" class="headerlink" title="4.动态插槽"></a>4.动态插槽</h3><p>就是通过数据动态切换插槽名</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">父：</span><br><span class="line">&lt;template <span class="comment">#[name]&gt;</span></span><br><span class="line">    这是xxx</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"><span class="built_in">let</span> name = ref(<span class="string">&#x27;xxx&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">子：</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;slot name=<span class="string">&quot;xxx&quot;</span>&gt;&lt;/slot&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Teleport-组件"><a href="#Teleport-组件" class="headerlink" title="Teleport 组件"></a>Teleport 组件</h2><p>传送</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;Teleport to=<span class="string">&quot;body&quot;</span>&gt;&lt;/Teleport&gt;</span><br><span class="line">&lt;Teleport to=<span class="string">&quot;.mian&quot;</span>&gt;&lt;/Teleport&gt;</span><br><span class="line">&lt;Teleport to=<span class="string">&quot;#container&quot;</span>&gt;&lt;/Teleport&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//父组件：提供</span><br><span class="line">provide(/* 注入名 */ <span class="string">&#x27;message&#x27;</span>, /* 值 */ <span class="string">&#x27;hello!&#x27;</span>)</span><br><span class="line">//如果你想确保提供的数据不能被注入方的组件更改，你可以使用 <span class="built_in">readonly</span>() 来包装提供的值</span><br><span class="line">provide(<span class="string">&#x27;read-only-message&#x27;</span>, <span class="built_in">readonly</span>(message))</span><br><span class="line"></span><br><span class="line">//子孙组件：注入</span><br><span class="line">const message = inject(<span class="string">&#x27;message&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
 <h2 id="js-数组"><a href="#js-数组" class="headerlink" title="js 数组"></a>js 数组</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//使用slice()方法返回一个子数组，在进行reverse； 不会改变原数组</span><br><span class="line">time1 = time.slice().reverse()  //time1数组反转  time数组不变</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/07/12/vue3%E7%AC%94%E8%AE%B0/" data-id="clk0s9gau00061kv142q78mdm" class="article-share-link">
+      <a data-url="http://example.com/2023/07/12/vue3%E7%AC%94%E8%AE%B0/" data-id="clk6b5ban0008agv1aw663f5u" class="article-share-link">
         分享
       </a>
       
@@ -175,7 +187,7 @@
 
   
 
-  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">852</span>字
+  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">877</span>字
   &emsp;<i class="fe fe-clock"></i> <span class="post-count">4</span>分钟
 
 </article>
@@ -184,7 +196,7 @@
   <div class="outer">
     <ul class="list-inline">
       <!-- <ul class="list-inline">
-        <li>全站共<span class="post-count">3k</span>字</li>
+        <li>全站共<span class="post-count">3.4k</span>字</li>
       </ul>        -->
       <li>慕杰blog &copy; 2023</li>
       

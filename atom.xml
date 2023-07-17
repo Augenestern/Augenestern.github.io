@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-07-13T06:40:52.976Z</updated>
+  <updated>2023-07-17T03:11:50.533Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,21 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue3异步组件</title>
+    <link href="http://example.com/2023/07/17/vue3%E5%BC%82%E6%AD%A5%E7%BB%84%E4%BB%B6/"/>
+    <id>http://example.com/2023/07/17/vue3%E5%BC%82%E6%AD%A5%E7%BB%84%E4%BB%B6/</id>
+    <published>2023-07-17T01:36:43.762Z</published>
+    <updated>2023-07-17T03:11:50.533Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在大型项目中，我们可能需要拆分应用为更小的块，并仅在需要时再从服务器加载相关组件。Vue 提供了 defineAsyncComponent 方法来实现此功能&lt;br&gt;异步组价打包时会分包&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>CSS笔记</title>
@@ -36,10 +51,10 @@
     <link href="http://example.com/2023/07/12/vue3%E7%AC%94%E8%AE%B0/"/>
     <id>http://example.com/2023/07/12/vue3%E7%AC%94%E8%AE%B0/</id>
     <published>2023-07-12T01:50:27.789Z</published>
-    <updated>2023-07-13T05:46:32.904Z</updated>
+    <updated>2023-07-17T01:38:34.567Z</updated>
     
     
-    <summary type="html">&lt;p&gt;Vite 和 Webpack 都是现代前端开发中的常见打包工具，但在实际使用过程中，它们存在五个主要区别：1.开发模式不同；2.打包效率不同；3.插件生态不同；4.配置复杂度不同；5.热更新机制不同。总的来说，Vite 的开发环境启动速度和模块热更新速度相比 Webpack 有显著提升，而 Webpack 的生态系统更为丰富。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;包括搭建项目，父子组件传值，兄弟组件传值，插槽，Teleport 组件，依赖注入&lt;/p&gt;</summary>
     
     
     
@@ -63,10 +78,10 @@
   
   <entry>
     <title>Vuex和Pinia</title>
-    <link href="http://example.com/2023/06/21/ce/"/>
-    <id>http://example.com/2023/06/21/ce/</id>
+    <link href="http://example.com/2023/06/21/Vuex%E5%92%8CPinia/"/>
+    <id>http://example.com/2023/06/21/Vuex%E5%92%8CPinia/</id>
     <published>2023-06-21T08:49:36.832Z</published>
-    <updated>2023-07-13T02:03:46.166Z</updated>
+    <updated>2023-07-17T03:28:10.094Z</updated>
     
     
     <summary type="html">&lt;p&gt;应用程序开发的状态管理模式，它采用集中式存储管理应用的所有组件状态，并以相应的规则保证状态以一种可预测的方式发生变化。&lt;/p&gt;</summary>
