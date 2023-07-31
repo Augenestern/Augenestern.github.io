@@ -1,6 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hexo 基本使用</title>
+    <url>/2023/06/17/hexo/</url>
+    <content><![CDATA[<p>Hexo是一款基于Node.js的静态博客框架,依赖少易于安装使用,可以方便的生成静态网页托管在GitHub和Coding上,是搭建博客的首选框架。</p>
+<span id="more"></span>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>vue3异步组件</title>
+    <url>/2023/07/17/vue3%E5%BC%82%E6%AD%A5%E7%BB%84%E4%BB%B6/</url>
+    <content><![CDATA[<p>在大型项目中，我们可能需要拆分应用为更小的块，并仅在需要时再从服务器加载相关组件。Vue 提供了 defineAsyncComponent 方法来实现此功能<br>异步组价打包时会分包</p>
+<span id="more"></span>
+
+<h2 id="场景一，按需引入"><a href="#场景一，按需引入" class="headerlink" title="场景一，按需引入"></a>场景一，按需引入</h2><p>下载包</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install @vueuse/core -S</span><br></pre></td></tr></table></figure>
+
+<p>向下滑出现这个 C 组件才会加载 C 组件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=<span class="string">&quot;home&quot;</span>&gt;</span><br><span class="line">        &lt;A&gt;&lt;/A&gt;</span><br><span class="line">        &lt;B&gt;&lt;/B&gt;</span><br><span class="line">        &lt;div ref=<span class="string">&quot;target&quot;</span>&gt;</span><br><span class="line">            &lt;C v-if=<span class="string">&quot;targetIsVisible&quot;</span>&gt;&lt;/C&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script setup lang=<span class="string">&quot;ts&quot;</span>&gt;</span><br><span class="line">import &#123; useIntersectionObserver &#125; from <span class="string">&#x27;@vueuse/core&#x27;</span></span><br><span class="line">import A from <span class="string">&#x27;./A.vue&#x27;</span></span><br><span class="line">import B from <span class="string">&#x27;./B.vue&#x27;</span></span><br><span class="line"></span><br><span class="line">const C = defineAsyncComponent(() =&gt;</span><br><span class="line">    import(&#x27;./C.vue&#x27;)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">const target = ref(null)</span><br><span class="line">const targetIsVisible = ref(false)</span><br><span class="line"></span><br><span class="line">useIntersectionObserver(</span><br><span class="line">    target,</span><br><span class="line">    ([&#123; isIntersecting &#125;]: any) =&gt; &#123;</span><br><span class="line">        if (isIntersecting) &#123;</span><br><span class="line">            targetIsVisible.value = isIntersecting</span><br><span class="line">            console.log(isIntersecting);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="场景二-异步依赖，搭配-Suspense-使用"><a href="#场景二-异步依赖，搭配-Suspense-使用" class="headerlink" title="场景二 异步依赖，搭配 Suspense 使用"></a>场景二 异步依赖，搭配 Suspense 使用</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;Suspense&gt;</span><br><span class="line">    &lt;template <span class="comment">#default&gt;</span></span><br><span class="line">        &lt;A&gt;&lt;/A&gt;</span><br><span class="line">    &lt;/template&gt;</span><br><span class="line">    &lt;template <span class="comment">#fallback&gt;</span></span><br><span class="line">        加载中...</span><br><span class="line">    &lt;/template&gt;</span><br><span class="line">&lt;/Suspense&gt;</span><br><span class="line"></span><br><span class="line">const A = defineAsyncComponent(() =&gt;</span><br><span class="line">    import(&#x27;./A.vue&#x27;)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>一般是这种用法：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;div ref=<span class="string">&quot;target&quot;</span>&gt;</span><br><span class="line">    &lt;Suspense v-if=<span class="string">&quot;targetIsVisible&quot;</span>&gt;</span><br><span class="line">        &lt;template <span class="comment">#default&gt;</span></span><br><span class="line">            &lt;C&gt;&lt;/C&gt;</span><br><span class="line">        &lt;/template&gt;</span><br><span class="line">        &lt;template <span class="comment">#fallback&gt;</span></span><br><span class="line">            加载中...</span><br><span class="line">        &lt;/template&gt;</span><br><span class="line">    &lt;/Suspense&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">import &#123; useIntersectionObserver &#125; from <span class="string">&#x27;@vueuse/core&#x27;</span></span><br><span class="line">const C = defineAsyncComponent(() =&gt;</span><br><span class="line">    import(&#x27;./C.vue&#x27;)</span><br><span class="line">)</span><br><span class="line">const target = ref(null)</span><br><span class="line">const targetIsVisible = ref(false)</span><br><span class="line">useIntersectionObserver(</span><br><span class="line">    target,</span><br><span class="line">    ([&#123; isIntersecting &#125;]: any) =&gt; &#123;</span><br><span class="line">        if (isIntersecting) &#123;</span><br><span class="line">            targetIsVisible.value = isIntersecting</span><br><span class="line">            console.log(isIntersecting);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h4 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a><em><a href="https://cn.vuejs.org/guide/components/async.html">官方文档</a></em></h4>]]></content>
+  </entry>
+  <entry>
+    <title>CSS笔记</title>
+    <url>/2023/07/13/css%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>position 布局，transform 的基本使用和常用特效</p>
+<span id="more"></span>
+
+<h2 id="position"><a href="#position" class="headerlink" title="position"></a>position</h2><p>Position 的属性值有：<br>1.Absolute：绝对定位，是相对于最近的且不是 static 定位的父元素来定位<br>2.Fixed：绝对定位，是相对于浏览器窗口来定位的，是固定的，不会跟屏幕一起滚动。<br>3.Relative：相对定位，是相对于其原本的位置来定位的。<br>4.Static：默认值，没有定位。<br>5.Inherit：继承父元素的 position 值</p>
+<h2 id="transform-的基本使用和常用特效"><a href="#transform-的基本使用和常用特效" class="headerlink" title="transform 的基本使用和常用特效"></a>transform 的基本使用和常用特效</h2><h3 id="1-平移"><a href="#1-平移" class="headerlink" title="1.平移"></a>1.平移</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/* x表示x轴移动的坐标，y表示y轴移动的坐标 */</span><br><span class="line">/* transform: translate(30px,30px); */</span><br><span class="line">/* x轴移动的坐标，y轴不变  */</span><br><span class="line">/* transform: translateX(30px); */</span><br><span class="line">/* y轴移动的坐标，x轴不变  */</span><br><span class="line">/* transform: translateY(30px); */</span><br><span class="line">/* 百分比参照的单位是自身的宽高，在这里也就是100px; */</span><br><span class="line">/* transform: translate(50%,50%); */</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-旋转"><a href="#2-旋转" class="headerlink" title="2.旋转"></a>2.旋转</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/* deg相当于度单位，表示旋转45度; */</span><br><span class="line">/* transform: rotate(45deg); */</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.first &#123;</span><br><span class="line">    margin: 50px auto;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 200px;</span><br><span class="line">    border: 2px solid brown;</span><br><span class="line">    /*不要上边框和左边框后旋转45度即可*/</span><br><span class="line">    border-top: none;</span><br><span class="line">    border-left: none;</span><br><span class="line">    transform: rotate(45deg);</span><br><span class="line">    transition: transform 0.5s;  //设置transform动画效果时间</span><br><span class="line">    // transform-origin设置旋转中心点</span><br><span class="line">    /* transform-origin: bottom left; */</span><br><span class="line">    /* transform-origin: 50px 50px;  */</span><br><span class="line">&#125;</span><br><span class="line">.first:hover &#123;</span><br><span class="line">    transform: rotate(225deg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-缩放"><a href="#3-缩放" class="headerlink" title="3.缩放"></a>3.缩放</h3><p>不会影响其他盒子</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/*  transition: transform 0.7s; //设置transform动画效果时间 */</span><br><span class="line">.first:hover &#123;</span><br><span class="line">    /* 表示xy的倍数，小于1的为缩小，大于1为放大 */</span><br><span class="line">    /* transform: scale(2,2); */</span><br><span class="line">    /* 也可以写成一个表示xy比例一样 */</span><br><span class="line">    /* transform: scale(2); */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-transform-动画效果"><a href="#4-transform-动画效果" class="headerlink" title="4.transform 动画效果"></a>4.transform 动画效果</h3><p><a href="https://code84.com/727426.html">详情</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">transition: transform 0.2s ease-in-out;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>vue3+vite+ts项目笔记</title>
+    <url>/2023/07/12/vue3%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>包括搭建项目，父子组件传值，兄弟组件传值，插槽，Teleport 组件，依赖注入</p>
+<span id="more"></span>
+
+<h4 id="搭建项目-点击"><a href="#搭建项目-点击" class="headerlink" title="搭建项目: 点击"></a>搭建项目: <a href="https://blog.csdn.net/weixin_59916662/article/details/127331094">点击</a></h4><h2 id="数据代理"><a href="#数据代理" class="headerlink" title="数据代理"></a>数据代理</h2><p>vue2.x : Object.defineProperty()<br>vue3.x : Proxy</p>
+<h2 id="父子组件传值"><a href="#父子组件传值" class="headerlink" title="父子组件传值"></a>父子组件传值</h2><h3 id="1-父传子"><a href="#1-父传子" class="headerlink" title="1.父传子"></a>1.父传子</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;div&gt;父组件</span><br><span class="line">  &lt;list :msg=<span class="string">&quot;msg&quot;</span>&gt;&lt;/list&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> msg = ref(<span class="string">&#x27;传过去的&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;div&gt;这是子组件&#123;&#123;msg&#125;&#125;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">defineProps(&#123;</span><br><span class="line">    msg:&#123;</span><br><span class="line">        <span class="built_in">type</span>:String,</span><br><span class="line">        default:<span class="string">&quot;默认值&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-子传父"><a href="#2-子传父" class="headerlink" title="2.子传父"></a>2.子传父</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;div&gt;这是子组件&#123;&#123;msg&#125;&#125;</span><br><span class="line">  &lt;button @click=<span class="string">&quot;changeNum&quot;</span>&gt;按钮&lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> num = ref(200)</span><br><span class="line">// const emit = defineEmits([<span class="string">&#x27;fn&#x27;</span>])</span><br><span class="line">const emit = defineEmits&lt;&#123;</span><br><span class="line">    (e:<span class="string">&quot;fn&quot;</span>, <span class="built_in">id</span>: number): void</span><br><span class="line">&#125;&gt;()</span><br><span class="line">const changeNum = ()=&gt;&#123;</span><br><span class="line">    emit(<span class="string">&quot;fn&quot;</span>,num)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;div&gt;父组件</span><br><span class="line">  &lt;list @fn=<span class="string">&#x27;changeHome&#x27;</span>&gt;&lt;/list&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> changeHome = (n)=&gt;&#123;</span><br><span class="line">    console.log(n)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-v-model-传值"><a href="#3-v-model-传值" class="headerlink" title="3.v-model 传值"></a>3.v-model 传值</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;div&gt;父组件</span><br><span class="line">  &lt;list v-model:num = <span class="string">&quot;num&quot;</span>&gt;&lt;/list&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> num = ref(1)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;div&gt;这是子组件&#123;&#123;num&#125;&#125;</span><br><span class="line">  &lt;button @click=<span class="string">&quot;btn&quot;</span>&gt;按钮&lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">const props = refineProps(&#123;</span><br><span class="line">    num:&#123;</span><br><span class="line">        <span class="built_in">type</span>:Number,</span><br><span class="line">        default:100</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">const emit = defineEmits([<span class="string">&#x27;update:num&#x27;</span>])</span><br><span class="line">const btn = ()=&gt;&#123;</span><br><span class="line">    emit(<span class="string">&#x27;update:num&#x27;</span>,200)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="兄弟组件传值"><a href="#兄弟组件传值" class="headerlink" title="兄弟组件传值"></a>兄弟组件传值</h2><h3 id="1-通过父组件比较繁琐"><a href="#1-通过父组件比较繁琐" class="headerlink" title="1.通过父组件比较繁琐"></a>1.通过父组件比较繁琐</h3><h3 id="2-通过-mitt"><a href="#2-通过-mitt" class="headerlink" title="2.通过 mitt"></a>2.通过 mitt</h3><h4 id="1）-下载安装"><a href="#1）-下载安装" class="headerlink" title="1）.下载安装"></a>1）.下载安装</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install mitt -S</span><br></pre></td></tr></table></figure>
+
+<h4 id="2）-新建文件夹"><a href="#2）-新建文件夹" class="headerlink" title="2）.新建文件夹"></a>2）.新建文件夹</h4><p>src&#x2F;plugins&#x2F;Bus.js</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//bus.js内</span><br><span class="line">import mitt from <span class="string">&#x27;mitt&#x27;</span>;</span><br><span class="line">const emitter = mitt()</span><br><span class="line"><span class="built_in">export</span> default emitter;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//兄弟组件A中</span><br><span class="line">import emitter from <span class="string">&quot;@plugins/Bus.js&quot;</span></span><br><span class="line"><span class="built_in">let</span> str = ref(<span class="string">&quot;A值&quot;</span>)</span><br><span class="line">const btn = ()=&gt;&#123;</span><br><span class="line">    emitter.emit(<span class="string">&#x27;fn&#x27;</span>,str);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//兄弟组件B中 接收</span><br><span class="line">import emitter from <span class="string">&quot;@plugins/Bus.js&quot;</span></span><br><span class="line"><span class="built_in">let</span> s = ref(<span class="string">&quot;&quot;</span>)</span><br><span class="line">const btn = ()=&gt;&#123;</span><br><span class="line">    emitter.on(<span class="string">&#x27;fn&#x27;</span>,e=&gt;&#123;</span><br><span class="line">        s.value = e.value;</span><br><span class="line">        console.log(e.value)</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h2><h3 id="1-匿名插槽"><a href="#1-匿名插槽" class="headerlink" title="1.匿名插槽"></a>1.匿名插槽</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">父：</span><br><span class="line">&lt;A&gt;</span><br><span class="line">    这是xxx数据</span><br><span class="line">    这是yyy数据</span><br><span class="line">&lt;/A&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">子：</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;div&gt;头部&lt;/div&gt;</span><br><span class="line">    &lt;slot&gt;&lt;/slot&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;div&gt;底部&lt;/div&gt;</span><br><span class="line">    &lt;slot&gt;&lt;/slot&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-具名插槽"><a href="#2-具名插槽" class="headerlink" title="2.具名插槽"></a>2.具名插槽</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">父：</span><br><span class="line">&lt;A&gt;</span><br><span class="line">    &lt;template v-slot:xxx&gt;</span><br><span class="line">        这是xxx数据</span><br><span class="line">    &lt;/template&gt;</span><br><span class="line">    &lt;template <span class="comment">#yyy&gt;</span></span><br><span class="line">        这是yyy数据</span><br><span class="line">    &lt;/template&gt;</span><br><span class="line">&lt;/A&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">子：</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;div&gt;头部&lt;/div&gt;</span><br><span class="line">    &lt;slot name=<span class="string">&quot;xxx&quot;</span>&gt;&lt;/slot&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;div&gt;底部&lt;/div&gt;</span><br><span class="line">    &lt;slot name=<span class="string">&quot;yyy&quot;</span>&gt;&lt;/slot&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-作用域插槽"><a href="#3-作用域插槽" class="headerlink" title="3.作用域插槽"></a>3.作用域插槽</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">父：</span><br><span class="line">&lt;template v-slot=<span class="string">&quot;&#123;data&#125;&quot;</span>&gt;</span><br><span class="line">    &#123;&#123; data.name &#125;&#125;---&#123;&#123; data.age &#125;&#125;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">//可以简写成<span class="comment">#default</span></span><br><span class="line">&lt;template <span class="comment">#default=&quot;&#123;data&#125;&quot;&gt;</span></span><br><span class="line">    &#123;&#123; data.name &#125;&#125;---&#123;&#123; data.age &#125;&#125;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">子：</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;slot :data=<span class="string">&quot;item&quot;</span>&gt;&lt;/slot&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-动态插槽"><a href="#4-动态插槽" class="headerlink" title="4.动态插槽"></a>4.动态插槽</h3><p>就是通过数据动态切换插槽名</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">父：</span><br><span class="line">&lt;template <span class="comment">#[name]&gt;</span></span><br><span class="line">    这是xxx</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"><span class="built_in">let</span> name = ref(<span class="string">&#x27;xxx&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">子：</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;slot name=<span class="string">&quot;xxx&quot;</span>&gt;&lt;/slot&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Teleport-组件"><a href="#Teleport-组件" class="headerlink" title="Teleport 组件"></a>Teleport 组件</h2><p>传送</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;Teleport to=<span class="string">&quot;body&quot;</span>&gt;&lt;/Teleport&gt;</span><br><span class="line">&lt;Teleport to=<span class="string">&quot;.mian&quot;</span>&gt;&lt;/Teleport&gt;</span><br><span class="line">&lt;Teleport to=<span class="string">&quot;#container&quot;</span>&gt;&lt;/Teleport&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//父组件：提供</span><br><span class="line">provide(/* 注入名 */ <span class="string">&#x27;message&#x27;</span>, /* 值 */ <span class="string">&#x27;hello!&#x27;</span>)</span><br><span class="line">//如果你想确保提供的数据不能被注入方的组件更改，你可以使用 <span class="built_in">readonly</span>() 来包装提供的值</span><br><span class="line">provide(<span class="string">&#x27;read-only-message&#x27;</span>, <span class="built_in">readonly</span>(message))</span><br><span class="line"></span><br><span class="line">//子孙组件：注入</span><br><span class="line">const message = inject(<span class="string">&#x27;message&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="js-数组"><a href="#js-数组" class="headerlink" title="js 数组"></a>js 数组</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//使用slice()方法返回一个子数组，在进行reverse； 不会改变原数组</span><br><span class="line">time1 = time.slice().reverse()  //time1数组反转  time数组不变</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>Day.js时间处理</title>
+    <url>/2023/07/07/%E6%97%B6%E9%97%B4%E5%A4%84%E7%90%86/</url>
+    <content><![CDATA[<p>Day.js 是一个轻量的处理时间和日期的 JavaScript 库</p>
+<span id="more"></span>
+
+<h3 id="安装Day-js"><a href="#安装Day-js" class="headerlink" title="安装Day.js"></a>安装Day.js</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install dayjs --save</span><br></pre></td></tr></table></figure>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs(<span class="string">&#x27;2018-08-08&#x27;</span>) // 解析</span><br><span class="line">dayjs().format(<span class="string">&#x27;&#123;YYYY&#125; MM-DDTHH:mm:ss SSS [Z] A&#x27;</span>) // 展示</span><br><span class="line">dayjs()</span><br><span class="line">  .<span class="built_in">set</span>(<span class="string">&#x27;month&#x27;</span>, 3)</span><br><span class="line">  .month() // 获取</span><br><span class="line">dayjs().add(1, <span class="string">&#x27;year&#x27;</span>) // 处理</span><br><span class="line">dayjs().isBefore(dayjs()) // 查询</span><br></pre></td></tr></table></figure>
+<h3 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//背景图片</span><br><span class="line">width: 100vw;</span><br><span class="line">height: 100vh;</span><br><span class="line">background-image: url(<span class="string">&#x27;https://img.zcool.cn/community/038958357a84fc40000012e7edb94ad.png&#x27;</span>);</span><br><span class="line">background-position: center;</span><br><span class="line">background-size: cover;</span><br><span class="line">background-repeat: no-repeat;</span><br><span class="line">background-attachment: fixed;</span><br><span class="line"></span><br><span class="line">display: flex;</span><br><span class="line">align-items: center;</span><br><span class="line">justify-content: center;</span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+  </entry>
+  <entry>
     <title>Vuex和Pinia</title>
     <url>/2023/06/21/Vuex%E5%92%8CPinia/</url>
     <content><![CDATA[<p>应用程序开发的状态管理模式，它采用集中式存储管理应用的所有组件状态，并以相应的规则保证状态以一种可预测的方式发生变化。</p>
@@ -65,134 +193,6 @@
 <h4 id="3-store-里添加-persist-true，与-getters-同级"><a href="#3-store-里添加-persist-true，与-getters-同级" class="headerlink" title="3.store 里添加 persist: true，与 getters 同级"></a>3.store 里添加 persist: true，与 getters 同级</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">getters: &#123;</span><br><span class="line">&#125;,</span><br><span class="line">// 相当于vuex的 mutation + action，可以同时写同步和异步的代码</span><br><span class="line">actions: &#123;</span><br><span class="line">&#125;,</span><br><span class="line">persist: <span class="literal">true</span>,</span><br></pre></td></tr></table></figure>
 
 <p><em>借鉴:<a href="https://blog.csdn.net/m0_67476502/article/details/124750596">Vuex</a>和<a href="https://zhuanlan.zhihu.com/p/575738777">Pinia</a></em></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>CSS笔记</title>
-    <url>/2023/07/13/css%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>position 布局，transform 的基本使用和常用特效</p>
-<span id="more"></span>
-
-<h2 id="position"><a href="#position" class="headerlink" title="position"></a>position</h2><p>Position 的属性值有：<br>1.Absolute：绝对定位，是相对于最近的且不是 static 定位的父元素来定位<br>2.Fixed：绝对定位，是相对于浏览器窗口来定位的，是固定的，不会跟屏幕一起滚动。<br>3.Relative：相对定位，是相对于其原本的位置来定位的。<br>4.Static：默认值，没有定位。<br>5.Inherit：继承父元素的 position 值</p>
-<h2 id="transform-的基本使用和常用特效"><a href="#transform-的基本使用和常用特效" class="headerlink" title="transform 的基本使用和常用特效"></a>transform 的基本使用和常用特效</h2><h3 id="1-平移"><a href="#1-平移" class="headerlink" title="1.平移"></a>1.平移</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/* x表示x轴移动的坐标，y表示y轴移动的坐标 */</span><br><span class="line">/* transform: translate(30px,30px); */</span><br><span class="line">/* x轴移动的坐标，y轴不变  */</span><br><span class="line">/* transform: translateX(30px); */</span><br><span class="line">/* y轴移动的坐标，x轴不变  */</span><br><span class="line">/* transform: translateY(30px); */</span><br><span class="line">/* 百分比参照的单位是自身的宽高，在这里也就是100px; */</span><br><span class="line">/* transform: translate(50%,50%); */</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-旋转"><a href="#2-旋转" class="headerlink" title="2.旋转"></a>2.旋转</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/* deg相当于度单位，表示旋转45度; */</span><br><span class="line">/* transform: rotate(45deg); */</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.first &#123;</span><br><span class="line">    margin: 50px auto;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 200px;</span><br><span class="line">    border: 2px solid brown;</span><br><span class="line">    /*不要上边框和左边框后旋转45度即可*/</span><br><span class="line">    border-top: none;</span><br><span class="line">    border-left: none;</span><br><span class="line">    transform: rotate(45deg);</span><br><span class="line">    transition: transform 0.5s;  //设置transform动画效果时间</span><br><span class="line">    // transform-origin设置旋转中心点</span><br><span class="line">    /* transform-origin: bottom left; */</span><br><span class="line">    /* transform-origin: 50px 50px;  */</span><br><span class="line">&#125;</span><br><span class="line">.first:hover &#123;</span><br><span class="line">    transform: rotate(225deg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-缩放"><a href="#3-缩放" class="headerlink" title="3.缩放"></a>3.缩放</h3><p>不会影响其他盒子</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/*  transition: transform 0.7s; //设置transform动画效果时间 */</span><br><span class="line">.first:hover &#123;</span><br><span class="line">    /* 表示xy的倍数，小于1的为缩小，大于1为放大 */</span><br><span class="line">    /* transform: scale(2,2); */</span><br><span class="line">    /* 也可以写成一个表示xy比例一样 */</span><br><span class="line">    /* transform: scale(2); */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-transform-动画效果"><a href="#4-transform-动画效果" class="headerlink" title="4.transform 动画效果"></a>4.transform 动画效果</h3><p><a href="https://code84.com/727426.html">详情</a></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">transition: transform 0.2s ease-in-out;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-  </entry>
-  <entry>
-    <title>Hexo 基本使用</title>
-    <url>/2023/06/17/hexo/</url>
-    <content><![CDATA[<p>Hexo是一款基于Node.js的静态博客框架,依赖少易于安装使用,可以方便的生成静态网页托管在GitHub和Coding上,是搭建博客的首选框架。</p>
-<span id="more"></span>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>vue3异步组件</title>
-    <url>/2023/07/17/vue3%E5%BC%82%E6%AD%A5%E7%BB%84%E4%BB%B6/</url>
-    <content><![CDATA[<p>在大型项目中，我们可能需要拆分应用为更小的块，并仅在需要时再从服务器加载相关组件。Vue 提供了 defineAsyncComponent 方法来实现此功能<br>异步组价打包时会分包</p>
-<span id="more"></span>
-
-<h2 id="场景一，按需引入"><a href="#场景一，按需引入" class="headerlink" title="场景一，按需引入"></a>场景一，按需引入</h2><p>下载包</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install @vueuse/core -S</span><br></pre></td></tr></table></figure>
-
-<p>向下滑出现这个 C 组件才会加载 C 组件</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=<span class="string">&quot;home&quot;</span>&gt;</span><br><span class="line">        &lt;A&gt;&lt;/A&gt;</span><br><span class="line">        &lt;B&gt;&lt;/B&gt;</span><br><span class="line">        &lt;div ref=<span class="string">&quot;target&quot;</span>&gt;</span><br><span class="line">            &lt;C v-if=<span class="string">&quot;targetIsVisible&quot;</span>&gt;&lt;/C&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script setup lang=<span class="string">&quot;ts&quot;</span>&gt;</span><br><span class="line">import &#123; useIntersectionObserver &#125; from <span class="string">&#x27;@vueuse/core&#x27;</span></span><br><span class="line">import A from <span class="string">&#x27;./A.vue&#x27;</span></span><br><span class="line">import B from <span class="string">&#x27;./B.vue&#x27;</span></span><br><span class="line"></span><br><span class="line">const C = defineAsyncComponent(() =&gt;</span><br><span class="line">    import(&#x27;./C.vue&#x27;)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">const target = ref(null)</span><br><span class="line">const targetIsVisible = ref(false)</span><br><span class="line"></span><br><span class="line">useIntersectionObserver(</span><br><span class="line">    target,</span><br><span class="line">    ([&#123; isIntersecting &#125;]: any) =&gt; &#123;</span><br><span class="line">        if (isIntersecting) &#123;</span><br><span class="line">            targetIsVisible.value = isIntersecting</span><br><span class="line">            console.log(isIntersecting);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="场景二-异步依赖，搭配-Suspense-使用"><a href="#场景二-异步依赖，搭配-Suspense-使用" class="headerlink" title="场景二 异步依赖，搭配 Suspense 使用"></a>场景二 异步依赖，搭配 Suspense 使用</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;Suspense&gt;</span><br><span class="line">    &lt;template <span class="comment">#default&gt;</span></span><br><span class="line">        &lt;A&gt;&lt;/A&gt;</span><br><span class="line">    &lt;/template&gt;</span><br><span class="line">    &lt;template <span class="comment">#fallback&gt;</span></span><br><span class="line">        加载中...</span><br><span class="line">    &lt;/template&gt;</span><br><span class="line">&lt;/Suspense&gt;</span><br><span class="line"></span><br><span class="line">const A = defineAsyncComponent(() =&gt;</span><br><span class="line">    import(&#x27;./A.vue&#x27;)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<p>一般是这种用法：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;div ref=<span class="string">&quot;target&quot;</span>&gt;</span><br><span class="line">    &lt;Suspense v-if=<span class="string">&quot;targetIsVisible&quot;</span>&gt;</span><br><span class="line">        &lt;template <span class="comment">#default&gt;</span></span><br><span class="line">            &lt;C&gt;&lt;/C&gt;</span><br><span class="line">        &lt;/template&gt;</span><br><span class="line">        &lt;template <span class="comment">#fallback&gt;</span></span><br><span class="line">            加载中...</span><br><span class="line">        &lt;/template&gt;</span><br><span class="line">    &lt;/Suspense&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">import &#123; useIntersectionObserver &#125; from <span class="string">&#x27;@vueuse/core&#x27;</span></span><br><span class="line">const C = defineAsyncComponent(() =&gt;</span><br><span class="line">    import(&#x27;./C.vue&#x27;)</span><br><span class="line">)</span><br><span class="line">const target = ref(null)</span><br><span class="line">const targetIsVisible = ref(false)</span><br><span class="line">useIntersectionObserver(</span><br><span class="line">    target,</span><br><span class="line">    ([&#123; isIntersecting &#125;]: any) =&gt; &#123;</span><br><span class="line">        if (isIntersecting) &#123;</span><br><span class="line">            targetIsVisible.value = isIntersecting</span><br><span class="line">            console.log(isIntersecting);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h4 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a><em><a href="https://cn.vuejs.org/guide/components/async.html">官方文档</a></em></h4>]]></content>
-  </entry>
-  <entry>
-    <title>Day.js时间处理</title>
-    <url>/2023/07/07/%E6%97%B6%E9%97%B4%E5%A4%84%E7%90%86/</url>
-    <content><![CDATA[<p>Day.js 是一个轻量的处理时间和日期的 JavaScript 库</p>
-<span id="more"></span>
-
-<h3 id="安装Day-js"><a href="#安装Day-js" class="headerlink" title="安装Day.js"></a>安装Day.js</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install dayjs --save</span><br></pre></td></tr></table></figure>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dayjs(<span class="string">&#x27;2018-08-08&#x27;</span>) // 解析</span><br><span class="line">dayjs().format(<span class="string">&#x27;&#123;YYYY&#125; MM-DDTHH:mm:ss SSS [Z] A&#x27;</span>) // 展示</span><br><span class="line">dayjs()</span><br><span class="line">  .<span class="built_in">set</span>(<span class="string">&#x27;month&#x27;</span>, 3)</span><br><span class="line">  .month() // 获取</span><br><span class="line">dayjs().add(1, <span class="string">&#x27;year&#x27;</span>) // 处理</span><br><span class="line">dayjs().isBefore(dayjs()) // 查询</span><br></pre></td></tr></table></figure>
-<h3 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//背景图片</span><br><span class="line">width: 100vw;</span><br><span class="line">height: 100vh;</span><br><span class="line">background-image: url(<span class="string">&#x27;https://img.zcool.cn/community/038958357a84fc40000012e7edb94ad.png&#x27;</span>);</span><br><span class="line">background-position: center;</span><br><span class="line">background-size: cover;</span><br><span class="line">background-repeat: no-repeat;</span><br><span class="line">background-attachment: fixed;</span><br><span class="line"></span><br><span class="line">display: flex;</span><br><span class="line">align-items: center;</span><br><span class="line">justify-content: center;</span><br></pre></td></tr></table></figure>
-
-
-]]></content>
-  </entry>
-  <entry>
-    <title>vue3+vite+ts项目笔记</title>
-    <url>/2023/07/12/vue3%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>包括搭建项目，父子组件传值，兄弟组件传值，插槽，Teleport 组件，依赖注入</p>
-<span id="more"></span>
-
-<h4 id="搭建项目-点击"><a href="#搭建项目-点击" class="headerlink" title="搭建项目: 点击"></a>搭建项目: <a href="https://blog.csdn.net/weixin_59916662/article/details/127331094">点击</a></h4><h2 id="数据代理"><a href="#数据代理" class="headerlink" title="数据代理"></a>数据代理</h2><p>vue2.x : Object.defineProperty()<br>vue3.x : Proxy</p>
-<h2 id="父子组件传值"><a href="#父子组件传值" class="headerlink" title="父子组件传值"></a>父子组件传值</h2><h3 id="1-父传子"><a href="#1-父传子" class="headerlink" title="1.父传子"></a>1.父传子</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;div&gt;父组件</span><br><span class="line">  &lt;list :msg=<span class="string">&quot;msg&quot;</span>&gt;&lt;/list&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> msg = ref(<span class="string">&#x27;传过去的&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;div&gt;这是子组件&#123;&#123;msg&#125;&#125;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">defineProps(&#123;</span><br><span class="line">    msg:&#123;</span><br><span class="line">        <span class="built_in">type</span>:String,</span><br><span class="line">        default:<span class="string">&quot;默认值&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-子传父"><a href="#2-子传父" class="headerlink" title="2.子传父"></a>2.子传父</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;div&gt;这是子组件&#123;&#123;msg&#125;&#125;</span><br><span class="line">  &lt;button @click=<span class="string">&quot;changeNum&quot;</span>&gt;按钮&lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> num = ref(200)</span><br><span class="line">// const emit = defineEmits([<span class="string">&#x27;fn&#x27;</span>])</span><br><span class="line">const emit = defineEmits&lt;&#123;</span><br><span class="line">    (e:<span class="string">&quot;fn&quot;</span>, <span class="built_in">id</span>: number): void</span><br><span class="line">&#125;&gt;()</span><br><span class="line">const changeNum = ()=&gt;&#123;</span><br><span class="line">    emit(<span class="string">&quot;fn&quot;</span>,num)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;div&gt;父组件</span><br><span class="line">  &lt;list @fn=<span class="string">&#x27;changeHome&#x27;</span>&gt;&lt;/list&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> changeHome = (n)=&gt;&#123;</span><br><span class="line">    console.log(n)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-v-model-传值"><a href="#3-v-model-传值" class="headerlink" title="3.v-model 传值"></a>3.v-model 传值</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;div&gt;父组件</span><br><span class="line">  &lt;list v-model:num = <span class="string">&quot;num&quot;</span>&gt;&lt;/list&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> num = ref(1)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;div&gt;这是子组件&#123;&#123;num&#125;&#125;</span><br><span class="line">  &lt;button @click=<span class="string">&quot;btn&quot;</span>&gt;按钮&lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">const props = refineProps(&#123;</span><br><span class="line">    num:&#123;</span><br><span class="line">        <span class="built_in">type</span>:Number,</span><br><span class="line">        default:100</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">const emit = defineEmits([<span class="string">&#x27;update:num&#x27;</span>])</span><br><span class="line">const btn = ()=&gt;&#123;</span><br><span class="line">    emit(<span class="string">&#x27;update:num&#x27;</span>,200)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="兄弟组件传值"><a href="#兄弟组件传值" class="headerlink" title="兄弟组件传值"></a>兄弟组件传值</h2><h3 id="1-通过父组件比较繁琐"><a href="#1-通过父组件比较繁琐" class="headerlink" title="1.通过父组件比较繁琐"></a>1.通过父组件比较繁琐</h3><h3 id="2-通过-mitt"><a href="#2-通过-mitt" class="headerlink" title="2.通过 mitt"></a>2.通过 mitt</h3><h4 id="1）-下载安装"><a href="#1）-下载安装" class="headerlink" title="1）.下载安装"></a>1）.下载安装</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install mitt -S</span><br></pre></td></tr></table></figure>
-
-<h4 id="2）-新建文件夹"><a href="#2）-新建文件夹" class="headerlink" title="2）.新建文件夹"></a>2）.新建文件夹</h4><p>src&#x2F;plugins&#x2F;Bus.js</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//bus.js内</span><br><span class="line">import mitt from <span class="string">&#x27;mitt&#x27;</span>;</span><br><span class="line">const emitter = mitt()</span><br><span class="line"><span class="built_in">export</span> default emitter;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//兄弟组件A中</span><br><span class="line">import emitter from <span class="string">&quot;@plugins/Bus.js&quot;</span></span><br><span class="line"><span class="built_in">let</span> str = ref(<span class="string">&quot;A值&quot;</span>)</span><br><span class="line">const btn = ()=&gt;&#123;</span><br><span class="line">    emitter.emit(<span class="string">&#x27;fn&#x27;</span>,str);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//兄弟组件B中 接收</span><br><span class="line">import emitter from <span class="string">&quot;@plugins/Bus.js&quot;</span></span><br><span class="line"><span class="built_in">let</span> s = ref(<span class="string">&quot;&quot;</span>)</span><br><span class="line">const btn = ()=&gt;&#123;</span><br><span class="line">    emitter.on(<span class="string">&#x27;fn&#x27;</span>,e=&gt;&#123;</span><br><span class="line">        s.value = e.value;</span><br><span class="line">        console.log(e.value)</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h2><h3 id="1-匿名插槽"><a href="#1-匿名插槽" class="headerlink" title="1.匿名插槽"></a>1.匿名插槽</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">父：</span><br><span class="line">&lt;A&gt;</span><br><span class="line">    这是xxx数据</span><br><span class="line">    这是yyy数据</span><br><span class="line">&lt;/A&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">子：</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;div&gt;头部&lt;/div&gt;</span><br><span class="line">    &lt;slot&gt;&lt;/slot&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;div&gt;底部&lt;/div&gt;</span><br><span class="line">    &lt;slot&gt;&lt;/slot&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-具名插槽"><a href="#2-具名插槽" class="headerlink" title="2.具名插槽"></a>2.具名插槽</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">父：</span><br><span class="line">&lt;A&gt;</span><br><span class="line">    &lt;template v-slot:xxx&gt;</span><br><span class="line">        这是xxx数据</span><br><span class="line">    &lt;/template&gt;</span><br><span class="line">    &lt;template <span class="comment">#yyy&gt;</span></span><br><span class="line">        这是yyy数据</span><br><span class="line">    &lt;/template&gt;</span><br><span class="line">&lt;/A&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">子：</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;div&gt;头部&lt;/div&gt;</span><br><span class="line">    &lt;slot name=<span class="string">&quot;xxx&quot;</span>&gt;&lt;/slot&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;div&gt;底部&lt;/div&gt;</span><br><span class="line">    &lt;slot name=<span class="string">&quot;yyy&quot;</span>&gt;&lt;/slot&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-作用域插槽"><a href="#3-作用域插槽" class="headerlink" title="3.作用域插槽"></a>3.作用域插槽</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">父：</span><br><span class="line">&lt;template v-slot=<span class="string">&quot;&#123;data&#125;&quot;</span>&gt;</span><br><span class="line">    &#123;&#123; data.name &#125;&#125;---&#123;&#123; data.age &#125;&#125;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">//可以简写成<span class="comment">#default</span></span><br><span class="line">&lt;template <span class="comment">#default=&quot;&#123;data&#125;&quot;&gt;</span></span><br><span class="line">    &#123;&#123; data.name &#125;&#125;---&#123;&#123; data.age &#125;&#125;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">子：</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;slot :data=<span class="string">&quot;item&quot;</span>&gt;&lt;/slot&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-动态插槽"><a href="#4-动态插槽" class="headerlink" title="4.动态插槽"></a>4.动态插槽</h3><p>就是通过数据动态切换插槽名</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">父：</span><br><span class="line">&lt;template <span class="comment">#[name]&gt;</span></span><br><span class="line">    这是xxx</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"><span class="built_in">let</span> name = ref(<span class="string">&#x27;xxx&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">子：</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;slot name=<span class="string">&quot;xxx&quot;</span>&gt;&lt;/slot&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Teleport-组件"><a href="#Teleport-组件" class="headerlink" title="Teleport 组件"></a>Teleport 组件</h2><p>传送</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;Teleport to=<span class="string">&quot;body&quot;</span>&gt;&lt;/Teleport&gt;</span><br><span class="line">&lt;Teleport to=<span class="string">&quot;.mian&quot;</span>&gt;&lt;/Teleport&gt;</span><br><span class="line">&lt;Teleport to=<span class="string">&quot;#container&quot;</span>&gt;&lt;/Teleport&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//父组件：提供</span><br><span class="line">provide(/* 注入名 */ <span class="string">&#x27;message&#x27;</span>, /* 值 */ <span class="string">&#x27;hello!&#x27;</span>)</span><br><span class="line">//如果你想确保提供的数据不能被注入方的组件更改，你可以使用 <span class="built_in">readonly</span>() 来包装提供的值</span><br><span class="line">provide(<span class="string">&#x27;read-only-message&#x27;</span>, <span class="built_in">readonly</span>(message))</span><br><span class="line"></span><br><span class="line">//子孙组件：注入</span><br><span class="line">const message = inject(<span class="string">&#x27;message&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="js-数组"><a href="#js-数组" class="headerlink" title="js 数组"></a>js 数组</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//使用slice()方法返回一个子数组，在进行reverse； 不会改变原数组</span><br><span class="line">time1 = time.slice().reverse()  //time1数组反转  time数组不变</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
 </search>
