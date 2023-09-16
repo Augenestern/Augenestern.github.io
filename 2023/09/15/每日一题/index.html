@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <title>
+    每日一题 |
+    
+    慕杰blog
+  </title>
+  <!-- Icon -->
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="慕杰blog" type="application/atom+xml">
+</head>
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-每日一题" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+  <h1 class="article-title" itemprop="name">
+    每日一题
+  </h1>
+  
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2023/09/15/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" class="article-date">
+  <time datetime="2023-09-15T03:55:03.647Z" itemprop="datePublished">2023-09-15</time>
+</a>
+      
+    </div>
+    
+
+    
+    
+<div class="tocbot"></div>
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        <p>每天练习的笔记</p>
+<span id="more"></span>
+
+<h2 id="一-Map-底层是怎么实现的"><a href="#一-Map-底层是怎么实现的" class="headerlink" title="一.Map 底层是怎么实现的"></a>一.Map 底层是怎么实现的</h2><h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//Map构造函数</span><br><span class="line">        <span class="built_in">let</span> map = new Map();</span><br><span class="line">        //key,value</span><br><span class="line">        map.set(1, <span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">        map.set(1, <span class="string">&#x27;b&#x27;</span>) //相同key覆盖，去除重复</span><br><span class="line">        map.set(2, <span class="string">&#x27;c&#x27;</span>)</span><br><span class="line">        map.set(&#123; name: <span class="string">&#x27;Green&#x27;</span> &#125;, <span class="string">&#x27;d&#x27;</span>)</span><br><span class="line">        console.log(map);</span><br><span class="line">        console.log(map.get(2));  //获取value</span><br><span class="line">        console.log(map.has(2)); //判断有无</span><br><span class="line">        map.delete(1); //删除</span><br><span class="line">        //Map只在js中存在，不利于传输</span><br><span class="line">        //转换成数组</span><br><span class="line">        <span class="built_in">let</span> arr = Array.from(map)</span><br><span class="line">        //转换成对象</span><br><span class="line">        <span class="built_in">let</span> obj = Object.fromEntries(map);</span><br><span class="line">        //数组查找快  链表增删快 Map结合了数组和链表实现高性能增删改查</span><br></pre></td></tr></table></figure>
+
+<h3 id="哈希表实现"><a href="#哈希表实现" class="headerlink" title="哈希表实现"></a>哈希表实现</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> count = 8;</span><br><span class="line">        //   自定义map</span><br><span class="line">        <span class="keyword">function</span> <span class="function"><span class="title">MyMap</span></span>() &#123;</span><br><span class="line">            this.initStore();</span><br><span class="line">        &#125;</span><br><span class="line">        //   <span class="built_in">hash</span></span><br><span class="line">        MyMap.prototype.initStore = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">            this.store = new Array(count);</span><br><span class="line">            <span class="keyword">for</span> (<span class="built_in">let</span> i = 0; i &lt; this.store.length; i++) &#123;</span><br><span class="line">                this.store[i] = &#123;</span><br><span class="line">                    next: null,</span><br><span class="line">                &#125;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        MyMap.prototype.hash = <span class="keyword">function</span> (k) &#123;</span><br><span class="line">            <span class="built_in">return</span> k % count;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        MyMap.prototype.set = <span class="keyword">function</span> (k, v) &#123;</span><br><span class="line">            // 通过key计算余数8,取得房间号</span><br><span class="line">            <span class="built_in">let</span> roomIndex = this.hash(k);</span><br><span class="line">            // 取出链表头</span><br><span class="line">            <span class="built_in">let</span> queue = this.store[roomIndex];</span><br><span class="line">            // 找元素</span><br><span class="line">            <span class="keyword">while</span> (queue.next) &#123;</span><br><span class="line">                // 不断的向下找</span><br><span class="line">                <span class="keyword">if</span> (queue.next.key === k) &#123;</span><br><span class="line">                    // 覆盖</span><br><span class="line">                    queue.next.value = v;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    // 下一个</span><br><span class="line">                    queue = queue.next;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            // 第一次执行到这里就是第一个数据</span><br><span class="line">            // 第二次执行到这里就是末尾的一个</span><br><span class="line">            queue.next = &#123;</span><br><span class="line">                next: null,</span><br><span class="line">                key: k,</span><br><span class="line">                value: v,</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        MyMap.prototype.get = <span class="keyword">function</span> (k) &#123;</span><br><span class="line">            <span class="built_in">let</span> roomIndex = this.hash(k)</span><br><span class="line">            <span class="built_in">let</span> queue = this.store[roomIndex]</span><br><span class="line">            queue = queue.next</span><br><span class="line">            <span class="keyword">while</span> (queue) &#123;</span><br><span class="line">                <span class="keyword">if</span> (queue.key === k) &#123;</span><br><span class="line">                    <span class="built_in">return</span> queue.value</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    // 指针下移</span><br><span class="line">                    queue = queue.next</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">return</span> undefined//没有找到</span><br><span class="line">        &#125;;</span><br><span class="line">        MyMap.prototype.has = <span class="keyword">function</span> (k) &#123;</span><br><span class="line">            <span class="built_in">return</span> this.get(k) !== undefined</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">let</span> m = new MyMap();</span><br><span class="line">        //   调用MyMap</span><br><span class="line">        m.set(1, <span class="string">&quot;a&quot;</span>);</span><br><span class="line">        m.set(2, <span class="string">&quot;b&quot;</span>);</span><br><span class="line">        m.set(3, <span class="string">&quot;c&quot;</span>);</span><br><span class="line">        m.set(4, <span class="string">&quot;d&quot;</span>);</span><br><span class="line">        m.set(5, <span class="string">&quot;e&quot;</span>);</span><br><span class="line">        m.set(6, <span class="string">&quot;f&quot;</span>);</span><br><span class="line">        m.set(7, <span class="string">&quot;g&quot;</span>);</span><br><span class="line">        m.set(8, <span class="string">&quot;h&quot;</span>);</span><br><span class="line">        m.set(9, <span class="string">&quot;i&quot;</span>);</span><br><span class="line">        console.log(m, m.get(1), m.has(9));</span><br><span class="line">        console.log(m.get(2));</span><br><span class="line">        console.log(m.get(3));</span><br><span class="line">        console.log(m.get(4));</span><br><span class="line">        console.log(m.has(6));</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/09/15/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" data-id="clmlnzyfm000cs4v1ha0rebxm" class="article-share-link">
+        分享
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+  
+<nav class="article-nav">
+  
+  <a href="/2023/09/16/js%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="article-nav-link">
+    <strong class="article-nav-caption">前一篇</strong>
+    <div class="article-nav-title">
+      
+      js数据结构与算法
+      
+    </div>
+  </a>
+  
+  
+  <a href="/2023/09/12/%E8%BE%93%E5%85%A5%E6%A1%86%E8%87%AA%E5%8A%A8%E6%8D%A2%E8%A1%8C/" class="article-nav-link">
+    <strong class="article-nav-caption">后一篇</strong>
+    <div class="article-nav-title">js输入框自动换行</div>
+  </a>
+  
+</nav>
+
+  
+
+  
+  
+  
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '5c428a36d9a70c430942',
+    clientSecret: '3b4c82d3877613930437eeade7101706d718c5d8',
+    repo: 'gitalk',
+    owner: 'Augenestern',
+    admin: ['Augenestern'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+
+  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">477</span>字
+  &emsp;<i class="fe fe-clock"></i> <span class="post-count">2</span>分钟
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <!-- <ul class="list-inline">
+        <li>全站共<span class="post-count">5.4k</span>字</li>
+      </ul>        -->
+      <li>慕杰blog &copy; 2023</li>
+      
+        <li>
+          
+            <a href="https://beian.miit.gov.cn/" target="_blank"></a>
+            
+        </li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+    <p><!-- <ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt tooltip" data-tooltip="UV"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark tooltip" data-tooltip="PV"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul> -->
+<div class="powered-by">
+  
+	&emsp;<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">访客数:<span id="busuanzi_value_site_uv"></span></span>&emsp;
+  
+    <i class="fe fe-bookmark"></i>文章访问量:<span id="busuanzi_value_page_pv"></span>
+  
+</div>
+</p>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/shark.svg" alt="慕杰blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">首页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">相册</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/favorites">收藏</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="fe fe-feed"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+  });
+</script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+
+	
+<script src="/js/love.js"></script>
+
+ 
+
+
+</body>
+
+</html>

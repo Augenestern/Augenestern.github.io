@@ -116,16 +116,17 @@
 
 <h2 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//父组件：提供</span><br><span class="line">provide(/* 注入名 */ <span class="string">&#x27;message&#x27;</span>, /* 值 */ <span class="string">&#x27;hello!&#x27;</span>)</span><br><span class="line">//如果你想确保提供的数据不能被注入方的组件更改，你可以使用 <span class="built_in">readonly</span>() 来包装提供的值</span><br><span class="line">provide(<span class="string">&#x27;read-only-message&#x27;</span>, <span class="built_in">readonly</span>(message))</span><br><span class="line"></span><br><span class="line">//子孙组件：注入</span><br><span class="line">const message = inject(<span class="string">&#x27;message&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h2 id="js-数组"><a href="#js-数组" class="headerlink" title="js 数组"></a>js 数组</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//使用slice()方法返回一个子数组，在进行reverse； 不会改变原数组</span><br><span class="line">time1 = time.slice().reverse()  //time1数组反转  time数组不变</span><br></pre></td></tr></table></figure>
+<h2 id="js-取整"><a href="#js-取整" class="headerlink" title="js 取整"></a>js 取整</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">parseInt()   //向0取整</span><br><span class="line">Math.floor()  //向下取整</span><br><span class="line">Math.ceil()  //向上取整</span><br><span class="line">Math.trunc()  //去除数字的小数部分，保留整数部分</span><br><span class="line">Math.round()  //返回一个数字四舍五入后的整数部分</span><br></pre></td></tr></table></figure>
 
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/07/12/vue3%E7%AC%94%E8%AE%B0/" data-id="clkqikdql0007k8v1ah8a2mak" class="article-share-link">
+      <a data-url="http://example.com/2023/07/12/vue3%E7%AC%94%E8%AE%B0/" data-id="clmlnzyai0008s4v14kfb05d1" class="article-share-link">
         分享
       </a>
       
@@ -141,7 +142,7 @@
     <strong class="article-nav-caption">前一篇</strong>
     <div class="article-nav-title">
       
-      CSS笔记
+      CSS布局和transform笔记
       
     </div>
   </a>
@@ -187,7 +188,7 @@
 
   
 
-  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">877</span>字
+  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">931</span>字
   &emsp;<i class="fe fe-clock"></i> <span class="post-count">4</span>分钟
 
 </article>
@@ -196,7 +197,7 @@
   <div class="outer">
     <ul class="list-inline">
       <!-- <ul class="list-inline">
-        <li>全站共<span class="post-count">3.4k</span>字</li>
+        <li>全站共<span class="post-count">5.4k</span>字</li>
       </ul>        -->
       <li>慕杰blog &copy; 2023</li>
       

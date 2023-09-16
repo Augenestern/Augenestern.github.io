@@ -8,7 +8,7 @@
   
   
   <title>
-    CSS笔记 |
+    CSS布局和transform笔记 |
     
     慕杰blog
   </title>
@@ -42,7 +42,7 @@
       
   
   <h1 class="article-title" itemprop="name">
-    CSS笔记
+    CSS布局和transform笔记
   </h1>
   
   
@@ -72,8 +72,8 @@
         <p>position 布局，transform 的基本使用和常用特效</p>
 <span id="more"></span>
 
-<h2 id="position"><a href="#position" class="headerlink" title="position"></a>position</h2><p>Position 的属性值有：<br>1.Absolute：绝对定位，是相对于最近的且不是 static 定位的父元素来定位<br>2.Fixed：绝对定位，是相对于浏览器窗口来定位的，是固定的，不会跟屏幕一起滚动。<br>3.Relative：相对定位，是相对于其原本的位置来定位的。<br>4.Static：默认值，没有定位。<br>5.Inherit：继承父元素的 position 值</p>
-<h2 id="transform-的基本使用和常用特效"><a href="#transform-的基本使用和常用特效" class="headerlink" title="transform 的基本使用和常用特效"></a>transform 的基本使用和常用特效</h2><h3 id="1-平移"><a href="#1-平移" class="headerlink" title="1.平移"></a>1.平移</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/* x表示x轴移动的坐标，y表示y轴移动的坐标 */</span><br><span class="line">/* transform: translate(30px,30px); */</span><br><span class="line">/* x轴移动的坐标，y轴不变  */</span><br><span class="line">/* transform: translateX(30px); */</span><br><span class="line">/* y轴移动的坐标，x轴不变  */</span><br><span class="line">/* transform: translateY(30px); */</span><br><span class="line">/* 百分比参照的单位是自身的宽高，在这里也就是100px; */</span><br><span class="line">/* transform: translate(50%,50%); */</span><br></pre></td></tr></table></figure>
+<h2 id="一-position"><a href="#一-position" class="headerlink" title="一.position"></a>一.position</h2><p>Position 的属性值有：<br>1.Absolute：绝对定位，是相对于最近的且不是 static 定位的父元素来定位<br>2.Fixed：绝对定位，是相对于浏览器窗口来定位的，是固定的，不会跟屏幕一起滚动。<br>3.Relative：相对定位，是相对于其原本的位置来定位的。<br>4.Static：默认值，没有定位。<br>5.Inherit：继承父元素的 position 值</p>
+<h2 id="二-transform-的基本使用和常用特效"><a href="#二-transform-的基本使用和常用特效" class="headerlink" title="二.transform 的基本使用和常用特效"></a>二.transform 的基本使用和常用特效</h2><h3 id="1-平移"><a href="#1-平移" class="headerlink" title="1.平移"></a>1.平移</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/* x表示x轴移动的坐标，y表示y轴移动的坐标 */</span><br><span class="line">/* transform: translate(30px,30px); */</span><br><span class="line">/* x轴移动的坐标，y轴不变  */</span><br><span class="line">/* transform: translateX(30px); */</span><br><span class="line">/* y轴移动的坐标，x轴不变  */</span><br><span class="line">/* transform: translateY(30px); */</span><br><span class="line">/* 百分比参照的单位是自身的宽高，在这里也就是100px; */</span><br><span class="line">/* transform: translate(50%,50%); */</span><br></pre></td></tr></table></figure>
 
 <h3 id="2-旋转"><a href="#2-旋转" class="headerlink" title="2.旋转"></a>2.旋转</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/* deg相当于度单位，表示旋转45度; */</span><br><span class="line">/* transform: rotate(45deg); */</span><br></pre></td></tr></table></figure>
 
@@ -81,15 +81,24 @@
 
 <h3 id="3-缩放"><a href="#3-缩放" class="headerlink" title="3.缩放"></a>3.缩放</h3><p>不会影响其他盒子</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/*  transition: transform 0.7s; //设置transform动画效果时间 */</span><br><span class="line">.first:hover &#123;</span><br><span class="line">    /* 表示xy的倍数，小于1的为缩小，大于1为放大 */</span><br><span class="line">    /* transform: scale(2,2); */</span><br><span class="line">    /* 也可以写成一个表示xy比例一样 */</span><br><span class="line">    /* transform: scale(2); */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-transform-动画效果"><a href="#4-transform-动画效果" class="headerlink" title="4.transform 动画效果"></a>4.transform 动画效果</h3><p><a target="_blank" rel="noopener" href="https://code84.com/727426.html">详情</a></p>
+<h3 id="4-倾斜"><a href="#4-倾斜" class="headerlink" title="4.倾斜"></a>4.倾斜</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">transform:skew(30deg);</span><br><span class="line">transform:skew(30deg,30deg);</span><br><span class="line"><span class="comment"># 一个参数时：表示水平方向的倾斜角度。</span></span><br><span class="line"><span class="comment"># 两个参数时：第一个参数表示水平方向的倾斜角度，第二个参数表示垂直方向的倾斜角度 。</span></span><br><span class="line"><span class="comment"># skew 的默认原点 transform-origin 是这个物件的中心点。</span></span><br></pre></td></tr></table></figure>
+<h3 id="5-transform-动画效果"><a href="#5-transform-动画效果" class="headerlink" title="5.transform 动画效果"></a>5.transform 动画效果</h3><p><a target="_blank" rel="noopener" href="https://code84.com/727426.html">详情</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transition: transform 0.2s ease-in-out;</span><br></pre></td></tr></table></figure>
 
+<h2 id="三-transform-的基本使用和常用特效"><a href="#三-transform-的基本使用和常用特效" class="headerlink" title="三.transform 的基本使用和常用特效"></a>三.transform 的基本使用和常用特效</h2><p>1.animation：动画<br>2.*animation-name：关键帧的名字，该参数必需。<br>3.*animation-duration：动画持续的时间，该参数必需。<br>4.animation-timing-function：定时器函数，默认是ease。<br>5.animation-delay：动画效果多少秒后开始，默认为0。<br>6.animation-iteration-count：动画重复的次数，可以指定为一个整数，表示多少次，默认值是infinite关键字，表示无限次。<br>7.animation-direction：动画方向，可能的值为forward、backward或alternating，默认值为normal。<br>8.animation-fill-mode：默认值为none。<br>9.animation-play-state：动画默认是否生效，默认值为running。</p>
+<h3 id="keyframes"><a href="#keyframes" class="headerlink" title="@keyframes"></a>@keyframes</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@keyframes myname &#123;</span><br><span class="line">  0% &#123;</span><br><span class="line">    top: 0px;</span><br><span class="line">  &#125;</span><br><span class="line">  25% &#123;</span><br><span class="line">    top: 200px;</span><br><span class="line">  &#125;</span><br><span class="line">  50% &#123;</span><br><span class="line">    top: 100px;</span><br><span class="line">  &#125;</span><br><span class="line">  75% &#123;</span><br><span class="line">    top: 200px;</span><br><span class="line">  &#125;</span><br><span class="line">  100% &#123;</span><br><span class="line">    top: 0px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">keyframes rotation &#123;</span><br><span class="line">  from &#123;</span><br><span class="line">    transform: rotate(90deg);</span><br><span class="line">  &#125;</span><br><span class="line">  to &#123;</span><br><span class="line">    transform: rotate(450deg);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="四-display常用方法"><a href="#四-display常用方法" class="headerlink" title="四.display常用方法"></a>四.display常用方法</h2><h3 id="1-flex布局"><a href="#1-flex布局" class="headerlink" title="1.flex布局"></a>1.flex布局</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">flex-direction: 决定主轴的方向(即项目的排列方向)</span><br><span class="line">  默认值：row，主轴为水平方向，起点在左端。</span><br><span class="line">  row-reverse：主轴为水平方向，起点在右端</span><br><span class="line">  column：主轴为垂直方向，起点在上沿</span><br><span class="line">  column-reverse：主轴为垂直方向，起点在下沿</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">flex-wrap: 决定容器内项目是否可换行</span><br><span class="line">  默认值：nowrap 不换行，即当主轴尺寸固定时，当空间不足时，项目尺寸会随之调整(变形)而并不会挤到下一行。</span><br><span class="line">  wrap：项目主轴总尺寸超出容器时换行，第一行在上方</span><br><span class="line">  wrap-reverse：换行，第一行在下方</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">justify-content：定义了项目在主轴的对齐方式。</span><br><span class="line">  默认值: flex-start 左对齐</span><br><span class="line">  flex-end：右对齐</span><br><span class="line">  center：居中</span><br><span class="line">  space-between：两端对齐，项目之间的间隔相等，即剩余空间等分成间隙。</span><br><span class="line">  space-around：每个项目两侧的间隔相等，所以项目之间的间隔比项目与边缘的间隔大一倍。(边0.5，间隔1)</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">align-items: 定义了项目在交叉轴上的对齐方式</span><br><span class="line">  默认值为 stretch 即如果项目未设置高度或者设为 auto，将占满整个容器的高度。</span><br><span class="line">  flex-start：交叉轴的起点对齐</span><br><span class="line">  flex-end：交叉轴的终点对齐</span><br><span class="line">  center：交叉轴的中点对齐</span><br><span class="line">  baseline: 项目的第一行文字的基线对齐</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/611136271">查看更多</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/07/13/css%E7%AC%94%E8%AE%B0/" data-id="clkqikdqi0003k8v1emuvf8or" class="article-share-link">
+      <a data-url="http://example.com/2023/07/13/css%E7%AC%94%E8%AE%B0/" data-id="clmlnzyae0003s4v144xd94et" class="article-share-link">
         分享
       </a>
       
@@ -151,8 +160,8 @@
 
   
 
-  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">388</span>字
-  &emsp;<i class="fe fe-clock"></i> <span class="post-count">1</span>分钟
+  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">1k</span>字
+  &emsp;<i class="fe fe-clock"></i> <span class="post-count">4</span>分钟
 
 </article>
 </section>
@@ -160,7 +169,7 @@
   <div class="outer">
     <ul class="list-inline">
       <!-- <ul class="list-inline">
-        <li>全站共<span class="post-count">3.4k</span>字</li>
+        <li>全站共<span class="post-count">5.4k</span>字</li>
       </ul>        -->
       <li>慕杰blog &copy; 2023</li>
       
