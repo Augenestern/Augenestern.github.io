@@ -52,8 +52,8 @@
 
     
     <div class="article-meta">
-      <a href="/2023/06/21/Vuex%E5%92%8CPinia/" class="article-date">
-  <time datetime="2023-06-21T08:49:36.832Z" itemprop="datePublished">2023-06-21</time>
+      <a href="/2023/09/18/Vuex%E5%92%8CPinia/" class="article-date">
+  <time datetime="2023-09-18T04:08:57.111Z" itemprop="datePublished">2023-09-18</time>
 </a>
       
     </div>
@@ -126,7 +126,7 @@
 
 <h3 id="3-Pinia-储存持久化"><a href="#3-Pinia-储存持久化" class="headerlink" title="3.Pinia 储存持久化"></a>3.Pinia 储存持久化</h3><h4 id="1-安装-pinia-plugin-persistedstate-插件"><a href="#1-安装-pinia-plugin-persistedstate-插件" class="headerlink" title="1.安装 pinia-plugin-persistedstate 插件"></a>1.安装 pinia-plugin-persistedstate 插件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i pinia-plugin-persistedstate</span><br></pre></td></tr></table></figure>
 
-<h4 id="2-安装完成后-在-main-ts-x2F-js-文件内进行配置"><a href="#2-安装完成后-在-main-ts-x2F-js-文件内进行配置" class="headerlink" title="2.安装完成后 在 main.ts&#x2F;js 文件内进行配置"></a>2.安装完成后 在 main.ts&#x2F;js 文件内进行配置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createApp &#125; from <span class="string">&#x27;vue&#x27;</span></span><br><span class="line">import &#123; createPinia &#125; from <span class="string">&#x27;pinia&#x27;</span></span><br><span class="line">import piniaPluginPersistedstate  from <span class="string">&#x27;pinia-plugin-persistedstate&#x27;</span></span><br><span class="line"></span><br><span class="line">import App from <span class="string">&#x27;./App.vue&#x27;</span></span><br><span class="line">import router from <span class="string">&#x27;./router&#x27;</span></span><br><span class="line"></span><br><span class="line">import <span class="string">&#x27;./assets/main.css&#x27;</span></span><br><span class="line"></span><br><span class="line">const app = createApp(App)</span><br><span class="line">const pinia = createPinia()</span><br><span class="line">pinia.use(piniaPluginPersistedstate)</span><br><span class="line">app.use(pinia)</span><br><span class="line">app.use(router)</span><br><span class="line">app.mount(<span class="string">&#x27;#app&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="2-安装完成后-在-main-ts-js-文件内进行配置"><a href="#2-安装完成后-在-main-ts-js-文件内进行配置" class="headerlink" title="2.安装完成后 在 main.ts&#x2F;js 文件内进行配置"></a>2.安装完成后 在 main.ts&#x2F;js 文件内进行配置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createApp &#125; from <span class="string">&#x27;vue&#x27;</span></span><br><span class="line">import &#123; createPinia &#125; from <span class="string">&#x27;pinia&#x27;</span></span><br><span class="line">import piniaPluginPersistedstate  from <span class="string">&#x27;pinia-plugin-persistedstate&#x27;</span></span><br><span class="line"></span><br><span class="line">import App from <span class="string">&#x27;./App.vue&#x27;</span></span><br><span class="line">import router from <span class="string">&#x27;./router&#x27;</span></span><br><span class="line"></span><br><span class="line">import <span class="string">&#x27;./assets/main.css&#x27;</span></span><br><span class="line"></span><br><span class="line">const app = createApp(App)</span><br><span class="line">const pinia = createPinia()</span><br><span class="line">pinia.use(piniaPluginPersistedstate)</span><br><span class="line">app.use(pinia)</span><br><span class="line">app.use(router)</span><br><span class="line">app.mount(<span class="string">&#x27;#app&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 <h4 id="3-store-里添加-persist-true，与-getters-同级"><a href="#3-store-里添加-persist-true，与-getters-同级" class="headerlink" title="3.store 里添加 persist: true，与 getters 同级"></a>3.store 里添加 persist: true，与 getters 同级</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">getters: &#123;</span><br><span class="line">&#125;,</span><br><span class="line">// 相当于vuex的 mutation + action，可以同时写同步和异步的代码</span><br><span class="line">actions: &#123;</span><br><span class="line">&#125;,</span><br><span class="line">persist: <span class="literal">true</span>,</span><br></pre></td></tr></table></figure>
 
@@ -135,7 +135,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/06/21/Vuex%E5%92%8CPinia/" data-id="clmocf5k30003ywv10bfg13x1" class="article-share-link">
+      <a data-url="http://example.com/2023/09/18/Vuex%E5%92%8CPinia/" data-id="clmsr3kph0007v4v1evotauml" class="article-share-link">
         分享
       </a>
       
@@ -147,19 +147,19 @@
   
 <nav class="article-nav">
   
-  <a href="/2023/07/07/%E6%97%B6%E9%97%B4%E5%A4%84%E7%90%86/" class="article-nav-link">
+  <a href="/2023/09/18/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD/" class="article-nav-link">
     <strong class="article-nav-caption">前一篇</strong>
     <div class="article-nav-title">
       
-      Day.js时间处理
+      Hexo 基本使用
       
     </div>
   </a>
   
   
-  <a href="/2023/06/17/hexo/" class="article-nav-link">
+  <a href="/2023/09/18/vue3%E7%AC%94%E8%AE%B0/" class="article-nav-link">
     <strong class="article-nav-caption">后一篇</strong>
-    <div class="article-nav-title">Hexo 基本使用</div>
+    <div class="article-nav-title">vue3+vite+ts项目笔记</div>
   </a>
   
 </nav>
@@ -206,7 +206,7 @@
   <div class="outer">
     <ul class="list-inline">
       <!-- <ul class="list-inline">
-        <li>全站共<span class="post-count">5.9k</span>字</li>
+        <li>全站共<span class="post-count">6.1k</span>字</li>
       </ul>        -->
       <li>慕杰blog &copy; 2023</li>
       
