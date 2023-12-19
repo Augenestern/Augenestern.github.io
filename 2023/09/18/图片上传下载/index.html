@@ -8,7 +8,7 @@
   
   
   <title>
-    图片上传下载 |
+    图片处理 |
     
     慕杰blog
   </title>
@@ -42,7 +42,7 @@
       
   
   <h1 class="article-title" itemprop="name">
-    图片上传下载
+    图片处理
   </h1>
   
   
@@ -69,9 +69,13 @@
       
       
       
-        <span id="more"></span>
+        <p>图片上传前压缩，图片懒加载</p>
+<span id="more"></span>
 
-<h3 id="gitup项目里有"><a href="#gitup项目里有" class="headerlink" title="gitup项目里有"></a>gitup项目里有</h3>
+<h3 id="图片上传前压缩"><a href="#图片上传前压缩" class="headerlink" title="图片上传前压缩"></a>图片上传前压缩</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">//当图片大于500k时</span><br><span class="line"> <span class="keyword">if</span> (file2.size / 1024 &gt; 500)&#123; </span><br><span class="line">   imgFile = await blobToBase64(file, file.name);</span><br><span class="line"> &#125;</span><br><span class="line"> const blobToBase64 = async (blob: any, fileName: any) =&gt; &#123;</span><br><span class="line">    const reader = await new FileReader(); // 实例化一个reader文件</span><br><span class="line">    await reader.readAsDataURL(blob); // 添加二进制文件</span><br><span class="line">    <span class="built_in">return</span> new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">        reader.onload = async (event: any) =&gt; &#123;</span><br><span class="line">            const base64 = await event.target.result; // 获取到它的base64文件</span><br><span class="line">            const scale = <span class="number">0.6</span>; // 设置缩放比例 （<span class="number">0</span>-<span class="number">1</span>）</span><br><span class="line">            let file = await compressImg(base64, scale, fileName);</span><br><span class="line">            resolve(file);</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br><span class="line">// 压缩大小</span><br><span class="line">const compressImg = (base64: any, scale: any, fileName: any) =&gt; &#123;</span><br><span class="line">    // 处理缩放，转换格式</span><br><span class="line">    // 用canvas来压缩</span><br><span class="line">    const img = new Image();</span><br><span class="line">    img.src = base64;</span><br><span class="line">    return new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">        img.onload = async () =&gt; &#123;</span><br><span class="line">            const canvas: any = document.createElement(&#x27;canvas&#x27;);</span><br><span class="line">            const ctx = canvas.getContext(&#x27;<span class="number">2</span>d&#x27;);</span><br><span class="line">            canvas.setAttribute(&#x27;width&#x27;, img.width * scale);</span><br><span class="line">            canvas.setAttribute(&#x27;height&#x27;, img.height * scale);</span><br><span class="line">            ctx.clearRect(<span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height);</span><br><span class="line">            ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height);</span><br><span class="line">            // 转成base64 文件</span><br><span class="line">            base64 = canvas.toDataURL(&#x27;image/jpeg&#x27;, <span class="number">0.8</span>); //<span class="number">0</span>到<span class="number">1</span>之间的取值，主要用来选定图片的质量，默认值是<span class="number">0.92</span>，超出范围也会选择默认值</span><br><span class="line">            const arr = base64.split(&#x27;,&#x27;);</span><br><span class="line">            const mime = arr[<span class="number">0</span>].match(/:(.*?);/)[<span class="number">1</span>];</span><br><span class="line">            const bytes = atob(arr[<span class="number">1</span>]);</span><br><span class="line">            const bytesLength = bytes.length;</span><br><span class="line">            const u8arr = new Uint8Array(bytesLength);</span><br><span class="line">            for (let i = <span class="number">0</span>; i &lt; bytes.length; i++) &#123;</span><br><span class="line">                u8arr[i] = bytes.charCodeAt(i);</span><br><span class="line">            &#125;</span><br><span class="line">            const file = await new File([u8arr], fileName, &#123; type: mime &#125;);</span><br><span class="line">            resolve(file);</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="图片懒加载"><a href="#图片懒加载" class="headerlink" title="图片懒加载"></a>图片懒加载</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//预先设定一个简略图或者加载图，当页面加载到时图片再切换src</span><br><span class="line"><span class="built_in">let</span> n = 0;</span><br><span class="line"><span class="built_in">let</span> num = document.getElementsByTagName(<span class="string">&#x27;img&#x27;</span>).length</span><br><span class="line"><span class="built_in">let</span> img = document.getElementsByTagName(<span class="string">&#x27;img&#x27;</span>)</span><br><span class="line">lazyLoad()</span><br><span class="line">window.onscroll = lazyLoad</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">lazyLoad</span></span>() &#123;</span><br><span class="line">    <span class="built_in">let</span> seeHeight = document.documentElement.clientHeight;</span><br><span class="line">    <span class="built_in">let</span> scrollTop = document.documentElement.scrollTop || document.body.scrollTop;</span><br><span class="line">    console.log(seeHeight,scrollTop);</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">let</span> i = n; i &lt; num; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (img[i].offsetTop &lt; seeHeight + scrollTop) &#123;</span><br><span class="line">            <span class="keyword">if</span> (img[i].getAttribute(<span class="string">&#x27;src&#x27;</span>) == <span class="string">&quot;../../assets/dw.jpg&quot;</span>) &#123;</span><br><span class="line">                img[i].src = img[i].getAttribute(<span class="string">&#x27;data_src&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            n = i + 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
@@ -137,8 +141,8 @@
 
   
 
-  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">5</span>字
-  &emsp;<i class="fe fe-clock"></i> <span class="post-count">1</span>分钟
+  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">445</span>字
+  &emsp;<i class="fe fe-clock"></i> <span class="post-count">2</span>分钟
 
 </article>
 </section>
@@ -146,7 +150,7 @@
   <div class="outer">
     <ul class="list-inline">
       <!-- <ul class="list-inline">
-        <li>全站共<span class="post-count">8.9k</span>字</li>
+        <li>全站共<span class="post-count">9.4k</span>字</li>
       </ul>        -->
       <li>慕杰blog &copy; 2023</li>
       
