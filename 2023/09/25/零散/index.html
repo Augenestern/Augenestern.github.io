@@ -80,7 +80,7 @@
 
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//节流   一直提交，每隔time秒执行一次。还可以通过时间戳执行</span><br><span class="line"><span class="keyword">function</span> throttle(event,time) &#123;</span><br><span class="line">    <span class="built_in">let</span> timer = null</span><br><span class="line">    <span class="built_in">return</span> <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">        <span class="keyword">if</span>(!timer)&#123;</span><br><span class="line">            timer = setTimeout(() =&gt; &#123;</span><br><span class="line">                event()</span><br><span class="line">                timer = null</span><br><span class="line">            &#125;, time);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="js-函数柯里化"><a href="#js-函数柯里化" class="headerlink" title="js 函数柯里化"></a>js 函数柯里化</h3><p>函数柯里化（Currying）是一种将多个参数的函数转变为接收单一参数的函数序列的过程。通过柯里化，我们可以将多个参数的函数转化为接收一个参数的函数，然后再返回一个新函数，该函数可以继续接收下一个参数，以此类推，直到满足所有参数的条件，最后返回期望的结果。<br>函数柯里化的作用有以下几个方面： 1.参数复用：柯里化允许我们创建可以重复使用的小函数。通过将一个多参数函数转化为接收单一参数的函数，我们可以使用部分应用函数来创建新的函数，并将其应用于具有不同参数的不同上下文中。 2.延迟执行：柯里化也可以用于延迟执行函数。通过转化为接收单一参数的函数序列，我们可以先传递一部分参数，然后在后续需要的时候再传递剩余的参数来执行函数，从而实现函数的延迟执行。 3.函数组合：柯里化可以与函数组合配合使用，实现更复杂的函数操作。通过将多个柯里化函数组合起来，可以实现更高阶的函数组合，从而简化代码并增加代码的可读性。 4.提高函数可测试性：通过柯里化，我们可以将函数的逻辑拆分成多个步骤，并将每个步骤的输入和输出明确化，从而方便进行单元测试。我们可以对每个柯里化函数进行独立测试，而无需考虑其他参数的影响。</p>
+<h3 id="js-函数柯里化"><a href="#js-函数柯里化" class="headerlink" title="js 函数柯里化"></a>js 函数柯里化</h3><p>函数柯里化（Currying）是一种将多个参数的函数转变为接收单一参数的函数序列的过程。通过柯里化，我们可以将多个参数的函数转化为接收一个参数的函数，然后再返回一个新函数，该函数可以继续接收下一个参数，以此类推，直到满足所有参数的条件，最后返回期望的结果。<br>函数柯里化的作用有以下几个方面：<br>1.参数复用：柯里化允许我们创建可以重复使用的小函数。通过将一个多参数函数转化为接收单一参数的函数，我们可以使用部分应用函数来创建新的函数，并将其应用于具有不同参数的不同上下文中。<br>2.延迟执行：柯里化也可以用于延迟执行函数。通过转化为接收单一参数的函数序列，我们可以先传递一部分参数，然后在后续需要的时候再传递剩余的参数来执行函数，从而实现函数的延迟执行。<br>3.函数组合：柯里化可以与函数组合配合使用，实现更复杂的函数操作。通过将多个柯里化函数组合起来，可以实现更高阶的函数组合，从而简化代码并增加代码的可读性。<br>4.提高函数可测试性：通过柯里化，我们可以将函数的逻辑拆分成多个步骤，并将每个步骤的输入和输出明确化，从而方便进行单元测试。我们可以对每个柯里化函数进行独立测试，而无需考虑其他参数的影响。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//普通写法</span><br><span class="line"><span class="keyword">function</span> add(a,b,c)&#123;</span><br><span class="line">    <span class="built_in">return</span> a+b+c</span><br><span class="line">&#125;</span><br><span class="line">console.log(add(10,20,30))</span><br><span class="line"></span><br><span class="line">//柯里化</span><br><span class="line"><span class="keyword">function</span> sum1(a)&#123;</span><br><span class="line">    <span class="built_in">return</span> <span class="keyword">function</span>(b)&#123;</span><br><span class="line">        <span class="built_in">return</span> <span class="keyword">function</span>(c)&#123;</span><br><span class="line">            <span class="built_in">return</span> a+b+c</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//简化后</span><br><span class="line">var sum2 = a=&gt;b=&gt;c=&gt;&#123;</span><br><span class="line">    <span class="built_in">return</span> a+b+c &#125;</span><br><span class="line">var sum2 = a=&gt;b=&gt;c=&gt;a+b+c</span><br><span class="line">console.log(sum2(10)(20)(30))</span><br></pre></td></tr></table></figure>
 
 <p>例题 1：<br>&#x2F;&#x2F;实现 add(1)(4)(3)(…)(n)<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/double_sweet1/article/details/122786636">详细</a></p>
@@ -94,10 +94,17 @@
 
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
+
+
+
+
+
+
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/09/25/%E9%9B%B6%E6%95%A3/" data-id="clqoqk2dy000cvkv1b7zo0fph" class="article-share-link">
+      <a data-url="http://example.com/2023/09/25/%E9%9B%B6%E6%95%A3/" data-id="clqoz88s7000e5wv1a85zdvrq" class="article-share-link">
         分享
       </a>
       
@@ -108,6 +115,15 @@
   
   
 <nav class="article-nav">
+  
+  <a href="/2023/12/28/%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE/" class="article-nav-link">
+    <strong class="article-nav-caption">前一篇</strong>
+    <div class="article-nav-title">
+      
+      经典面试题
+      
+    </div>
+  </a>
   
   
   <a href="/2023/09/18/%E8%BE%93%E5%85%A5%E6%A1%86%E8%87%AA%E5%8A%A8%E6%8D%A2%E8%A1%8C/" class="article-nav-link">
@@ -159,7 +175,7 @@
   <div class="outer">
     <ul class="list-inline">
       <!-- <ul class="list-inline">
-        <li>全站共<span class="post-count">9.4k</span>字</li>
+        <li>全站共<span class="post-count">9.8k</span>字</li>
       </ul>        -->
       <li>慕杰blog &copy; 2023</li>
       
