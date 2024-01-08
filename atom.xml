@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2024-01-03T07:41:55.015Z</updated>
+  <updated>2024-01-08T05:41:59.746Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>经典面试题</title>
-    <link href="http://example.com/2023/12/28/%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE/"/>
-    <id>http://example.com/2023/12/28/%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE/</id>
-    <published>2023-12-28T05:58:17.816Z</published>
-    <updated>2024-01-03T07:41:55.015Z</updated>
+    <link href="http://example.com/2024/01/08/%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE/"/>
+    <id>http://example.com/2024/01/08/%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE/</id>
+    <published>2024-01-08T05:40:20.285Z</published>
+    <updated>2024-01-08T05:41:59.746Z</updated>
     
     
       
