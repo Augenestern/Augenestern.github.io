@@ -8,7 +8,7 @@
   
   
   <title>
-    Day.js时间处理 |
+    Hexo 基本使用 |
     
     慕杰blog
   </title>
@@ -33,7 +33,7 @@
 <body>
   <main class="content">
     <section class="outer">
-  <article id="post-时间处理" class="article article-type-post" itemscope
+  <article id="post-hexo" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -42,7 +42,7 @@
       
   
   <h1 class="article-title" itemprop="name">
-    Day.js时间处理
+    Hexo 基本使用
   </h1>
   
   
@@ -52,8 +52,8 @@
 
     
     <div class="article-meta">
-      <a href="/2023/09/18/%E6%97%B6%E9%97%B4%E5%A4%84%E7%90%86/" class="article-date">
-  <time datetime="2023-09-18T04:08:57.113Z" itemprop="datePublished">2023-09-18</time>
+      <a href="/2024/01/08/hexo/" class="article-date">
+  <time datetime="2024-01-08T05:40:20.274Z" itemprop="datePublished">2024-01-08</time>
 </a>
       
     </div>
@@ -69,19 +69,25 @@
       
       
       
-        <p>Day.js 是一个轻量的处理时间和日期的 JavaScript 库</p>
+        <p>Hexo是一款基于Node.js的静态博客框架,依赖少易于安装使用,可以方便的生成静态网页托管在GitHub和Coding上,是搭建博客的首选框架。</p>
 <span id="more"></span>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="安装Day-js"><a href="#安装Day-js" class="headerlink" title="安装Day.js"></a>安装Day.js</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install dayjs --save</span><br></pre></td></tr></table></figure>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dayjs(<span class="string">&#x27;2018-08-08&#x27;</span>) // 解析</span><br><span class="line">dayjs().format(<span class="string">&#x27;&#123;YYYY&#125; MM-DDTHH:mm:ss SSS [Z] A&#x27;</span>) // 展示</span><br><span class="line">dayjs()</span><br><span class="line">  .<span class="built_in">set</span>(<span class="string">&#x27;month&#x27;</span>, 3)</span><br><span class="line">  .month() // 获取</span><br><span class="line">dayjs().add(1, <span class="string">&#x27;year&#x27;</span>) // 处理</span><br><span class="line">dayjs().isBefore(dayjs()) // 查询</span><br></pre></td></tr></table></figure>
-<h3 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//背景图片</span><br><span class="line">width: 100vw;</span><br><span class="line">height: 100vh;</span><br><span class="line">background-image: url(<span class="string">&#x27;https://img.zcool.cn/community/038958357a84fc40000012e7edb94ad.png&#x27;</span>);</span><br><span class="line">background-position: center;</span><br><span class="line">background-size: cover;</span><br><span class="line">background-repeat: no-repeat;</span><br><span class="line">background-attachment: fixed;</span><br><span class="line"></span><br><span class="line">display: flex;</span><br><span class="line">align-items: center;</span><br><span class="line">justify-content: center;</span><br></pre></td></tr></table></figure>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/09/18/%E6%97%B6%E9%97%B4%E5%A4%84%E7%90%86/" data-id="clqoz88s6000c5wv1gpc3d21t" class="article-share-link">
+      <a data-url="http://example.com/2024/01/08/hexo/" data-id="clt882ow700037ov1at9rc5wh" class="article-share-link">
         分享
       </a>
       
@@ -93,19 +99,19 @@
   
 <nav class="article-nav">
   
-  <a href="/2023/09/18/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" class="article-nav-link">
+  <a href="/2024/01/08/js%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="article-nav-link">
     <strong class="article-nav-caption">前一篇</strong>
     <div class="article-nav-title">
       
-      每日一题
+      js数据结构与算法
       
     </div>
   </a>
   
   
-  <a href="/2023/09/18/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD/" class="article-nav-link">
+  <a href="/2024/01/08/css%E7%AC%94%E8%AE%B0/" class="article-nav-link">
     <strong class="article-nav-caption">后一篇</strong>
-    <div class="article-nav-title">图片处理</div>
+    <div class="article-nav-title">CSS布局和transform笔记</div>
   </a>
   
 </nav>
@@ -143,7 +149,7 @@
 
   
 
-  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">117</span>字
+  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">89</span>字
   &emsp;<i class="fe fe-clock"></i> <span class="post-count">1</span>分钟
 
 </article>
