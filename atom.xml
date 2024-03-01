@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2024-03-01T05:36:00.278Z</updated>
+  <updated>2024-03-01T12:56:31.372Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,10 +21,10 @@
     <link href="http://example.com/2024/03/01/%E5%89%8D%E7%AB%AF%E8%AF%BE%E7%A8%8B-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86/"/>
     <id>http://example.com/2024/03/01/%E5%89%8D%E7%AB%AF%E8%AF%BE%E7%A8%8B-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86/</id>
     <published>2024-03-01T04:57:36.185Z</published>
-    <updated>2024-03-01T05:36:00.278Z</updated>
+    <updated>2024-03-01T12:56:31.372Z</updated>
     
     
-    <summary type="html">&lt;p&gt;浏览器渲染原理&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;浏览器渲染原理。什么是 reflow?什么是 repaint?为什么 transform 的效率高?&lt;/p&gt;</summary>
     
     
     
