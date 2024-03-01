@@ -8,7 +8,7 @@
   
   
   <title>
-    Day.js时间处理 |
+    前端-浏览器渲染原理 |
     
     慕杰blog
   </title>
@@ -33,7 +33,7 @@
 <body>
   <main class="content">
     <section class="outer">
-  <article id="post-时间处理" class="article article-type-post" itemscope
+  <article id="post-前端课程-浏览器渲染原理" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -42,7 +42,7 @@
       
   
   <h1 class="article-title" itemprop="name">
-    Day.js时间处理
+    前端-浏览器渲染原理
   </h1>
   
   
@@ -52,8 +52,8 @@
 
     
     <div class="article-meta">
-      <a href="/2023/09/18/%E6%97%B6%E9%97%B4%E5%A4%84%E7%90%86/" class="article-date">
-  <time datetime="2023-09-18T04:08:57.113Z" itemprop="datePublished">2023-09-18</time>
+      <a href="/2024/03/01/%E5%89%8D%E7%AB%AF%E8%AF%BE%E7%A8%8B-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86/" class="article-date">
+  <time datetime="2024-03-01T04:57:36.185Z" itemprop="datePublished">2024-03-01</time>
 </a>
       
     </div>
@@ -69,19 +69,16 @@
       
       
       
-        <p>Day.js 是一个轻量的处理时间和日期的 JavaScript 库</p>
+        <p>浏览器渲染原理</p>
 <span id="more"></span>
 
-<h3 id="安装Day-js"><a href="#安装Day-js" class="headerlink" title="安装Day.js"></a>安装Day.js</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install dayjs --save</span><br></pre></td></tr></table></figure>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dayjs(<span class="string">&#x27;2018-08-08&#x27;</span>) // 解析</span><br><span class="line">dayjs().format(<span class="string">&#x27;&#123;YYYY&#125; MM-DDTHH:mm:ss SSS [Z] A&#x27;</span>) // 展示</span><br><span class="line">dayjs()</span><br><span class="line">  .<span class="built_in">set</span>(<span class="string">&#x27;month&#x27;</span>, 3)</span><br><span class="line">  .month() // 获取</span><br><span class="line">dayjs().add(1, <span class="string">&#x27;year&#x27;</span>) // 处理</span><br><span class="line">dayjs().isBefore(dayjs()) // 查询</span><br></pre></td></tr></table></figure>
-<h3 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//背景图片</span><br><span class="line">width: 100vw;</span><br><span class="line">height: 100vh;</span><br><span class="line">background-image: url(<span class="string">&#x27;https://img.zcool.cn/community/038958357a84fc40000012e7edb94ad.png&#x27;</span>);</span><br><span class="line">background-position: center;</span><br><span class="line">background-size: cover;</span><br><span class="line">background-repeat: no-repeat;</span><br><span class="line">background-attachment: fixed;</span><br><span class="line"></span><br><span class="line">display: flex;</span><br><span class="line">align-items: center;</span><br><span class="line">justify-content: center;</span><br></pre></td></tr></table></figure>
-
-
-
+<h3 id="浏览器是如何渲染页面的？"><a href="#浏览器是如何渲染页面的？" class="headerlink" title="浏览器是如何渲染页面的？"></a>浏览器是如何渲染页面的？</h3><h4 id="浏览器有哪些进程和线程？"><a href="#浏览器有哪些进程和线程？" class="headerlink" title="浏览器有哪些进程和线程？"></a>浏览器有哪些进程和线程？</h4><p>浏览器是一个多进程和多线程的应用程序。主要有浏览器进程，网络进程，渲染进程：进程开始时会开启渲染主线程，主要负责执行 html,css,js 代码，渲染界面。</p>
+<h4 id="面试题：如何理解-js-的异步？"><a href="#面试题：如何理解-js-的异步？" class="headerlink" title="面试题：如何理解 js 的异步？"></a>面试题：如何理解 js 的异步？</h4><p>js 是一门单线程语言，因为运行在浏览器的渲染主线程中，而浏览器每个渲染进程的渲染主线程只有一个，承担着许多工作，渲染页面,执行界面。如同步，会造成主线程阻塞，导致消息队列的其他任务无法进行，白白消耗时间，还会造成页面无法更新，用户卡死。<br>所以浏览器采用异步的方式处理，比如计时器、网络、时间监听、主线程将任务交给其他线程处理，其他线程处理完将回调函数包装成任务放到消息队列队尾，在等待主线程调度。这样就保证了单线程的流畅运行。</p>
+<h4 id="js-为什么会阻碍渲染？"><a href="#js-为什么会阻碍渲染？" class="headerlink" title="js 为什么会阻碍渲染？"></a>js 为什么会阻碍渲染？</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/09/18/%E6%97%B6%E9%97%B4%E5%A4%84%E7%90%86/" data-id="clqoz88s6000c5wv1gpc3d21t" class="article-share-link">
+      <a data-url="http://example.com/2024/03/01/%E5%89%8D%E7%AB%AF%E8%AF%BE%E7%A8%8B-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86/" data-id="clt881sgq00011kv1b9g2a8f1" class="article-share-link">
         分享
       </a>
       
@@ -93,19 +90,10 @@
   
 <nav class="article-nav">
   
-  <a href="/2023/09/18/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" class="article-nav-link">
-    <strong class="article-nav-caption">前一篇</strong>
-    <div class="article-nav-title">
-      
-      每日一题
-      
-    </div>
-  </a>
   
-  
-  <a href="/2023/09/18/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD/" class="article-nav-link">
+  <a href="/2024/02/29/%E5%89%8D%E7%AB%AF%E8%AF%BE%E7%A8%8B-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/" class="article-nav-link">
     <strong class="article-nav-caption">后一篇</strong>
-    <div class="article-nav-title">图片处理</div>
+    <div class="article-nav-title">前端-事件循环</div>
   </a>
   
 </nav>
@@ -143,7 +131,7 @@
 
   
 
-  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">117</span>字
+  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">303</span>字
   &emsp;<i class="fe fe-clock"></i> <span class="post-count">1</span>分钟
 
 </article>

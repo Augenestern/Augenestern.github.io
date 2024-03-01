@@ -69,9 +69,12 @@
       
       
       
-        <span id="more"></span>
+        <p>unshift</p>
+<span id="more"></span>
 
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">测试提交2.0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="写unshift"><a href="#写unshift" class="headerlink" title="写unshift"></a>写unshift</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> a = [1,2,3]</span><br><span class="line"><span class="built_in">let</span> b = [4,5,6]</span><br><span class="line">// a.unshift(b)</span><br><span class="line">// console.log(a);</span><br><span class="line"></span><br><span class="line">Array.prototype.myUnshift = <span class="function"><span class="title">function</span></span> ()&#123;</span><br><span class="line">    <span class="built_in">let</span> len = arguments.length</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">let</span> i = len-1; i &gt;=0; i--) &#123;</span><br><span class="line">        this.splice(0,0,arguments[i])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> this.length;</span><br><span class="line">&#125;</span><br><span class="line">// a.myUnshift(5,6,7)</span><br><span class="line">// console.log(a);</span><br><span class="line">console.log(a.unshift(7,8,9));</span><br><span class="line">console.log(a);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -88,10 +91,19 @@
   
 <nav class="article-nav">
   
+  <a href="/2024/01/08/%E9%9B%B6%E6%95%A3/" class="article-nav-link">
+    <strong class="article-nav-caption">前一篇</strong>
+    <div class="article-nav-title">
+      
+      零散
+      
+    </div>
+  </a>
   
-  <a href="/2023/09/25/%E9%9B%B6%E6%95%A3/" class="article-nav-link">
+  
+  <a href="/2024/01/08/vue3%E7%AC%94%E8%AE%B0/" class="article-nav-link">
     <strong class="article-nav-caption">后一篇</strong>
-    <div class="article-nav-title">零散</div>
+    <div class="article-nav-title">vue3+vite+ts项目笔记</div>
   </a>
   
 </nav>
@@ -129,7 +141,7 @@
 
   
 
-  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">6</span>字
+  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">71</span>字
   &emsp;<i class="fe fe-clock"></i> <span class="post-count">1</span>分钟
 
 </article>
@@ -138,7 +150,7 @@
   <div class="outer">
     <ul class="list-inline">
       <!-- <ul class="list-inline">
-        <li>全站共<span class="post-count">9.8k</span>字</li>
+        <li>全站共<span class="post-count">11.4k</span>字</li>
       </ul>        -->
       <li>慕杰blog &copy; 2024</li>
       
