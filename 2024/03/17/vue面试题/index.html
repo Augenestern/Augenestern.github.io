@@ -73,12 +73,18 @@
 <span id="more"></span>
 
 <h3 id="1-谈谈你对vue的理解"><a href="#1-谈谈你对vue的理解" class="headerlink" title="1.谈谈你对vue的理解"></a>1.谈谈你对vue的理解</h3><p>1.1声明式框架，单页面应用<br>1.2MVVM模式<br>1.3采用虚拟DOM：传统更新页面，拼接一个完整的字符串innerHTML全部重新渲染，添加虚拟DOM后，可以比较新旧虚拟节点，找到变化在更新。虚拟DOM就是一个对象，用来描述真实DOM的。<br>1.4区分编译时和运行时:<br>  vue的渲染核心就是调用渲染（render）方法将虚拟DOM渲染成真实DOM。<br>1.5组件化：实现高内聚，低耦合，单项数据流；</p>
-<h3 id="谈谈你对SPA的理解"><a href="#谈谈你对SPA的理解" class="headerlink" title="谈谈你对SPA的理解"></a>谈谈你对SPA的理解</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="谈谈你对SPA的理解"><a href="#谈谈你对SPA的理解" class="headerlink" title="谈谈你对SPA的理解"></a>谈谈你对SPA的理解</h3><p>· SPA (single-page application) 单页应用，默认情况下我们编写 Vue、React 都只有一个html 页面，并且提供一个挂载点，最终打包后会再此页面中引入对应的资源。（页面的渲染全部是由JS动态进行渲染的）。切换页面时通过监听路由变化，渲染对应的页面 Client Side Rendering,客户端渲染 CSR.<br>· MPA (Multi-page application) 多页应用，1多个htm1 页面。每个页面必须重复加载，js, css 等相关资源。（服务端返回完整的 html，同时数据也可以再后端进行获取一并返回“模板引擎”）。多页应用跳转需要整页资源刷新。Server Side Rendering，服务器端渲染 SSR<br>如何分清在哪渲染：HTML 是在前端动态生成的“客户端渲染”，在服务端处理好并返回的是“服务端渲染”</p>
+<p>1.2 优缺点</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">                单页面应用(SPA)         多页面应用(MPA)</span><br><span class="line">组成            一个主页面和页面组件     多个完整的页面</span><br><span class="line">刷新方式        局部刷新                整页刷新</span><br><span class="line">SEO搜索引擎优化 无法实现                容易实现</span><br><span class="line">页面切换        速度快，用户体验良好     切换加载资源，速度慢，用户体验差</span><br><span class="line">维护成本        相对容易                相对复杂</span><br></pre></td></tr></table></figure>
+
+<p>·用户体验好、快，内容的改变不需要重新加载整个页面，服务端压力小。• SPA 应用不利于搜索引擎的抓取。<br>·首次渲染速度相对较慢（第一次返回空的 html,需要再次请求首屏数据）白屏时间长。</p>
+<p>1.3 解决方案<br>·静态页面预這染(Static Site Generation) SSG，在构建时生成完整的 html 页面。（就是在打包的时候,，<br>先将页面放到浏览器中运行一下，将HTML保存起来），仅适合静态页面网站。变化率不高的网站<br>· SSR + CSR 的方式，首屏采用服务端渲染的方式，后续交互采用客户端渲染方式。NuxtJs</p>
+<h3 id="vue为什么需要虚拟DOM"><a href="#vue为什么需要虚拟DOM" class="headerlink" title="vue为什么需要虚拟DOM"></a>vue为什么需要虚拟DOM</h3><p>1.1 基本概念<br>基本上所有框架都引入了虚拟 DOM 来对真实 DOM进行抽象，也就是现在大家所熟知的 VNode 和<br>VDOM<br>· Virtual DOM 就是用js 对象来描述真实 DOM，是对真实 DOM的抽象，由于直接操作 DOM 性能低但是js层的操作效率高，可以将 DOM操作转化成对象操作，最终通过dif 算法比对差异进行更新 DOM （减少了对真实 DOM 的操作）。<br>·虚拟 DOM不依赖真实平台环境从而也可以实现跨平台。<br>1.2补充：VDOM 是如何生成的?<br>·在vue 中我们常常会为组件编写模板 -template ·这个模板会被编译器编译为渲染函数-render<br>·在接下来的挂载过程中会调用render 函数，返回的对象就是虚拟 dom ·会在后续的 patch 过程中进一步转化为真实dom.<br>1.3再次补充：VDOM 如何做 diff的?·挂载过程结束后，会记录第一次生成的 VDOM -oldVnode<br>·当响应式数据发生变化时，将会引起组件重新render，此时就会生成新的 VDOM - newVnode<br>·使用 oldVnode 与 newVnode 做diff 操作，将更改的部分应到真实 DOM上，从而转换为最小量的 dom 操作，高效更新视图</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/03/17/vue%E9%9D%A2%E8%AF%95%E9%A2%98/" data-id="cltv4tomo0000hkv11v7mfem9" class="article-share-link">
+      <a data-url="http://example.com/2024/03/17/vue%E9%9D%A2%E8%AF%95%E9%A2%98/" data-id="cltv7yfyf00093kv10pp9f7m5" class="article-share-link">
         分享
       </a>
       
@@ -131,8 +137,8 @@
 
   
 
-  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">162</span>字
-  &emsp;<i class="fe fe-clock"></i> <span class="post-count">1</span>分钟
+  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">1k</span>字
+  &emsp;<i class="fe fe-clock"></i> <span class="post-count">3</span>分钟
 
 </article>
 </section>
@@ -140,7 +146,7 @@
   <div class="outer">
     <ul class="list-inline">
       <!-- <ul class="list-inline">
-        <li>全站共<span class="post-count">16.1k</span>字</li>
+        <li>全站共<span class="post-count">16.9k</span>字</li>
       </ul>        -->
       <li>慕杰blog &copy; 2024</li>
       
