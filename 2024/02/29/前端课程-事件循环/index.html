@@ -84,6 +84,8 @@
 <h4 id="面试题：阐述一下js的事件循环？"><a href="#面试题：阐述一下js的事件循环？" class="headerlink" title="面试题：阐述一下js的事件循环？"></a>面试题：阐述一下js的事件循环？</h4><p>事件循环又叫做消息循环，是浏览器渲染主线程的工作方式。<br>在Chrome的源码中，它开启了不会结束的for循环，每次取第一个任务执行，其他任务加到队尾。<br>过去把消息队列简单分为宏队列和微队列，这种已经无法满足当前复杂的浏览器环境。<br>根据 W3C 最新解释：<br>每个任务都有一个任务类型，同一任务类型必须在一个队列，不同类型任务可以分属于不同的队列。<br>浏览器必须准备一个微队列 microtask,优先于其他队列。</p>
 <h4 id="面试题：js计时器能做到精准吗？为什么？"><a href="#面试题：js计时器能做到精准吗？为什么？" class="headerlink" title="面试题：js计时器能做到精准吗？为什么？"></a>面试题：js计时器能做到精准吗？为什么？</h4><p>不行。<br>.按照W3C标准，嵌套层级超过5层，则带有4毫秒的最少时间，就会有偏差。<br>.受事件循环影响，计时器的回调函数只能在主线程空闲时运行，因此又带来了偏差。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     <footer class="article-footer">
@@ -158,7 +160,7 @@
   <div class="outer">
     <ul class="list-inline">
       <!-- <ul class="list-inline">
-        <li>全站共<span class="post-count">16.9k</span>字</li>
+        <li>全站共<span class="post-count">18.8k</span>字</li>
       </ul>        -->
       <li>慕杰blog &copy; 2024</li>
       

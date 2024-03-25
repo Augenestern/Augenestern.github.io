@@ -69,18 +69,35 @@
       
       
       
-        <p>1.谈谈你对vue的理解</p>
+        <p>谈谈你对vue的理解</p>
 <span id="more"></span>
 
-<h3 id="1-谈谈你对vue的理解"><a href="#1-谈谈你对vue的理解" class="headerlink" title="1.谈谈你对vue的理解"></a>1.谈谈你对vue的理解</h3><p>1.1声明式框架，单页面应用<br>1.2MVVM模式<br>1.3采用虚拟DOM：传统更新页面，拼接一个完整的字符串innerHTML全部重新渲染，添加虚拟DOM后，可以比较新旧虚拟节点，找到变化在更新。虚拟DOM就是一个对象，用来描述真实DOM的。<br>1.4区分编译时和运行时:<br>  vue的渲染核心就是调用渲染（render）方法将虚拟DOM渲染成真实DOM。<br>1.5组件化：实现高内聚，低耦合，单项数据流；</p>
+<h3 id="谈谈你对vue的理解"><a href="#谈谈你对vue的理解" class="headerlink" title="谈谈你对vue的理解"></a>谈谈你对vue的理解</h3><p>1.1声明式框架，单页面应用<br>1.2MVVM模式<br>1.3采用虚拟DOM：传统更新页面，拼接一个完整的字符串innerHTML全部重新渲染，添加虚拟DOM后，可以比较新旧虚拟节点，找到变化在更新。虚拟DOM就是一个对象，用来描述真实DOM的。<br>1.4区分编译时和运行时:<br>  vue的渲染核心就是调用渲染（render）方法将虚拟DOM渲染成真实DOM。<br>1.5组件化：实现高内聚，低耦合，单项数据流；</p>
 <h3 id="谈谈你对SPA的理解"><a href="#谈谈你对SPA的理解" class="headerlink" title="谈谈你对SPA的理解"></a>谈谈你对SPA的理解</h3><p>· SPA (single-page application) 单页应用，默认情况下我们编写 Vue、React 都只有一个html 页面，并且提供一个挂载点，最终打包后会再此页面中引入对应的资源。（页面的渲染全部是由JS动态进行渲染的）。切换页面时通过监听路由变化，渲染对应的页面 Client Side Rendering,客户端渲染 CSR.<br>· MPA (Multi-page application) 多页应用，1多个htm1 页面。每个页面必须重复加载，js, css 等相关资源。（服务端返回完整的 html，同时数据也可以再后端进行获取一并返回“模板引擎”）。多页应用跳转需要整页资源刷新。Server Side Rendering，服务器端渲染 SSR<br>如何分清在哪渲染：HTML 是在前端动态生成的“客户端渲染”，在服务端处理好并返回的是“服务端渲染”</p>
 <p>1.2 优缺点</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">                单页面应用(SPA)         多页面应用(MPA)</span><br><span class="line">组成            一个主页面和页面组件     多个完整的页面</span><br><span class="line">刷新方式        局部刷新                整页刷新</span><br><span class="line">SEO搜索引擎优化 无法实现                容易实现</span><br><span class="line">页面切换        速度快，用户体验良好     切换加载资源，速度慢，用户体验差</span><br><span class="line">维护成本        相对容易                相对复杂</span><br></pre></td></tr></table></figure>
 
 <p>·用户体验好、快，内容的改变不需要重新加载整个页面，服务端压力小。• SPA 应用不利于搜索引擎的抓取。<br>·首次渲染速度相对较慢（第一次返回空的 html,需要再次请求首屏数据）白屏时间长。</p>
 <p>1.3 解决方案<br>·静态页面预這染(Static Site Generation) SSG，在构建时生成完整的 html 页面。（就是在打包的时候,，<br>先将页面放到浏览器中运行一下，将HTML保存起来），仅适合静态页面网站。变化率不高的网站<br>· SSR + CSR 的方式，首屏采用服务端渲染的方式，后续交互采用客户端渲染方式。NuxtJs</p>
-<h3 id="vue为什么需要虚拟DOM"><a href="#vue为什么需要虚拟DOM" class="headerlink" title="vue为什么需要虚拟DOM"></a>vue为什么需要虚拟DOM</h3><p>1.1 基本概念<br>基本上所有框架都引入了虚拟 DOM 来对真实 DOM进行抽象，也就是现在大家所熟知的 VNode 和<br>VDOM<br>· Virtual DOM 就是用js 对象来描述真实 DOM，是对真实 DOM的抽象，由于直接操作 DOM 性能低但是js层的操作效率高，可以将 DOM操作转化成对象操作，最终通过dif 算法比对差异进行更新 DOM （减少了对真实 DOM 的操作）。<br>·虚拟 DOM不依赖真实平台环境从而也可以实现跨平台。<br>1.2补充：VDOM 是如何生成的?<br>·在vue 中我们常常会为组件编写模板 -template ·这个模板会被编译器编译为渲染函数-render<br>·在接下来的挂载过程中会调用render 函数，返回的对象就是虚拟 dom ·会在后续的 patch 过程中进一步转化为真实dom.<br>1.3再次补充：VDOM 如何做 diff的?·挂载过程结束后，会记录第一次生成的 VDOM -oldVnode<br>·当响应式数据发生变化时，将会引起组件重新render，此时就会生成新的 VDOM - newVnode<br>·使用 oldVnode 与 newVnode 做diff 操作，将更改的部分应到真实 DOM上，从而转换为最小量的 dom 操作，高效更新视图</p>
-
+<h3 id="vue为什么需要虚拟DOM"><a href="#vue为什么需要虚拟DOM" class="headerlink" title="vue为什么需要虚拟DOM"></a>vue为什么需要虚拟DOM</h3><p>1.1 基本概念<br>基本上所有框架都引入了虚拟 DOM 来对真实 DOM进行抽象，也就是现在大家所熟知的 VNode 和<br>VDOM<br>· Virtual DOM 就是用js 对象来描述真实 DOM，是对真实 DOM的抽象，由于直接操作 DOM 性能低但是js层的操作效率高，可以将 DOM操作转化成对象操作，最终通过diff 算法比对差异进行更新 DOM （减少了对真实 DOM 的操作）。<br>·虚拟 DOM不依赖真实平台环境从而也可以实现跨平台。<br>1.2补充：VDOM 是如何生成的?<br>·在vue 中我们常常会为组件编写模板 -template ·这个模板会被编译器编译为渲染函数-render<br>·在接下来的挂载过程中会调用render 函数，返回的对象就是虚拟 dom ·会在后续的 patch 过程中进一步转化为真实dom.<br>1.3再次补充：VDOM 如何做 diff的?·挂载过程结束后，会记录第一次生成的 VDOM -oldVnode<br>·当响应式数据发生变化时，将会引起组件重新render，此时就会生成新的 VDOM - newVnode<br>·使用 oldVnode 与 newVnode 做diff 操作，将更改的部分应到真实 DOM上，从而转换为最小量的 dom 操作，高效更新视图</p>
+<h3 id="Vue2-和-Vue3-响应式原理的区别"><a href="#Vue2-和-Vue3-响应式原理的区别" class="headerlink" title="Vue2 和 Vue3 响应式原理的区别"></a>Vue2 和 Vue3 响应式原理的区别</h3><p>数据劫持和数据代理: 1.数据代理：data 中的写入的数据都会通过加工再生成一份，组件实例对象 vm._data 中存储的就是 data 中的每个属性 get 和 set。然后 name 属性一改 set 就调，set 的原理就是重新再解析模板，模板一解析就生成新的虚拟 dom，然后新旧 dom 进行对比，然后更新页面 响应式原理 2.数据劫持：就是 get 和 set 每个数据身上都有一个 get 和 set 就是为了实现数据的响应式，getter 就是有人读取 data 中的属性就调用 getter，进行数据劫持监视这个属性，set 就是有人修改了_data 中的数据然后就调用 set</p>
+<h4 id="1-vue2-的实现原理"><a href="#1-vue2-的实现原理" class="headerlink" title="1.vue2 的实现原理"></a>1.vue2 的实现原理</h4><p>对象类型：通过 Object.defineProperty()对属性的读取，修改进行拦截（数据劫持）。<br>数组类型：通过重写更新数组的一系列方法来实现拦截。（对数组的变更方法进行了包裹）。</p>
+<p>Object.defineProperty(data, ‘count’, {<br>get() {},<br>set() {}<br>})<br>vue2 中初始化的时候没有给数据，后续添加的都是没有 get 和 set 的;<br>对属性读取能捕获到，对属性修改能捕获到，<br>但是添加一个属性捕获不到，删除一个已有的数据也捕获不到。<br>所以，存在两个问题：<br>a. 新增属性、删除属性，界面不会更新。（$set 或 $delete）<br>b. 直接通过下标修改属性，界面不会自动更新（$set、或数组变更方法）</p>
+<p>监听数组时是重写数组的方法来进行监听的。</p>
+<h4 id="2-vue3-的实现原理"><a href="#2-vue3-的实现原理" class="headerlink" title="2.vue3 的实现原理"></a>2.vue3 的实现原理</h4><p>Proxy（window 中内置的构造函数）： window.Proxy 直接代理对象<br>Reflect（window 中内置的构造函数</p>
+<p>new Proxy() 需要传递两个参数<br>const p &#x3D; new Proxy(person, {}) —&gt; p: 代理数据&#x2F;代理对象 person：源数据&#x2F;源对象<br>注意：第二个参数必传，即使不传内容，也要用{}空对象进行占位。</p>
+<p>Proxy (代理) ：拦截对象中任意属性的变化，包括属性值的读取、修改，属性的添加、删除。</p>
+<p>Reflect (反射)：对源对象的属性进行操作。 *最重要的是通过 Reflect 来修改源数据，这是和 vue2 中数据响应式最大的区别。如果传统的数据劫持编译中出现错误就会直接停止，不会再执行后面的代码，因为 js 是单线程，而 Reflect 就是为了解决这种情况，就算出现了错误也会执行下面的代码。操作源数据<br>Object.defineProperty() 如果有问题要借助 try {} catch() {}；<br>Reflect.defineProperty() 直接通过判断即可。</p>
+<h3 id="vue的生命周期"><a href="#vue的生命周期" class="headerlink" title="vue的生命周期"></a>vue的生命周期</h3><h4 id="1-创建阶段"><a href="#1-创建阶段" class="headerlink" title="1.创建阶段"></a>1.创建阶段</h4><p>在beforeCreate之前：methods声明；生命周期钩子函数声明。<br>在创建阶段(created)：data数据注入，data数据劫持。给每个声明式变量添加getter&#x2F;setter;把劫持过的变量放在组件实例上。</p>
+<h4 id="2-挂载阶段"><a href="#2-挂载阶段" class="headerlink" title="2.挂载阶段"></a>2.挂载阶段</h4><p>在beforeMount之前：寻找template&#x2F;el模版，把找到的template试图模版编译成render()函数。<br>在挂载阶段(mounted):1.根据render()渲染函数生成”抽象语法树AST”,再把AST第一次创建成”虚拟DOM树”；2.根据虚拟DOM树创建真实DOM树(第一次接触，依赖收集，watcher发生在此处)，把声明式变量替换成真实数据，DOM渲染完成。</p>
+<h4 id="3-更新阶段"><a href="#3-更新阶段" class="headerlink" title="3.更新阶段"></a>3.更新阶段</h4><p>在beforeUpdate之前：当被劫持的数据发生变化，进入更新阶段。<br>在更新阶段(updated):1.当响应式数据发生变化时，调用render()函数生成新的虚拟DOM树。2.使用diff算法，patch(oldVode,newVnode),找出两个Vnode的差异点，删除旧的vnode。3.notify通过watcher根据依赖收集在此处更新真实DOM.</p>
+<h4 id="4-销毁阶段"><a href="#4-销毁阶段" class="headerlink" title="4.销毁阶段"></a>4.销毁阶段</h4><p>beforeDestory&#x2F;destoryed:1.拆掉了watcher。2.拆掉当前组件的子组件。3.拆掉当前组件的事件处理器。</p>
+<h4 id="5-父子组件的生命周期。"><a href="#5-父子组件的生命周期。" class="headerlink" title="5.父子组件的生命周期。"></a>5.父子组件的生命周期。</h4><p>父beforeCreat&gt;&gt;父created&gt;&gt;父beforeMount&gt;&gt;子beforeCreate&gt;&gt;子created&gt;&gt;子beforeMount&gt;&gt;子mounted&gt;&gt;父mounted<br>子组件更新过程：父beforeUpdate&gt;&gt;子beforeUpdate&gt;&gt;子updated&gt;&gt;父updated<br>销毁过程同上</p>
+<h3 id="vue如何进行依赖收集"><a href="#vue如何进行依赖收集" class="headerlink" title="vue如何进行依赖收集"></a>vue如何进行依赖收集</h3><p>.每个属性都拥有自己的dep属性，存放他所依赖的 watcher，当属性变化后会通知自己对应的 watcher去<br>更新<br>·默认在初始化时会调用render 函数，此时会触发属性依赖收集 dep.depend<br>.当属性发生修改时会触发watcher更新 dep.notify()</p>
+<p>Vue3中会通过Map结构将属性和effect映射起来。<br>·默认在初始化时会调用render 函数，此时会触发属性依赖收集track,<br>·当属性发生修改时会找到对应的effect列表依次执行trigger</p>
+<h3 id="vue-set方法是如何实现的"><a href="#vue-set方法是如何实现的" class="headerlink" title="vue.set方法是如何实现的"></a>vue.set方法是如何实现的</h3><h3 id="watch-和-watchEffect-的区别"><a href="#watch-和-watchEffect-的区别" class="headerlink" title="watch 和 watchEffect 的区别?"></a>watch 和 watchEffect 的区别?</h3><p>watchEffect 立即运行一个函数，然后被动地追踪它的依赖，当这些依赖改变时重新执行该函数<br>watch 侦测一个或多个响应式数据源并在数据源变化时调用一个回调函数</p>
+<h3 id="如何将template-转换成-render-函数"><a href="#如何将template-转换成-render-函数" class="headerlink" title="如何将template 转换成 render 函数?"></a>如何将template 转换成 render 函数?</h3><p>Vue 中含有模版编译的功能，它的主要作用是将用户编写的 template 编译为s 中可执行的 render 函数.<br>1.将template 模板转换成ast语法树-parserHTML<br>2.对静态语法做静态标记-markup diff来做优化的静态节点跳过diff操作<br>3.重新生成代码codeGen</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">111</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
@@ -95,6 +112,15 @@
   
   
 <nav class="article-nav">
+  
+  <a href="/2024/03/25/css%E9%9D%A2%E8%AF%95%E9%A2%98/" class="article-nav-link">
+    <strong class="article-nav-caption">前一篇</strong>
+    <div class="article-nav-title">
+      
+      css面试题
+      
+    </div>
+  </a>
   
   
   <a href="/2024/03/01/%E5%89%8D%E7%AB%AF%E8%AF%BE%E7%A8%8B-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86/" class="article-nav-link">
@@ -137,8 +163,8 @@
 
   
 
-  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">1k</span>字
-  &emsp;<i class="fe fe-clock"></i> <span class="post-count">3</span>分钟
+  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">2.4k</span>字
+  &emsp;<i class="fe fe-clock"></i> <span class="post-count">8</span>分钟
 
 </article>
 </section>
@@ -146,7 +172,7 @@
   <div class="outer">
     <ul class="list-inline">
       <!-- <ul class="list-inline">
-        <li>全站共<span class="post-count">16.9k</span>字</li>
+        <li>全站共<span class="post-count">18.8k</span>字</li>
       </ul>        -->
       <li>慕杰blog &copy; 2024</li>
       

@@ -88,6 +88,7 @@
 <p>重绘（repaint）：元素的结构（宽高、布局、显示隐藏、内部文字大小）未发生改变，只是元素的外观样式发生改变，比如背景颜色、内部文字颜色、边框颜色等。此时会引起浏览器重绘，显然重绘的速度快于回流。</p>
 <p>回流一定会触发重绘，重绘不一定触发回流。</p>
 <h3 id="4-为什么-transform-的效率高"><a href="#4-为什么-transform-的效率高" class="headerlink" title="4.为什么 transform 的效率高?"></a>4.为什么 transform 的效率高?</h3><p>因为 transform 既不会影响布局也不会影响绘制指令，它影响的只是渲染流程的最后一个 「draw」 阶段由于 draw 阶段在合成线程中，所以 transform 的变化几乎不会影响渲染主线程。反之，渲染主线程无论如何忙碌，也不会影响 transform 的变化。</p>
+<h3 id="一、简述在浏览器从输入URL到页面加载完成都经历了什么"><a href="#一、简述在浏览器从输入URL到页面加载完成都经历了什么" class="headerlink" title="一、简述在浏览器从输入URL到页面加载完成都经历了什么"></a>一、简述在浏览器从输入URL到页面加载完成都经历了什么</h3><p>浏览器地址栏输入url地址，首先要在客户端上进行url解析<br>浏览器会首先查看自身的缓存，如果浏览器缓存中有对应的解析记录，直接返回结果<br>如果浏览器没有缓存，电脑会查看本地操作系统的缓存，如果有记录，直接返回结果（host文件）<br>如果本地没有缓存该域名的IP地址，就需要通过递归或迭代的方式向根域名服务器、顶级域名服务器、权威域名服务器发起查询请求，直至返回一个IP地址给浏览器。<br>然后根据该IP地址建立TCP连接。<br>客户端发送HTTP请求，服务器返回报文，关闭TCP连接。<br>浏览器内核拿到相应内容后，<br>解析html,css分别建立DOM Tree和CSSOM Tree<br>随后这两个合并成Render Tree。<br>然后布局Render Tree，绘制Render Tree，绘制页面像素信息。<br>浏览器会将各层的信息发送给GPU,GPU会将各层合成，显示在屏幕上。<br>渲染完成。</p>
 
       
     </div>
@@ -154,8 +155,8 @@
 
   
 
-  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">1.7k</span>字
-  &emsp;<i class="fe fe-clock"></i> <span class="post-count">6</span>分钟
+  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">2k</span>字
+  &emsp;<i class="fe fe-clock"></i> <span class="post-count">7</span>分钟
 
 </article>
 </section>
@@ -163,7 +164,7 @@
   <div class="outer">
     <ul class="list-inline">
       <!-- <ul class="list-inline">
-        <li>全站共<span class="post-count">16.9k</span>字</li>
+        <li>全站共<span class="post-count">18.8k</span>字</li>
       </ul>        -->
       <li>慕杰blog &copy; 2024</li>
       
