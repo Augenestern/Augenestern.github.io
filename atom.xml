@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2024-03-25T12:10:06.061Z</updated>
+  <updated>2024-03-30T05:46:09.901Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,21 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>webpack和vite面试题</title>
+    <link href="http://example.com/2024/03/30/webpack%E5%92%8Cvite%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    <id>http://example.com/2024/03/30/webpack%E5%92%8Cvite%E9%9D%A2%E8%AF%95%E9%A2%98/</id>
+    <published>2024-03-30T05:45:01.763Z</published>
+    <updated>2024-03-30T05:46:09.901Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt; webpack，vite&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>css面试题</title>
@@ -36,10 +51,10 @@
     <link href="http://example.com/2024/03/17/vue%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     <id>http://example.com/2024/03/17/vue%E9%9D%A2%E8%AF%95%E9%A2%98/</id>
     <published>2024-03-17T05:52:28.866Z</published>
-    <updated>2024-03-26T10:54:38.423Z</updated>
+    <updated>2024-03-30T06:19:30.141Z</updated>
     
     
-    <summary type="html">&lt;p&gt;谈谈你对vue的理解&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;谈谈你对 vue 的理解&lt;/p&gt;</summary>
     
     
     
