@@ -98,22 +98,17 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Hexo 基本使用</title>
-    <url>/2024/01/08/hexo/</url>
-    <content><![CDATA[<p>Hexo是一款基于Node.js的静态博客框架,依赖少易于安装使用,可以方便的生成静态网页托管在GitHub和Coding上,是搭建博客的首选框架。</p>
+    <title>css笔记</title>
+    <url>/2024/03/25/css%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<p>css 中的伪类：before 与 after</p>
 <span id="more"></span>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<h3 id="css-中的伪类：before-与-after"><a href="#css-中的伪类：before-与-after" class="headerlink" title="css 中的伪类：before 与 after"></a>css 中的伪类：before 与 after</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//破碎图片占位,当用户网络出现问题的时候，可能会造成某些图片的访问失败</span><br><span class="line"></span><br><span class="line">img::before &#123;</span><br><span class="line">  background-color: <span class="comment">#eeeeee;</span></span><br><span class="line">  border: <span class="comment">#aaaaaa;</span></span><br><span class="line">  display: block;</span><br><span class="line">  height: 100%;</span><br><span class="line">  content: attr(alt);</span><br><span class="line">  text-align: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//自定义引用样式</span><br><span class="line">blockquote::before &#123;</span><br><span class="line">  content: open-quote;</span><br><span class="line">  top: 0;</span><br><span class="line">  left: 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">blockquote::after &#123;</span><br><span class="line">  content: close-quote;</span><br><span class="line">  bottom: 0;</span><br><span class="line">  right: 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">blockquote::before,</span><br><span class="line">blockquote::after &#123;</span><br><span class="line">  background-color: <span class="comment">#cccccc;</span></span><br><span class="line">  display: block;</span><br><span class="line">  width: 60px;</span><br><span class="line">  height: 60px;</span><br><span class="line">  line-height: 1.618;</span><br><span class="line">  font-size: 3em;</span><br><span class="line">  border-radius: 100%;</span><br><span class="line">  text-align: center;</span><br><span class="line">  position: absolute;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//图片渐变叠加</span><br><span class="line">figure::before &#123;</span><br><span class="line">  background-image: linear-gradient(to top right, <span class="comment">#1a1a1a, transparent);</span></span><br><span class="line">  content: <span class="string">&quot;&quot;</span>;</span><br><span class="line">  height: 100%;</span><br><span class="line">  position: absolute;</span><br><span class="line">  width: 100%;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="html中meta什么作用-HTML中各种常用meta标签的作用"><a href="#html中meta什么作用-HTML中各种常用meta标签的作用" class="headerlink" title="html中meta什么作用,HTML中各种常用meta标签的作用"></a>html中meta什么作用,HTML中各种常用meta标签的作用</h3><p><a href="https://blog.csdn.net/weixin_32643811/article/details/117950069">查看</a></p>
+<h3 id="媒体查询（media-query）"><a href="#媒体查询（media-query）" class="headerlink" title="媒体查询（media query）"></a>媒体查询（media query）</h3><p>媒体查询是css3新语法，可以针对不同的媒体类型定义不同的样式，可简单理解为根据页面不同的宽度，来使用不同的css样式。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">///and only not;</span><br><span class="line">@media media-type and (media-feature) &#123;</span><br><span class="line">  /* CSS 样式规则 */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">media-type 可以是 screen--(用于电脑屏幕，ipad，手机等)、<span class="built_in">print</span>--(用于打印机)、all--(用于所有设备) 等，表示媒体类型。</span><br><span class="line">media-feature 是一个媒体特性，例如 width、height、orientation 等，用于检查设备属性。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/* 默认样式 */</span><br><span class="line">p &#123;</span><br><span class="line">  font-size: 16px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 在小屏幕上调整文本大小 */</span><br><span class="line">@media screen and (max-width: 768px) &#123;</span><br><span class="line">  p &#123;</span><br><span class="line">    font-size: 14px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 在非常小的屏幕上进一步调整文本大小 */</span><br><span class="line">@media screen and (max-width: 480px) &#123;</span><br><span class="line">  p &#123;</span><br><span class="line">    font-size: 12px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><a href="https://blog.csdn.net/jhxl_/article/details/132400594">详细</a></p>
+<h3 id="ES6基本语法"><a href="#ES6基本语法" class="headerlink" title="ES6基本语法"></a>ES6基本语法</h3><p><a href="https://blog.csdn.net/See_Star/article/details/121566165">查看</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -170,6 +165,25 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>Hexo 基本使用</title>
+    <url>/2024/01/08/hexo/</url>
+    <content><![CDATA[<p>Hexo是一款基于Node.js的静态博客框架,依赖少易于安装使用,可以方便的生成静态网页托管在GitHub和Coding上,是搭建博客的首选框架。</p>
+<span id="more"></span>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -249,7 +263,7 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
-    <title>vue面试题</title>
+    <title>vue笔记</title>
     <url>/2024/03/17/vue%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
     <content><![CDATA[<p>谈谈你对 vue 的理解</p>
 <span id="more"></span>
@@ -312,6 +326,23 @@
 <p>在vue3.2之后又加了v-memo指令,只有限定的值发生改变才会更新</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;div v-memo=<span class="string">&quot;[valueA,B]&quot;</span>&gt;</span><br><span class="line">&lt;..&gt;...</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">111</span><br></pre></td></tr></table></figure>
+
+<h3 id="Vue-mixin的使用场景及原理"><a href="#Vue-mixin的使用场景及原理" class="headerlink" title="Vue.mixin的使用场景及原理"></a>Vue.mixin的使用场景及原理</h3><p>mixin（混入），提供了一种非常灵活的方式，来分发 Vue 组件中的可复用功能。<br>本质其实就是一个js对象，它可以包含我们组件中任意功能选项，如data、components、methods、created、computed等等<br>我们只要将共用的功能以对象的方式传入 mixins 选项中，当组件使用 mixins 对象时所有mixins对象的选项都将被混入该组件本身的选项中来</p>
+<p>1.局部混入</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义一个mixin对象</span></span><br><span class="line">var myMixin = &#123;</span><br><span class="line">  created: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    this.hello()</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    hello: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      console.log(<span class="string">&#x27;hello from mixin!&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 组件通过mixins属性调用mixin对象</span></span><br><span class="line">Vue.component(<span class="string">&#x27;componentA&#x27;</span>,&#123;</span><br><span class="line">  mixins: [myMixin]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment"># 该组件在使用的时候，混合了mixin里面的方法，在自动执行created生命钩子，执行hello方法</span></span><br></pre></td></tr></table></figure>
+<p>2.全局混入</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 通过Vue.mixin()进行全局的混入</span></span><br><span class="line"></span><br><span class="line">Vue.mixin(&#123;</span><br><span class="line">  created: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      console.log(<span class="string">&quot;全局混入&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment"># 使用全局混入需要特别注意，因为它会影响到每一个组件实例（包括第三方组件）</span></span><br><span class="line"><span class="comment"># PS：全局混入常用于插件的编写</span></span><br></pre></td></tr></table></figure>
+<p>注意：<br>当组件存在与mixin对象相同的选项的时候，进行递归合并的时候组件的选项会覆盖mixin的选项<br>但是如果相同选项为生命周期钩子的时候，会合并成一个数组，先执行mixin的钩子，再执行组件的钩子</p>
+<p>（1）使用场景：<br>在日常的开发中，我们经常会遇到在不同的组件中经常会需要用到一些相同或者相似的代码，这些代码的功能相对独立<br>这时，可以通过Vue的mixin功能将相同或者相似的代码提出来</p>
+<p>（2）源码分析：<br>优先递归处理 mixins<br>先遍历合并parent 中的key，调用mergeField方法进行合并，然后保存在变量options<br>再遍历 child，合并补上 parent 中没有的key，调用mergeField方法进行合并，保存在变量options<br>通过 mergeField 函数进行了合并</p>
+<p>合并策略：替换型，合并型，队列型，叠加型<br>1.替换型合并有props、methods、inject、computed，同名的props、methods、inject、computed会被后来者代替。<br>2.合并型合并有：data。当目标 data 对象不包含当前属性时，调用 set 方法进行合并（set方法其实就是一些合并重新赋值的方法）当目标 data 对象包含当前属性并且当前值为纯对象时，递归合并当前对象值，这样做是为了防止对象存在新增属性<br>3.队列型合并有：全部 生命周期 和 watch被合并为一个数组，然后正序遍历一次执行。先执行mixin的钩子，再执行组件的钩子<br>4.叠加型有component、directives、filters，通过原型链进行层层的叠加</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>webpack和vite笔记</title>
+    <url>/2024/03/30/webpack%E5%92%8Cvite%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<p> webpack，vite</p>
+<span id="more"></span>
 ]]></content>
   </entry>
   <entry>
@@ -387,9 +418,9 @@
 ]]></content>
   </entry>
   <entry>
-    <title>每日一题</title>
+    <title>手撕底层</title>
     <url>/2024/01/08/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</url>
-    <content><![CDATA[<p>每天练习的笔记，prototype，Map 底层是怎么实现的，Promise 应用和原理，手写一个 promise，Vuex4 的底层原理，js 深拷贝，重置表单,this 指向问题，js 闭包,new 关键字</p>
+    <content><![CDATA[<p>prototype，Map 底层是怎么实现的，Promise 应用和原理，手写一个 promise，Vuex4 的底层原理，js 深拷贝，重置表单,this 指向问题，js 闭包,new 关键字</p>
 <span id="more"></span>
 
 <h2 id="prototype"><a href="#prototype" class="headerlink" title="prototype"></a>prototype</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var dom = <span class="function"><span class="title">function</span></span>()&#123;&#125;;</span><br><span class="line">dom.Show = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">    alert(<span class="string">&quot;Show Message&quot;</span>);</span><br><span class="line">&#125;;</span><br><span class="line">dom.prototype.Display = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">    alert(<span class="string">&quot;Property Message&quot;</span>);</span><br><span class="line">&#125;;</span><br><span class="line">dom.Display(); //error</span><br><span class="line">dom.Show();</span><br><span class="line">var d = new dom();</span><br><span class="line">d.Display();</span><br><span class="line">d.Show(); //error</span><br></pre></td></tr></table></figure>
@@ -465,9 +496,9 @@
 ]]></content>
   </entry>
   <entry>
-    <title>经典面试题</title>
+    <title>经典题</title>
     <url>/2024/01/08/%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE/</url>
-    <content><![CDATA[<p>unshift</p>
+    <content><![CDATA[<p>unshift，js 的数据类型，数组的常用方法，字符串的常用方法，对象的常用方法，属性描述符，原型和原型链，js 中的值类型和引用类型区别，判读对象数据类型</p>
 <span id="more"></span>
 
 <h3 id="1-写-unshift"><a href="#1-写-unshift" class="headerlink" title="1.写 unshift"></a>1.写 unshift</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span> a = [1,2,3]</span><br><span class="line"><span class="built_in">let</span> b = [4,5,6]</span><br><span class="line">// a.unshift(b)</span><br><span class="line">// console.log(a);</span><br><span class="line"></span><br><span class="line">Array.prototype.myUnshift = <span class="function"><span class="title">function</span></span> ()&#123;</span><br><span class="line">    <span class="built_in">let</span> len = arguments.length</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">let</span> i = len-1; i &gt;=0; i--) &#123;</span><br><span class="line">        this.splice(0,0,arguments[i])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> this.length;</span><br><span class="line">&#125;</span><br><span class="line">// a.myUnshift(5,6,7)</span><br><span class="line">// console.log(a);</span><br><span class="line">console.log(a.unshift(7,8,9));</span><br><span class="line">console.log(a);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -551,27 +582,6 @@
 
 
 
-]]></content>
-  </entry>
-  <entry>
-    <title>css面试题</title>
-    <url>/2024/03/25/css%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
-    <content><![CDATA[<p>css 中的伪类：before 与 after</p>
-<span id="more"></span>
-
-<h3 id="css-中的伪类：before-与-after"><a href="#css-中的伪类：before-与-after" class="headerlink" title="css 中的伪类：before 与 after"></a>css 中的伪类：before 与 after</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//破碎图片占位,当用户网络出现问题的时候，可能会造成某些图片的访问失败</span><br><span class="line"></span><br><span class="line">img::before &#123;</span><br><span class="line">  background-color: <span class="comment">#eeeeee;</span></span><br><span class="line">  border: <span class="comment">#aaaaaa;</span></span><br><span class="line">  display: block;</span><br><span class="line">  height: 100%;</span><br><span class="line">  content: attr(alt);</span><br><span class="line">  text-align: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//自定义引用样式</span><br><span class="line">blockquote::before &#123;</span><br><span class="line">  content: open-quote;</span><br><span class="line">  top: 0;</span><br><span class="line">  left: 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">blockquote::after &#123;</span><br><span class="line">  content: close-quote;</span><br><span class="line">  bottom: 0;</span><br><span class="line">  right: 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">blockquote::before,</span><br><span class="line">blockquote::after &#123;</span><br><span class="line">  background-color: <span class="comment">#cccccc;</span></span><br><span class="line">  display: block;</span><br><span class="line">  width: 60px;</span><br><span class="line">  height: 60px;</span><br><span class="line">  line-height: 1.618;</span><br><span class="line">  font-size: 3em;</span><br><span class="line">  border-radius: 100%;</span><br><span class="line">  text-align: center;</span><br><span class="line">  position: absolute;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//图片渐变叠加</span><br><span class="line">figure::before &#123;</span><br><span class="line">  background-image: linear-gradient(to top right, <span class="comment">#1a1a1a, transparent);</span></span><br><span class="line">  content: <span class="string">&quot;&quot;</span>;</span><br><span class="line">  height: 100%;</span><br><span class="line">  position: absolute;</span><br><span class="line">  width: 100%;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="html中meta什么作用-HTML中各种常用meta标签的作用"><a href="#html中meta什么作用-HTML中各种常用meta标签的作用" class="headerlink" title="html中meta什么作用,HTML中各种常用meta标签的作用"></a>html中meta什么作用,HTML中各种常用meta标签的作用</h3><p><a href="https://blog.csdn.net/weixin_32643811/article/details/117950069">查看</a></p>
-<h3 id="媒体查询（media-query）"><a href="#媒体查询（media-query）" class="headerlink" title="媒体查询（media query）"></a>媒体查询（media query）</h3><p>媒体查询是css3新语法，可以针对不同的媒体类型定义不同的样式，可简单理解为根据页面不同的宽度，来使用不同的css样式。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">///and only not;</span><br><span class="line">@media media-type and (media-feature) &#123;</span><br><span class="line">  /* CSS 样式规则 */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">media-type 可以是 screen--(用于电脑屏幕，ipad，手机等)、<span class="built_in">print</span>--(用于打印机)、all--(用于所有设备) 等，表示媒体类型。</span><br><span class="line">media-feature 是一个媒体特性，例如 width、height、orientation 等，用于检查设备属性。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/* 默认样式 */</span><br><span class="line">p &#123;</span><br><span class="line">  font-size: 16px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 在小屏幕上调整文本大小 */</span><br><span class="line">@media screen and (max-width: 768px) &#123;</span><br><span class="line">  p &#123;</span><br><span class="line">    font-size: 14px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 在非常小的屏幕上进一步调整文本大小 */</span><br><span class="line">@media screen and (max-width: 480px) &#123;</span><br><span class="line">  p &#123;</span><br><span class="line">    font-size: 12px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><a href="https://blog.csdn.net/jhxl_/article/details/132400594">详细</a></p>
-<h3 id="ES6基本语法"><a href="#ES6基本语法" class="headerlink" title="ES6基本语法"></a>ES6基本语法</h3><p><a href="https://blog.csdn.net/See_Star/article/details/121566165">查看</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>webpack和vite面试题</title>
-    <url>/2024/03/30/webpack%E5%92%8Cvite%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
-    <content><![CDATA[<p> webpack，vite</p>
-<span id="more"></span>
 ]]></content>
   </entry>
 </search>

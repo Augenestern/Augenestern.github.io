@@ -8,7 +8,7 @@
   
   
   <title>
-    vue面试题 |
+    vue笔记 |
     
     慕杰blog
   </title>
@@ -42,7 +42,7 @@
       
   
   <h1 class="article-title" itemprop="name">
-    vue面试题
+    vue笔记
   </h1>
   
   
@@ -131,10 +131,20 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-memo=<span class="string">&quot;[valueA,B]&quot;</span>&gt;</span><br><span class="line">&lt;..&gt;...</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">111</span><br></pre></td></tr></table></figure>
 
+<h3 id="Vue-mixin的使用场景及原理"><a href="#Vue-mixin的使用场景及原理" class="headerlink" title="Vue.mixin的使用场景及原理"></a>Vue.mixin的使用场景及原理</h3><p>mixin（混入），提供了一种非常灵活的方式，来分发 Vue 组件中的可复用功能。<br>本质其实就是一个js对象，它可以包含我们组件中任意功能选项，如data、components、methods、created、computed等等<br>我们只要将共用的功能以对象的方式传入 mixins 选项中，当组件使用 mixins 对象时所有mixins对象的选项都将被混入该组件本身的选项中来</p>
+<p>1.局部混入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义一个mixin对象</span></span><br><span class="line">var myMixin = &#123;</span><br><span class="line">  created: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    this.hello()</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    hello: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      console.log(<span class="string">&#x27;hello from mixin!&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 组件通过mixins属性调用mixin对象</span></span><br><span class="line">Vue.component(<span class="string">&#x27;componentA&#x27;</span>,&#123;</span><br><span class="line">  mixins: [myMixin]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment"># 该组件在使用的时候，混合了mixin里面的方法，在自动执行created生命钩子，执行hello方法</span></span><br></pre></td></tr></table></figure>
+<p>2.全局混入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 通过Vue.mixin()进行全局的混入</span></span><br><span class="line"></span><br><span class="line">Vue.mixin(&#123;</span><br><span class="line">  created: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      console.log(<span class="string">&quot;全局混入&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment"># 使用全局混入需要特别注意，因为它会影响到每一个组件实例（包括第三方组件）</span></span><br><span class="line"><span class="comment"># PS：全局混入常用于插件的编写</span></span><br></pre></td></tr></table></figure>
+<p>注意：<br>当组件存在与mixin对象相同的选项的时候，进行递归合并的时候组件的选项会覆盖mixin的选项<br>但是如果相同选项为生命周期钩子的时候，会合并成一个数组，先执行mixin的钩子，再执行组件的钩子</p>
+<p>（1）使用场景：<br>在日常的开发中，我们经常会遇到在不同的组件中经常会需要用到一些相同或者相似的代码，这些代码的功能相对独立<br>这时，可以通过Vue的mixin功能将相同或者相似的代码提出来</p>
+<p>（2）源码分析：<br>优先递归处理 mixins<br>先遍历合并parent 中的key，调用mergeField方法进行合并，然后保存在变量options<br>再遍历 child，合并补上 parent 中没有的key，调用mergeField方法进行合并，保存在变量options<br>通过 mergeField 函数进行了合并</p>
+<p>合并策略：替换型，合并型，队列型，叠加型<br>1.替换型合并有props、methods、inject、computed，同名的props、methods、inject、computed会被后来者代替。<br>2.合并型合并有：data。当目标 data 对象不包含当前属性时，调用 set 方法进行合并（set方法其实就是一些合并重新赋值的方法）当目标 data 对象包含当前属性并且当前值为纯对象时，递归合并当前对象值，这样做是为了防止对象存在新增属性<br>3.队列型合并有：全部 生命周期 和 watch被合并为一个数组，然后正序遍历一次执行。先执行mixin的钩子，再执行组件的钩子<br>4.叠加型有component、directives、filters，通过原型链进行层层的叠加</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/03/17/vue%E9%9D%A2%E8%AF%95%E9%A2%98/" data-id="cltv7yfyf00093kv10pp9f7m5" class="article-share-link">
+      <a data-url="http://example.com/2024/03/17/vue%E9%9D%A2%E8%AF%95%E9%A2%98/" data-id="clup7dwi0000ay8v1c1pgf3uo" class="article-share-link">
         分享
       </a>
       
@@ -150,7 +160,7 @@
     <strong class="article-nav-caption">前一篇</strong>
     <div class="article-nav-title">
       
-      css面试题
+      css笔记
       
     </div>
   </a>
@@ -196,8 +206,8 @@
 
   
 
-  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">4.2k</span>字
-  &emsp;<i class="fe fe-clock"></i> <span class="post-count">16</span>分钟
+  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">5k</span>字
+  &emsp;<i class="fe fe-clock"></i> <span class="post-count">18</span>分钟
 
 </article>
 </section>
@@ -205,7 +215,7 @@
   <div class="outer">
     <ul class="list-inline">
       <!-- <ul class="list-inline">
-        <li>全站共<span class="post-count">20.6k</span>字</li>
+        <li>全站共<span class="post-count">21.4k</span>字</li>
       </ul>        -->
       <li>慕杰blog &copy; 2024</li>
       

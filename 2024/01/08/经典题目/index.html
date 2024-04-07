@@ -8,7 +8,7 @@
   
   
   <title>
-    经典面试题 |
+    经典题 |
     
     慕杰blog
   </title>
@@ -42,7 +42,7 @@
       
   
   <h1 class="article-title" itemprop="name">
-    经典面试题
+    经典题
   </h1>
   
   
@@ -69,7 +69,7 @@
       
       
       
-        <p>unshift</p>
+        <p>unshift，js 的数据类型，数组的常用方法，字符串的常用方法，对象的常用方法，属性描述符，原型和原型链，js 中的值类型和引用类型区别，判读对象数据类型</p>
 <span id="more"></span>
 
 <h3 id="1-写-unshift"><a href="#1-写-unshift" class="headerlink" title="1.写 unshift"></a>1.写 unshift</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> a = [1,2,3]</span><br><span class="line"><span class="built_in">let</span> b = [4,5,6]</span><br><span class="line">// a.unshift(b)</span><br><span class="line">// console.log(a);</span><br><span class="line"></span><br><span class="line">Array.prototype.myUnshift = <span class="function"><span class="title">function</span></span> ()&#123;</span><br><span class="line">    <span class="built_in">let</span> len = arguments.length</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">let</span> i = len-1; i &gt;=0; i--) &#123;</span><br><span class="line">        this.splice(0,0,arguments[i])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> this.length;</span><br><span class="line">&#125;</span><br><span class="line">// a.myUnshift(5,6,7)</span><br><span class="line">// console.log(a);</span><br><span class="line">console.log(a.unshift(7,8,9));</span><br><span class="line">console.log(a);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -109,7 +109,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/01/08/%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE/" data-id="cltv7yfym000f3kv1efandu1d" class="article-share-link">
+      <a data-url="http://example.com/2024/01/08/%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE/" data-id="clup7dwi5000hy8v1dns28ykr" class="article-share-link">
         分享
       </a>
       
@@ -133,7 +133,7 @@
   
   <a href="/2024/01/08/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" class="article-nav-link">
     <strong class="article-nav-caption">后一篇</strong>
-    <div class="article-nav-title">每日一题</div>
+    <div class="article-nav-title">手撕底层</div>
   </a>
   
 </nav>
@@ -180,7 +180,7 @@
   <div class="outer">
     <ul class="list-inline">
       <!-- <ul class="list-inline">
-        <li>全站共<span class="post-count">20.6k</span>字</li>
+        <li>全站共<span class="post-count">21.4k</span>字</li>
       </ul>        -->
       <li>慕杰blog &copy; 2024</li>
       
