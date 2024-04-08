@@ -261,10 +261,10 @@
     <link href="http://example.com/2024/01/08/css%E7%AC%94%E8%AE%B0/"/>
     <id>http://example.com/2024/01/08/css%E7%AC%94%E8%AE%B0/</id>
     <published>2024-01-08T05:40:20.272Z</published>
-    <updated>2023-12-06T13:53:39.482Z</updated>
+    <updated>2024-04-08T12:34:35.119Z</updated>
     
     
-    <summary type="html">&lt;p&gt;position 布局，transform 的基本使用和常用特效，display常用方法&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;position 布局，transform 的基本使用和常用特效，display常用方法,外边距塌陷&lt;/p&gt;</summary>
     
     
     
