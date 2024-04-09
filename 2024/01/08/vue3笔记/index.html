@@ -10,11 +10,11 @@
   <title>
     vue3+vite+ts项目笔记 |
     
-    慕杰blog
+    慕杰BLOG
   </title>
   <!-- Icon -->
   
-    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/study.svg">
     
   
 <link rel="stylesheet" href="/css/style.css">
@@ -27,7 +27,7 @@
   
 <script src="/js/pace.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="慕杰blog" type="application/atom+xml">
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="慕杰BLOG" type="application/atom+xml">
 </head>
 
 <body>
@@ -72,8 +72,7 @@
         <p>包括搭建项目，父子组件传值，兄弟组件传值，插槽，Teleport 组件，依赖注入</p>
 <span id="more"></span>
 
-<h4 id="搭建项目-点击"><a href="#搭建项目-点击" class="headerlink" title="搭建项目: 点击"></a>搭建项目: <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_59916662/article/details/127331094">点击</a></h4><h2 id="数据代理"><a href="#数据代理" class="headerlink" title="数据代理"></a>数据代理</h2><p>vue2.x : Object.defineProperty()<br>vue3.x : Proxy</p>
-<h2 id="父子组件传值"><a href="#父子组件传值" class="headerlink" title="父子组件传值"></a>父子组件传值</h2><h3 id="1-父传子"><a href="#1-父传子" class="headerlink" title="1.父传子"></a>1.父传子</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;父组件</span><br><span class="line">  &lt;list :msg=<span class="string">&quot;msg&quot;</span>&gt;&lt;/list&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> msg = ref(<span class="string">&#x27;传过去的&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="搭建项目-点击"><a href="#搭建项目-点击" class="headerlink" title="搭建项目: 点击"></a>搭建项目: <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_59916662/article/details/127331094">点击</a></h4><h4 id="vue官网-进入"><a href="#vue官网-进入" class="headerlink" title="vue官网: 进入"></a>vue官网: <a target="_blank" rel="noopener" href="https://cn.vuejs.org/guide/components/v-model.html">进入</a></h4><h2 id="父子组件传值"><a href="#父子组件传值" class="headerlink" title="父子组件传值"></a>父子组件传值</h2><h3 id="1-父传子"><a href="#1-父传子" class="headerlink" title="1.父传子"></a>1.父传子</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;父组件</span><br><span class="line">  &lt;list :msg=<span class="string">&quot;msg&quot;</span>&gt;&lt;/list&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> msg = ref(<span class="string">&#x27;传过去的&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;这是子组件&#123;&#123;msg&#125;&#125;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">defineProps(&#123;</span><br><span class="line">    msg:&#123;</span><br><span class="line">        <span class="built_in">type</span>:String,</span><br><span class="line">        default:<span class="string">&quot;默认值&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
@@ -81,10 +80,7 @@
 
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;父组件</span><br><span class="line">  &lt;list @fn=<span class="string">&#x27;changeHome&#x27;</span>&gt;&lt;/list&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> changeHome = (n)=&gt;&#123;</span><br><span class="line">    console.log(n)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-v-model-传值"><a href="#3-v-model-传值" class="headerlink" title="3.v-model 传值"></a>3.v-model 传值</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;父组件</span><br><span class="line">  &lt;list v-model:num = <span class="string">&quot;num&quot;</span>&gt;&lt;/list&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> num = ref(1)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;这是子组件&#123;&#123;num&#125;&#125;</span><br><span class="line">  &lt;button @click=<span class="string">&quot;btn&quot;</span>&gt;按钮&lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">const props = refineProps(&#123;</span><br><span class="line">    num:&#123;</span><br><span class="line">        <span class="built_in">type</span>:Number,</span><br><span class="line">        default:100</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">const emit = defineEmits([<span class="string">&#x27;update:num&#x27;</span>])</span><br><span class="line">const btn = ()=&gt;&#123;</span><br><span class="line">    emit(<span class="string">&#x27;update:num&#x27;</span>,200)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
+<h3 id="3-v-model-传值"><a href="#3-v-model-传值" class="headerlink" title="3.v-model 传值"></a>3.v-model 传值</h3><p><a target="_blank" rel="noopener" href="https://cn.vuejs.org/guide/components/v-model.html">看官网</a></p>
 <h2 id="兄弟组件传值"><a href="#兄弟组件传值" class="headerlink" title="兄弟组件传值"></a>兄弟组件传值</h2><h3 id="1-通过父组件比较繁琐"><a href="#1-通过父组件比较繁琐" class="headerlink" title="1.通过父组件比较繁琐"></a>1.通过父组件比较繁琐</h3><h3 id="2-通过-mitt"><a href="#2-通过-mitt" class="headerlink" title="2.通过 mitt"></a>2.通过 mitt</h3><h4 id="1）-下载安装"><a href="#1）-下载安装" class="headerlink" title="1）.下载安装"></a>1）.下载安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install mitt -S</span><br></pre></td></tr></table></figure>
 
 <h4 id="2）-新建文件夹"><a href="#2）-新建文件夹" class="headerlink" title="2）.新建文件夹"></a>2）.新建文件夹</h4><p>src&#x2F;plugins&#x2F;Bus.js</p>
@@ -117,8 +113,7 @@
 <h2 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">//父组件：提供</span><br><span class="line">provide(/* 注入名 */ <span class="string">&#x27;message&#x27;</span>, /* 值 */ <span class="string">&#x27;hello!&#x27;</span>)</span><br><span class="line">//如果你想确保提供的数据不能被注入方的组件更改，你可以使用 <span class="built_in">readonly</span>() 来包装提供的值</span><br><span class="line">provide(<span class="string">&#x27;read-only-message&#x27;</span>, <span class="built_in">readonly</span>(message))</span><br><span class="line"></span><br><span class="line">//子孙组件：注入</span><br><span class="line">const message = inject(<span class="string">&#x27;message&#x27;</span>)</span><br><span class="line"></span><br><span class="line">//注入默认值</span><br><span class="line">// 如果没有祖先组件提供 <span class="string">&quot;message&quot;</span></span><br><span class="line">// `value` 会是 <span class="string">&quot;这是默认值&quot;</span></span><br><span class="line">const value = inject(<span class="string">&#x27;message&#x27;</span>, <span class="string">&#x27;这是默认值&#x27;</span>)</span><br><span class="line"></span><br><span class="line">//使用 Symbol 作注入名</span><br><span class="line">我们通常推荐在一个单独的文件中导出这些注入名 Symbol：</span><br><span class="line">// keys.js</span><br><span class="line"><span class="built_in">export</span> const myInjectionKey = Symbol()</span><br><span class="line"></span><br><span class="line">// 在供给方组件中</span><br><span class="line">import &#123; provide &#125; from <span class="string">&#x27;vue&#x27;</span></span><br><span class="line">import &#123; myInjectionKey &#125; from <span class="string">&#x27;./keys.js&#x27;</span></span><br><span class="line">provide(myInjectionKey, &#123; /*</span><br><span class="line">  要提供的数据</span><br><span class="line">*/ &#125;);</span><br><span class="line"></span><br><span class="line">// 注入方组件</span><br><span class="line">import &#123; inject &#125; from <span class="string">&#x27;vue&#x27;</span></span><br><span class="line">import &#123; myInjectionKey &#125; from <span class="string">&#x27;./keys.js&#x27;</span></span><br><span class="line">const injected = inject(myInjectionKey)</span><br></pre></td></tr></table></figure>
 
 
-<h2 id="js-数组"><a href="#js-数组" class="headerlink" title="js 数组"></a>js 数组</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//使用slice()方法返回一个子数组，在进行reverse； 不会改变原数组</span><br><span class="line">time1 = time.slice().reverse()  //time1数组反转  time数组不变</span><br></pre></td></tr></table></figure>
-<h2 id="js-取整"><a href="#js-取整" class="headerlink" title="js 取整"></a>js 取整</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">parseInt()   //向0取整</span><br><span class="line">Math.floor()  //向下取整</span><br><span class="line">Math.ceil()  //向上取整</span><br><span class="line">Math.trunc()  //去除数字的小数部分，保留整数部分</span><br><span class="line">Math.round()  //返回一个数字四舍五入后的整数部分</span><br></pre></td></tr></table></figure>
+
 
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//刷新页面</span><br><span class="line">&lt;meta http-equiv=<span class="string">&quot;refresh&quot;</span> content=<span class="string">&quot;5&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
 
@@ -126,7 +121,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/01/08/vue3%E7%AC%94%E8%AE%B0/" data-id="cluqxsvrf000ed8v1d28xa5ju" class="article-share-link">
+      <a data-url="http://example.com/2024/01/08/vue3%E7%AC%94%E8%AE%B0/" data-id="clusedxj3000848v14t9g5zls" class="article-share-link">
         分享
       </a>
       
@@ -188,8 +183,8 @@
 
   
 
-  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">1.1k</span>字
-  &emsp;<i class="fe fe-clock"></i> <span class="post-count">5</span>分钟
+  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">900</span>字
+  &emsp;<i class="fe fe-clock"></i> <span class="post-count">4</span>分钟
 
 </article>
 </section>
@@ -197,9 +192,9 @@
   <div class="outer">
     <ul class="list-inline">
       <!-- <ul class="list-inline">
-        <li>全站共<span class="post-count">21.7k</span>字</li>
+        <li>全站共<span class="post-count">23.1k</span>字</li>
       </ul>        -->
-      <li>慕杰blog &copy; 2024</li>
+      <li>慕杰BLOG &copy; 2024</li>
       
         <li>
           
@@ -233,7 +228,7 @@
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="/images/shark.svg" alt="慕杰blog"></a>
+    <a href="/"><img src="/images/shark.svg" alt="慕杰BLOG"></a>
   </div>
   
   <ul class="nav nav-main">

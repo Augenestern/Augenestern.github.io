@@ -10,11 +10,11 @@
   <title>
     手撕底层 |
     
-    慕杰blog
+    慕杰BLOG
   </title>
   <!-- Icon -->
   
-    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/study.svg">
     
   
 <link rel="stylesheet" href="/css/style.css">
@@ -27,13 +27,13 @@
   
 <script src="/js/pace.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="慕杰blog" type="application/atom+xml">
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="慕杰BLOG" type="application/atom+xml">
 </head>
 
 <body>
   <main class="content">
     <section class="outer">
-  <article id="post-每日一题" class="article article-type-post" itemscope
+  <article id="post-手撕底层" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -52,7 +52,7 @@
 
     
     <div class="article-meta">
-      <a href="/2024/01/08/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" class="article-date">
+      <a href="/2024/01/08/%E6%89%8B%E6%92%95%E5%BA%95%E5%B1%82/" class="article-date">
   <time datetime="2024-01-08T05:40:20.283Z" itemprop="datePublished">2024-01-08</time>
 </a>
       
@@ -109,18 +109,11 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//vue3</span><br><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;Form ref=<span class="string">&quot;formValidateRef&quot;</span> :model=<span class="string">&quot;formValidate&quot;</span> :rules=<span class="string">&quot;ruleValidate&quot;</span> :label-width=<span class="string">&quot;80&quot;</span>&gt;&lt;/Form&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script setup&gt;</span><br><span class="line">	import &#123; reactive &#125; from <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line">	// 初始化数据</span><br><span class="line">	const initFormValldate = () =&gt; (&#123;</span><br><span class="line">		xxxa:<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">		xxxb:<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">	&#125;)</span><br><span class="line">	// 表单赋值</span><br><span class="line">	const formValidate = reactive(initFormValidate());</span><br><span class="line">	// 清除表单数据</span><br><span class="line">	Object.asslgn(formValidate, initFormValidate()):</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-<h2 id="六-this-指向"><a href="#六-this-指向" class="headerlink" title="六.this 指向"></a>六.this 指向</h2><p>congsole.log()完整的写法是 window.console.log(),window 可以省略，window 调用了 console.log()方法，所以此时 this 指向 window。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var <span class="built_in">id</span> = 222</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">test</span></span>() &#123;</span><br><span class="line">    console.log(this.id);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">test</span>(&#123;<span class="built_in">id</span>:123&#125;)  //222</span><br><span class="line">//指向的是外层window</span><br></pre></td></tr></table></figure>
-
-<p>call、apply 和 bind 都是用来修改 this 指向的，这三个方法都是函数对象的方法 bind 可自行测试<br>区别：call 和 apply 是立即执行的，而 bind 是不会立即执行的，因为 bind 返回的是函数<br>call()和 bind()可以传递很多实参———————— call(对象，a,b,c,d…)<br>apply()可以传递两个参数，第二个参数是数组 apply(对象，[a,b,c,d…])</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">test</span></span>() &#123;</span><br><span class="line">    console.log(this);</span><br><span class="line">&#125;</span><br><span class="line">test.call(&#123;<span class="built_in">id</span>:123&#125;) //123</span><br><span class="line">//改变this指向</span><br></pre></td></tr></table></figure>
-
-<p>另外，箭头函数没有 this</p>
-<h2 id="七-js-闭包"><a href="#七-js-闭包" class="headerlink" title="七.js 闭包"></a>七.js 闭包</h2><p>1.避免变量污染；2.私有化；3.保存变量，常驻内存</p>
+<h2 id="六-js-闭包"><a href="#六-js-闭包" class="headerlink" title="六.js 闭包"></a>六.js 闭包</h2><p>1.避免变量污染；2.私有化；3.保存变量，常驻内存</p>
 <p>应用场景：防抖，节流，库的封装</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">bibao</span></span>() &#123;</span><br><span class="line">    <span class="built_in">let</span> num = 1;</span><br><span class="line">    <span class="keyword">function</span> nbFn(val) &#123;</span><br><span class="line">        num += val;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span>&#123;</span><br><span class="line">        add:<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">            nbFn(2);</span><br><span class="line">        &#125;,</span><br><span class="line">        delate:<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">            nbFn(-2);</span><br><span class="line">        &#125;,</span><br><span class="line">        value:<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">            <span class="built_in">return</span> num</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">let</span> c1 = bibao();</span><br><span class="line">console.log(c1);</span><br></pre></td></tr></table></figure>
 
-<h2 id="八-new-关键字"><a href="#八-new-关键字" class="headerlink" title="八.new 关键字"></a>八.new 关键字</h2><p>1.创建一个空对象</p>
+<h2 id="七-new-关键字"><a href="#七-new-关键字" class="headerlink" title="七.new 关键字"></a>七.new 关键字</h2><p>1.创建一个空对象</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> obj = Object.create()</span><br></pre></td></tr></table></figure>
 
 <p>2.设置它的原型链</p>
@@ -146,7 +139,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/01/08/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" data-id="cluqxsvrh000jd8v139wpa0ia" class="article-share-link">
+      <a data-url="http://example.com/2024/01/08/%E6%89%8B%E6%92%95%E5%BA%95%E5%B1%82/" data-id="clusedxje000g48v1bh64g4e8" class="article-share-link">
         分享
       </a>
       
@@ -208,8 +201,8 @@
 
   
 
-  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">2.1k</span>字
-  &emsp;<i class="fe fe-clock"></i> <span class="post-count">10</span>分钟
+  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">1.9k</span>字
+  &emsp;<i class="fe fe-clock"></i> <span class="post-count">9</span>分钟
 
 </article>
 </section>
@@ -217,9 +210,9 @@
   <div class="outer">
     <ul class="list-inline">
       <!-- <ul class="list-inline">
-        <li>全站共<span class="post-count">21.7k</span>字</li>
+        <li>全站共<span class="post-count">23.1k</span>字</li>
       </ul>        -->
-      <li>慕杰blog &copy; 2024</li>
+      <li>慕杰BLOG &copy; 2024</li>
       
         <li>
           
@@ -253,7 +246,7 @@
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="/images/shark.svg" alt="慕杰blog"></a>
+    <a href="/"><img src="/images/shark.svg" alt="慕杰BLOG"></a>
   </div>
   
   <ul class="nav nav-main">

@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>前端-浏览器缓存</title>
+    <url>/2024/04/09/%E5%89%8D%E7%AB%AF%E8%AF%BE%E7%A8%8B-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/</url>
+    <content><![CDATA[<span id="more"></span>
+
+
+]]></content>
+  </entry>
+  <entry>
     <title>webpack和vite笔记</title>
     <url>/2024/03/30/webpack%E5%92%8Cvite%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
     <content><![CDATA[<p> webpack，vite</p>
@@ -10,15 +18,39 @@
   <entry>
     <title>css笔记</title>
     <url>/2024/03/25/css%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
-    <content><![CDATA[<p>css 中的伪类：before 与 after</p>
+    <content><![CDATA[<p>position 布局，transform 的基本使用和常用特效，display常用方法,外边距塌陷,css 中的伪类：before 与 after</p>
 <span id="more"></span>
 
-<h3 id="css-中的伪类：before-与-after"><a href="#css-中的伪类：before-与-after" class="headerlink" title="css 中的伪类：before 与 after"></a>css 中的伪类：before 与 after</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//破碎图片占位,当用户网络出现问题的时候，可能会造成某些图片的访问失败</span><br><span class="line"></span><br><span class="line">img::before &#123;</span><br><span class="line">  background-color: <span class="comment">#eeeeee;</span></span><br><span class="line">  border: <span class="comment">#aaaaaa;</span></span><br><span class="line">  display: block;</span><br><span class="line">  height: 100%;</span><br><span class="line">  content: attr(alt);</span><br><span class="line">  text-align: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//自定义引用样式</span><br><span class="line">blockquote::before &#123;</span><br><span class="line">  content: open-quote;</span><br><span class="line">  top: 0;</span><br><span class="line">  left: 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">blockquote::after &#123;</span><br><span class="line">  content: close-quote;</span><br><span class="line">  bottom: 0;</span><br><span class="line">  right: 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">blockquote::before,</span><br><span class="line">blockquote::after &#123;</span><br><span class="line">  background-color: <span class="comment">#cccccc;</span></span><br><span class="line">  display: block;</span><br><span class="line">  width: 60px;</span><br><span class="line">  height: 60px;</span><br><span class="line">  line-height: 1.618;</span><br><span class="line">  font-size: 3em;</span><br><span class="line">  border-radius: 100%;</span><br><span class="line">  text-align: center;</span><br><span class="line">  position: absolute;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//图片渐变叠加</span><br><span class="line">figure::before &#123;</span><br><span class="line">  background-image: linear-gradient(to top right, <span class="comment">#1a1a1a, transparent);</span></span><br><span class="line">  content: <span class="string">&quot;&quot;</span>;</span><br><span class="line">  height: 100%;</span><br><span class="line">  position: absolute;</span><br><span class="line">  width: 100%;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="html中meta什么作用-HTML中各种常用meta标签的作用"><a href="#html中meta什么作用-HTML中各种常用meta标签的作用" class="headerlink" title="html中meta什么作用,HTML中各种常用meta标签的作用"></a>html中meta什么作用,HTML中各种常用meta标签的作用</h3><p><a href="https://blog.csdn.net/weixin_32643811/article/details/117950069">查看</a></p>
-<h3 id="媒体查询（media-query）"><a href="#媒体查询（media-query）" class="headerlink" title="媒体查询（media query）"></a>媒体查询（media query）</h3><p>媒体查询是css3新语法，可以针对不同的媒体类型定义不同的样式，可简单理解为根据页面不同的宽度，来使用不同的css样式。</p>
+<h2 id="position"><a href="#position" class="headerlink" title="position"></a>position</h2><p>Position 的属性值有：<br>1.Absolute：绝对定位，是相对于最近的且不是 static 定位的父元素来定位<br>2.Fixed：绝对定位，是相对于浏览器窗口来定位的，是固定的，不会跟屏幕一起滚动。<br>3.Relative：相对定位，是相对于其原本的位置来定位的。<br>4.Static：默认值，没有定位。<br>5.Inherit：继承父元素的 position 值</p>
+<h2 id="transform-的基本使用和常用特效"><a href="#transform-的基本使用和常用特效" class="headerlink" title="transform 的基本使用和常用特效"></a>transform 的基本使用和常用特效</h2><h3 id="1-平移"><a href="#1-平移" class="headerlink" title="1.平移"></a>1.平移</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/* x表示x轴移动的坐标，y表示y轴移动的坐标 */</span><br><span class="line">/* transform: translate(30px,30px); */</span><br><span class="line">/* x轴移动的坐标，y轴不变  */</span><br><span class="line">/* transform: translateX(30px); */</span><br><span class="line">/* y轴移动的坐标，x轴不变  */</span><br><span class="line">/* transform: translateY(30px); */</span><br><span class="line">/* 百分比参照的单位是自身的宽高，在这里也就是100px; */</span><br><span class="line">/* transform: translate(50%,50%); */</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-旋转"><a href="#2-旋转" class="headerlink" title="2.旋转"></a>2.旋转</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/* deg相当于度单位，表示旋转45度; */</span><br><span class="line">/* transform: rotate(45deg); */</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.first &#123;</span><br><span class="line">    margin: 50px auto;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 200px;</span><br><span class="line">    border: 2px solid brown;</span><br><span class="line">    /*不要上边框和左边框后旋转45度即可*/</span><br><span class="line">    border-top: none;</span><br><span class="line">    border-left: none;</span><br><span class="line">    transform: rotate(45deg);</span><br><span class="line">    transition: transform 0.5s;  //设置transform动画效果时间</span><br><span class="line">    // transform-origin设置旋转中心点</span><br><span class="line">    /* transform-origin: bottom left; */</span><br><span class="line">    /* transform-origin: 50px 50px;  */</span><br><span class="line">&#125;</span><br><span class="line">.first:hover &#123;</span><br><span class="line">    transform: rotate(225deg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-缩放"><a href="#3-缩放" class="headerlink" title="3.缩放"></a>3.缩放</h3><p>不会影响其他盒子</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/*  transition: transform 0.7s; //设置transform动画效果时间 */</span><br><span class="line">.first:hover &#123;</span><br><span class="line">    /* 表示xy的倍数，小于1的为缩小，大于1为放大 */</span><br><span class="line">    /* transform: scale(2,2); */</span><br><span class="line">    /* 也可以写成一个表示xy比例一样 */</span><br><span class="line">    /* transform: scale(2); */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-倾斜"><a href="#4-倾斜" class="headerlink" title="4.倾斜"></a>4.倾斜</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">transform:skew(30deg);</span><br><span class="line">transform:skew(30deg,30deg);</span><br><span class="line"><span class="comment"># 一个参数时：表示水平方向的倾斜角度。</span></span><br><span class="line"><span class="comment"># 两个参数时：第一个参数表示水平方向的倾斜角度，第二个参数表示垂直方向的倾斜角度 。</span></span><br><span class="line"><span class="comment"># skew 的默认原点 transform-origin 是这个物件的中心点。</span></span><br></pre></td></tr></table></figure>
+<h3 id="5-transform-动画效果"><a href="#5-transform-动画效果" class="headerlink" title="5.transform 动画效果"></a>5.transform 动画效果</h3><p><a href="https://code84.com/727426.html">详情</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">transition: transform 0.2s ease-in-out;</span><br></pre></td></tr></table></figure>
+
+<h2 id="transform-的基本使用和常用特效-1"><a href="#transform-的基本使用和常用特效-1" class="headerlink" title="transform 的基本使用和常用特效"></a>transform 的基本使用和常用特效</h2><p>1.animation：动画<br>2.*animation-name：关键帧的名字，该参数必需。<br>3.*animation-duration：动画持续的时间，该参数必需。<br>4.animation-timing-function：定时器函数，默认是ease。<br>5.animation-delay：动画效果多少秒后开始，默认为0。<br>6.animation-iteration-count：动画重复的次数，可以指定为一个整数，表示多少次，默认值是infinite关键字，表示无限次。<br>7.animation-direction：动画方向，可能的值为forward、backward或alternating，默认值为normal。<br>8.animation-fill-mode：默认值为none。<br>9.animation-play-state：动画默认是否生效，默认值为running。</p>
+<h3 id="keyframes"><a href="#keyframes" class="headerlink" title="@keyframes"></a>@keyframes</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">@keyframes myname &#123;</span><br><span class="line">  0% &#123;</span><br><span class="line">    top: 0px;</span><br><span class="line">  &#125;</span><br><span class="line">  25% &#123;</span><br><span class="line">    top: 200px;</span><br><span class="line">  &#125;</span><br><span class="line">  50% &#123;</span><br><span class="line">    top: 100px;</span><br><span class="line">  &#125;</span><br><span class="line">  75% &#123;</span><br><span class="line">    top: 200px;</span><br><span class="line">  &#125;</span><br><span class="line">  100% &#123;</span><br><span class="line">    top: 0px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keyframes rotation &#123;</span><br><span class="line">  from &#123;</span><br><span class="line">    transform: rotate(90deg);</span><br><span class="line">  &#125;</span><br><span class="line">  to &#123;</span><br><span class="line">    transform: rotate(450deg);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="display常用方法"><a href="#display常用方法" class="headerlink" title="display常用方法"></a>display常用方法</h2><h3 id="1-flex布局"><a href="#1-flex布局" class="headerlink" title="1.flex布局"></a>1.flex布局</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">flex-direction: 决定主轴的方向(即项目的排列方向)</span><br><span class="line">  默认值：row，主轴为水平方向，起点在左端。</span><br><span class="line">  row-reverse：主轴为水平方向，起点在右端</span><br><span class="line">  column：主轴为垂直方向，起点在上沿</span><br><span class="line">  column-reverse：主轴为垂直方向，起点在下沿</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">flex-wrap: 决定容器内项目是否可换行</span><br><span class="line">  默认值：nowrap 不换行，即当主轴尺寸固定时，当空间不足时，项目尺寸会随之调整(变形)而并不会挤到下一行。</span><br><span class="line">  wrap：项目主轴总尺寸超出容器时换行，第一行在上方</span><br><span class="line">  wrap-reverse：换行，第一行在下方</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">justify-content：定义了项目在主轴的对齐方式。</span><br><span class="line">  默认值: flex-start 左对齐</span><br><span class="line">  flex-end：右对齐</span><br><span class="line">  center：居中</span><br><span class="line">  space-between：两端对齐，项目之间的间隔相等，即剩余空间等分成间隙。</span><br><span class="line">  space-around：每个项目两侧的间隔相等，所以项目之间的间隔比项目与边缘的间隔大一倍。(边0.5，间隔1)</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">align-items: 定义了项目在交叉轴上的对齐方式</span><br><span class="line">  默认值为 stretch 即如果项目未设置高度或者设为 auto，将占满整个容器的高度。</span><br><span class="line">  flex-start：交叉轴的起点对齐</span><br><span class="line">  flex-end：交叉轴的终点对齐</span><br><span class="line">  center：交叉轴的中点对齐</span><br><span class="line">  baseline: 项目的第一行文字的基线对齐</span><br></pre></td></tr></table></figure>
+
+<h2 id="外边距塌陷"><a href="#外边距塌陷" class="headerlink" title="外边距塌陷"></a>外边距塌陷</h2><p>外边距只塌路也称外边距合并，在文档流中相邻兄弟或父子关系的块级元素的外边距组合在一起变成单个外边距，只有在上下外边距才会出现塌陷，左右不会出现<br>解析，1.两个嵌套块级元素Q，父元素如果没有上补白和上边框，那么它的上边距会和它的文档流中的的第一个子元素的上边距重叠，取两者较大的值，父元素上的外边距为0，也会发生合并。(通俗来说: 子元素找不到父元素的border或者padding.就会与父元素上边距重季)<br>2.两人相邻块级元素，如果上面的元素存在外边距margin-bottom,下面的元素存在外边距margin-top,那么它们之间外边距不是margin-bottom + margin-top.而是取两者最人值外边距</p>
+<h3 id="1-外边距计算方式"><a href="#1-外边距计算方式" class="headerlink" title="1.外边距计算方式"></a>1.外边距计算方式</h3><p>1.两个值为正数，取较大值<br>2.两个值为负数，取绝对值Q较大的值<br>3.一正一负，取两个值的和</p>
+<h3 id="2-解决方式-父元素"><a href="#2-解决方式-父元素" class="headerlink" title="2.解决方式(父元素)"></a>2.解决方式(父元素)</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1.border: 1px solid <span class="comment">#fff</span></span><br><span class="line">2.<span class="built_in">float</span>: left.</span><br><span class="line">3.position: absolute</span><br><span class="line">4.padding: 1px</span><br><span class="line">5.display: inline-block</span><br><span class="line">6.overflow. hidden</span><br><span class="line">7.overflow: auto</span><br></pre></td></tr></table></figure>
+
+<h2 id="css-中的伪类：before-与-after"><a href="#css-中的伪类：before-与-after" class="headerlink" title="css 中的伪类：before 与 after"></a>css 中的伪类：before 与 after</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//破碎图片占位,当用户网络出现问题的时候，可能会造成某些图片的访问失败</span><br><span class="line"></span><br><span class="line">img::before &#123;</span><br><span class="line">  background-color: <span class="comment">#eeeeee;</span></span><br><span class="line">  border: <span class="comment">#aaaaaa;</span></span><br><span class="line">  display: block;</span><br><span class="line">  height: 100%;</span><br><span class="line">  content: attr(alt);</span><br><span class="line">  text-align: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//自定义引用样式</span><br><span class="line">blockquote::before &#123;</span><br><span class="line">  content: open-quote;</span><br><span class="line">  top: 0;</span><br><span class="line">  left: 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">blockquote::after &#123;</span><br><span class="line">  content: close-quote;</span><br><span class="line">  bottom: 0;</span><br><span class="line">  right: 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">blockquote::before,</span><br><span class="line">blockquote::after &#123;</span><br><span class="line">  background-color: <span class="comment">#cccccc;</span></span><br><span class="line">  display: block;</span><br><span class="line">  width: 60px;</span><br><span class="line">  height: 60px;</span><br><span class="line">  line-height: 1.618;</span><br><span class="line">  font-size: 3em;</span><br><span class="line">  border-radius: 100%;</span><br><span class="line">  text-align: center;</span><br><span class="line">  position: absolute;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//图片渐变叠加</span><br><span class="line">figure::before &#123;</span><br><span class="line">  background-image: linear-gradient(to top right, <span class="comment">#1a1a1a, transparent);</span></span><br><span class="line">  content: <span class="string">&quot;&quot;</span>;</span><br><span class="line">  height: 100%;</span><br><span class="line">  position: absolute;</span><br><span class="line">  width: 100%;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="html中meta什么作用-HTML中各种常用meta标签的作用"><a href="#html中meta什么作用-HTML中各种常用meta标签的作用" class="headerlink" title="html中meta什么作用,HTML中各种常用meta标签的作用"></a>html中meta什么作用,HTML中各种常用meta标签的作用</h2><p><a href="https://blog.csdn.net/weixin_32643811/article/details/117950069">查看</a></p>
+<h2 id="媒体查询（media-query）"><a href="#媒体查询（media-query）" class="headerlink" title="媒体查询（media query）"></a>媒体查询（media query）</h2><p>媒体查询是css3新语法，可以针对不同的媒体类型定义不同的样式，可简单理解为根据页面不同的宽度，来使用不同的css样式。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">///and only not;</span><br><span class="line">@media media-type and (media-feature) &#123;</span><br><span class="line">  /* CSS 样式规则 */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">media-type 可以是 screen--(用于电脑屏幕，ipad，手机等)、<span class="built_in">print</span>--(用于打印机)、all--(用于所有设备) 等，表示媒体类型。</span><br><span class="line">media-feature 是一个媒体特性，例如 width、height、orientation 等，用于检查设备属性。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/* 默认样式 */</span><br><span class="line">p &#123;</span><br><span class="line">  font-size: 16px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 在小屏幕上调整文本大小 */</span><br><span class="line">@media screen and (max-width: 768px) &#123;</span><br><span class="line">  p &#123;</span><br><span class="line">    font-size: 14px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 在非常小的屏幕上进一步调整文本大小 */</span><br><span class="line">@media screen and (max-width: 480px) &#123;</span><br><span class="line">  p &#123;</span><br><span class="line">    font-size: 12px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p><a href="https://blog.csdn.net/jhxl_/article/details/132400594">详细</a></p>
-<h3 id="ES6基本语法"><a href="#ES6基本语法" class="headerlink" title="ES6基本语法"></a>ES6基本语法</h3><p><a href="https://blog.csdn.net/See_Star/article/details/121566165">查看</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -30,8 +62,40 @@
 <h3 id="谈谈你对-vue-的理解"><a href="#谈谈你对-vue-的理解" class="headerlink" title="谈谈你对 vue 的理解"></a>谈谈你对 vue 的理解</h3><p>1.1 声明式框架，单页面应用<br>1.2MVVM 模式<br>1.3 采用虚拟 DOM：传统更新页面，拼接一个完整的字符串 innerHTML 全部重新渲染，添加虚拟 DOM 后，可以比较新旧虚拟节点，找到变化在更新。虚拟 DOM 就是一个对象，用来描述真实 DOM 的。<br>1.4 区分编译时和运行时:<br>vue 的渲染核心就是调用渲染（render）方法将虚拟 DOM 渲染成真实 DOM。<br>1.5 组件化：实现高内聚，低耦合，单项数据流；</p>
 <h3 id="谈谈你对-SPA-的理解"><a href="#谈谈你对-SPA-的理解" class="headerlink" title="谈谈你对 SPA 的理解"></a>谈谈你对 SPA 的理解</h3><p>· SPA (single-page application) 单页应用，默认情况下我们编写 Vue、React 都只有一个 html 页面，并且提供一个挂载点，最终打包后会再此页面中引入对应的资源。（页面的渲染全部是由 JS 动态进行渲染的）。切换页面时通过监听路由变化，渲染对应的页面 Client Side Rendering,客户端渲染 CSR.<br>· MPA (Multi-page application) 多页应用，1 多个 htm1 页面。每个页面必须重复加载，js, css 等相关资源。（服务端返回完整的 html，同时数据也可以再后端进行获取一并返回“模板引擎”）。多页应用跳转需要整页资源刷新。Server Side Rendering，服务器端渲染 SSR<br>如何分清在哪渲染：HTML 是在前端动态生成的“客户端渲染”，在服务端处理好并返回的是“服务端渲染”</p>
 <p>1.2 优缺点</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">                单页面应用(SPA)         多页面应用(MPA)</span><br><span class="line">组成            一个主页面和页面组件     多个完整的页面</span><br><span class="line">刷新方式        局部刷新                整页刷新</span><br><span class="line">SEO搜索引擎优化 无法实现                容易实现</span><br><span class="line">页面切换        速度快，用户体验良好     切换加载资源，速度慢，用户体验差</span><br><span class="line">维护成本        相对容易                相对复杂</span><br></pre></td></tr></table></figure>
-
+<table>
+<thead>
+<tr>
+<th>区别</th>
+<th>单页面应用(SPA)</th>
+<th>多页面应用(MPA)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>组成</td>
+<td>一个主页面和页面组件</td>
+<td>多个完整的页面</td>
+</tr>
+<tr>
+<td>刷新方式</td>
+<td>局部刷新</td>
+<td>整页刷新</td>
+</tr>
+<tr>
+<td>SEO 搜索引擎优化</td>
+<td>无法实现</td>
+<td>容易实现</td>
+</tr>
+<tr>
+<td>页面切换</td>
+<td>速度快，用户体验良好</td>
+<td>切换加载资源，速度慢，用户体验差</td>
+</tr>
+<tr>
+<td>维护成本</td>
+<td>相对容易</td>
+<td>相对复杂</td>
+</tr>
+</tbody></table>
 <p>·用户体验好、快，内容的改变不需要重新加载整个页面，服务端压力小。• SPA 应用不利于搜索引擎的抓取。<br>·首次渲染速度相对较慢（第一次返回空的 html,需要再次请求首屏数据）白屏时间长。</p>
 <p>1.3 解决方案<br>·静态页面预這染(Static Site Generation) SSG，在构建时生成完整的 html 页面。（就是在打包的时候,，<br>先将页面放到浏览器中运行一下，将 HTML 保存起来），仅适合静态页面网站。变化率不高的网站<br>· SSR + CSR 的方式，首屏采用服务端渲染的方式，后续交互采用客户端渲染方式。NuxtJs</p>
 <h3 id="vue-为什么需要虚拟-DOM"><a href="#vue-为什么需要虚拟-DOM" class="headerlink" title="vue 为什么需要虚拟 DOM"></a>vue 为什么需要虚拟 DOM</h3><p>1.1 基本概念<br>基本上所有框架都引入了虚拟 DOM 来对真实 DOM 进行抽象，也就是现在大家所熟知的 VNode 和 VDOM<br>· Virtual DOM 就是用 js 对象来描述真实 DOM，是对真实 DOM 的抽象，由于直接操作 DOM 性能低但是 js 层的操作效率高，可以将 DOM 操作转化成对象操作，最终通过 diff 算法比对差异进行更新 DOM （减少了对真实 DOM 的操作）。<br>·虚拟 DOM 不依赖真实平台环境从而也可以实现跨平台。<br>1.2 补充：VDOM 是如何生成的?<br>·在 vue 中我们常常会为组件编写模板 -template ·这个模板会被编译器编译为渲染函数-render<br>·在接下来的挂载过程中会调用 render 函数，返回的对象就是虚拟 dom ·会在后续的 patch 过程中进一步转化为真实 dom.<br>1.3 再次补充：VDOM 如何做 diff 的?·挂载过程结束后，会记录第一次生成的 VDOM -oldVnode<br>·当响应式数据发生变化时，将会引起组件重新 render，此时就会生成新的 VDOM - newVnode<br>·使用 oldVnode 与 newVnode 做 diff 操作，将更改的部分应到真实 DOM 上，从而转换为最小量的 dom 操作，高效更新视图</p>
@@ -81,20 +145,24 @@
 
 <p>在 Vue.js 3 中，虽然过滤器的概念仍然存在，但是其用法已经有了较大的变化。Vue.js 3 推荐的更现代的方式是使用函数或计算属性来代替过滤器。这是因为 Vue.js 3 引入了 Composition API（组合式 API），使得组件内部的逻辑更加灵活和可复用，而过滤器的功能可以通过组合式 API 更好地实现。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123; uppercaseMessage &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123; formattedAmount &#125;&#125;&lt;/p&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; ref, computed &#125; from <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  <span class="function"><span class="title">setup</span></span>() &#123;</span><br><span class="line">    const message = ref(<span class="string">&#x27;hello, vue!&#x27;</span>);</span><br><span class="line">    const amount = ref(1000);</span><br><span class="line"></span><br><span class="line">    // 使用计算属性来转换文本为大写</span><br><span class="line">    const uppercaseMessage = computed(() =&gt; message.value.toUpperCase());</span><br><span class="line"></span><br><span class="line">    // 使用计算属性来格式化金额为货币形式</span><br><span class="line">    const formattedAmount = computed(() =&gt; &#x27;$&#x27; + amount.value.toFixed(<span class="number">2</span>));</span><br><span class="line"></span><br><span class="line">    <span class="built_in">return</span> &#123;</span><br><span class="line">      uppercaseMessage,</span><br><span class="line">      formattedAmount</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="v-once使用场景"><a href="#v-once使用场景" class="headerlink" title="v-once使用场景"></a>v-once使用场景</h3><p>用于执行一次性地将元素和组件的内容渲染一次，并且不再对其进行响应式更新。这意味着，一旦数据发生变化，使用了 v-once 的元素或组件的内容将不再更新。<br>v-once 主要用于那些不需要响应式更新的静态内容，以提高性能并避免不必要的重新渲染。例如，在展示一些静态数据，或者某些只需要初始化一次的内容时，可以考虑使用 v-once。</p>
-<p>在vue3.2之后又加了v-memo指令,只有限定的值发生改变才会更新</p>
+
+<h3 id="v-once-使用场景"><a href="#v-once-使用场景" class="headerlink" title="v-once 使用场景"></a>v-once 使用场景</h3><p>用于执行一次性地将元素和组件的内容渲染一次，并且不再对其进行响应式更新。这意味着，一旦数据发生变化，使用了 v-once 的元素或组件的内容将不再更新。<br>v-once 主要用于那些不需要响应式更新的静态内容，以提高性能并避免不必要的重新渲染。例如，在展示一些静态数据，或者某些只需要初始化一次的内容时，可以考虑使用 v-once。</p>
+<p>在 vue3.2 之后又加了 v-memo 指令,只有限定的值发生改变才会更新</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;div v-memo=<span class="string">&quot;[valueA,B]&quot;</span>&gt;</span><br><span class="line">&lt;..&gt;...</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">111</span><br></pre></td></tr></table></figure>
 
-<h3 id="Vue-mixin的使用场景及原理"><a href="#Vue-mixin的使用场景及原理" class="headerlink" title="Vue.mixin的使用场景及原理"></a>Vue.mixin的使用场景及原理</h3><p>mixin（混入），提供了一种非常灵活的方式，来分发 Vue 组件中的可复用功能。<br>本质其实就是一个js对象，它可以包含我们组件中任意功能选项，如data、components、methods、created、computed等等<br>我们只要将共用的功能以对象的方式传入 mixins 选项中，当组件使用 mixins 对象时所有mixins对象的选项都将被混入该组件本身的选项中来</p>
+<h3 id="Vue-mixin-的使用场景及原理"><a href="#Vue-mixin-的使用场景及原理" class="headerlink" title="Vue.mixin 的使用场景及原理"></a>Vue.mixin 的使用场景及原理</h3><p>mixin（混入），提供了一种非常灵活的方式，来分发 Vue 组件中的可复用功能。<br>本质其实就是一个 js 对象，它可以包含我们组件中任意功能选项，如 data、components、methods、created、computed 等等<br>我们只要将共用的功能以对象的方式传入 mixins 选项中，当组件使用 mixins 对象时所有 mixins 对象的选项都将被混入该组件本身的选项中来</p>
 <p>1.局部混入</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义一个mixin对象</span></span><br><span class="line">var myMixin = &#123;</span><br><span class="line">  created: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    this.hello()</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    hello: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      console.log(<span class="string">&#x27;hello from mixin!&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 组件通过mixins属性调用mixin对象</span></span><br><span class="line">Vue.component(<span class="string">&#x27;componentA&#x27;</span>,&#123;</span><br><span class="line">  mixins: [myMixin]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment"># 该组件在使用的时候，混合了mixin里面的方法，在自动执行created生命钩子，执行hello方法</span></span><br></pre></td></tr></table></figure>
+
 <p>2.全局混入</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 通过Vue.mixin()进行全局的混入</span></span><br><span class="line"></span><br><span class="line">Vue.mixin(&#123;</span><br><span class="line">  created: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      console.log(<span class="string">&quot;全局混入&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment"># 使用全局混入需要特别注意，因为它会影响到每一个组件实例（包括第三方组件）</span></span><br><span class="line"><span class="comment"># PS：全局混入常用于插件的编写</span></span><br></pre></td></tr></table></figure>
-<p>注意：<br>当组件存在与mixin对象相同的选项的时候，进行递归合并的时候组件的选项会覆盖mixin的选项<br>但是如果相同选项为生命周期钩子的时候，会合并成一个数组，先执行mixin的钩子，再执行组件的钩子</p>
-<p>（1）使用场景：<br>在日常的开发中，我们经常会遇到在不同的组件中经常会需要用到一些相同或者相似的代码，这些代码的功能相对独立<br>这时，可以通过Vue的mixin功能将相同或者相似的代码提出来</p>
-<p>（2）源码分析：<br>优先递归处理 mixins<br>先遍历合并parent 中的key，调用mergeField方法进行合并，然后保存在变量options<br>再遍历 child，合并补上 parent 中没有的key，调用mergeField方法进行合并，保存在变量options<br>通过 mergeField 函数进行了合并</p>
-<p>合并策略：替换型，合并型，队列型，叠加型<br>1.替换型合并有props、methods、inject、computed，同名的props、methods、inject、computed会被后来者代替。<br>2.合并型合并有：data。当目标 data 对象不包含当前属性时，调用 set 方法进行合并（set方法其实就是一些合并重新赋值的方法）当目标 data 对象包含当前属性并且当前值为纯对象时，递归合并当前对象值，这样做是为了防止对象存在新增属性<br>3.队列型合并有：全部 生命周期 和 watch被合并为一个数组，然后正序遍历一次执行。先执行mixin的钩子，再执行组件的钩子<br>4.叠加型有component、directives、filters，通过原型链进行层层的叠加</p>
+
+<p>注意：<br>当组件存在与 mixin 对象相同的选项的时候，进行递归合并的时候组件的选项会覆盖 mixin 的选项<br>但是如果相同选项为生命周期钩子的时候，会合并成一个数组，先执行 mixin 的钩子，再执行组件的钩子</p>
+<p>（1）使用场景：<br>在日常的开发中，我们经常会遇到在不同的组件中经常会需要用到一些相同或者相似的代码，这些代码的功能相对独立<br>这时，可以通过 Vue 的 mixin 功能将相同或者相似的代码提出来</p>
+<p>（2）源码分析：<br>优先递归处理 mixins<br>先遍历合并 parent 中的 key，调用 mergeField 方法进行合并，然后保存在变量 options<br>再遍历 child，合并补上 parent 中没有的 key，调用 mergeField 方法进行合并，保存在变量 options<br>通过 mergeField 函数进行了合并</p>
+<p>合并策略：替换型，合并型，队列型，叠加型 1.替换型合并有 props、methods、inject、computed，同名的 props、methods、inject、computed 会被后来者代替。 2.合并型合并有：data。当目标 data 对象不包含当前属性时，调用 set 方法进行合并（set 方法其实就是一些合并重新赋值的方法）当目标 data 对象包含当前属性并且当前值为纯对象时，递归合并当前对象值，这样做是为了防止对象存在新增属性 3.队列型合并有：全部 生命周期 和 watch 被合并为一个数组，然后正序遍历一次执行。先执行 mixin 的钩子，再执行组件的钩子 4.叠加型有 component、directives、filters，通过原型链进行层层的叠加</p>
 ]]></content>
   </entry>
   <entry>
@@ -144,9 +212,129 @@
 ]]></content>
   </entry>
   <entry>
+    <title>零散</title>
+    <url>/2024/01/08/%E9%9B%B6%E6%95%A3/</url>
+    <content><![CDATA[<p>filter,数组去重，防抖节流封装，函数柯里化，js 函数缓存，this 指向,js 取整，var const let区别,</p>
+<span id="more"></span>
+
+<h3 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span> a = [1, 2, 3, 14, 15]</span><br><span class="line">//current=&gt;当前值，index=&gt;当前值的下标，array=&gt;这个数组对象</span><br><span class="line"><span class="built_in">let</span> b = a.filter((current, index, array) =&gt; &#123;</span><br><span class="line">    return current &lt; <span class="number">10</span></span><br><span class="line">&#125;)</span><br><span class="line">console.log(b,a);</span><br></pre></td></tr></table></figure>
+
+<h3 id="去重"><a href="#去重" class="headerlink" title="去重"></a>去重</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1.</span><br><span class="line"><span class="built_in">let</span> arr = [12,23,45,32,12,55]</span><br><span class="line">//Set结构不会添加重复的值</span><br><span class="line">//Set实例转数组</span><br><span class="line"><span class="built_in">let</span> item = [...new Set(arr)]  //ES6写法</span><br><span class="line">Array.from(new Set(arr))</span><br><span class="line"></span><br><span class="line">2.</span><br><span class="line"><span class="built_in">let</span> a = [2,3,4,4,2,2,null,null]</span><br><span class="line"><span class="built_in">let</span> b = []</span><br><span class="line">a.forEach((item ,index)=&gt;&#123;</span><br><span class="line">    if(!b.includes(a[index]))&#123;</span><br><span class="line">        b.push(item)&#125;</span><br><span class="line">&#125;)</span><br><span class="line">// console.log(b);</span><br><span class="line"></span><br><span class="line">3.</span><br><span class="line">// indexOf(要搜索的,开始搜索的索引)</span><br><span class="line"><span class="built_in">let</span> xx = a.filter((item,index)=&gt;&#123;</span><br><span class="line">    return a.indexOf(item,<span class="number">0</span>) === index</span><br><span class="line">&#125;)</span><br><span class="line">console.log(xx);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="防抖节流封装"><a href="#防抖节流封装" class="headerlink" title="防抖节流封装"></a>防抖节流封装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//防抖   一直提交，直到最后一次停留<span class="built_in">wait</span>秒才发起请求</span><br><span class="line"><span class="keyword">function</span> antiShake(fn,<span class="built_in">wait</span>) &#123;</span><br><span class="line">    <span class="built_in">let</span> timeOut = null</span><br><span class="line">    <span class="built_in">return</span> args =&gt;&#123;</span><br><span class="line">        <span class="keyword">if</span>(timeOut) clearTimeout(timeOut)</span><br><span class="line">        timeOut = setTimeout(fn,<span class="built_in">wait</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//测试</span><br><span class="line"><span class="built_in">let</span> ceshi = antiShake(func, 2000)</span><br><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line">    ceshi()</span><br><span class="line">&#125;, <span class="number">1000</span>)</span><br><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line">    ceshi()</span><br><span class="line">&#125;, <span class="number">2000</span>)</span><br><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line">    ceshi()</span><br><span class="line">&#125;, <span class="number">3000</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//节流   一直提交，每隔time秒执行一次。还可以通过时间戳执行</span><br><span class="line"><span class="keyword">function</span> throttle(event,time) &#123;</span><br><span class="line">    <span class="built_in">let</span> timer = null</span><br><span class="line">    <span class="built_in">return</span> <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">        <span class="keyword">if</span>(!timer)&#123;</span><br><span class="line">            timer = setTimeout(() =&gt; &#123;</span><br><span class="line">                event()</span><br><span class="line">                timer = null</span><br><span class="line">            &#125;, time);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">let ceshi2 = throttle(func,<span class="number">1000</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="js-函数柯里化"><a href="#js-函数柯里化" class="headerlink" title="js 函数柯里化"></a>js 函数柯里化</h3><p>函数柯里化（Currying）是一种将多个参数的函数转变为接收单一参数的函数序列的过程。通过柯里化，我们可以将多个参数的函数转化为接收一个参数的函数，然后再返回一个新函数，该函数可以继续接收下一个参数，以此类推，直到满足所有参数的条件，最后返回期望的结果。<br>函数柯里化的作用有以下几个方面： 1.参数复用：柯里化允许我们创建可以重复使用的小函数。通过将一个多参数函数转化为接收单一参数的函数，我们可以使用部分应用函数来创建新的函数，并将其应用于具有不同参数的不同上下文中。 2.延迟执行：柯里化也可以用于延迟执行函数。通过转化为接收单一参数的函数序列，我们可以先传递一部分参数，然后在后续需要的时候再传递剩余的参数来执行函数，从而实现函数的延迟执行。 3.函数组合：柯里化可以与函数组合配合使用，实现更复杂的函数操作。通过将多个柯里化函数组合起来，可以实现更高阶的函数组合，从而简化代码并增加代码的可读性。 4.提高函数可测试性：通过柯里化，我们可以将函数的逻辑拆分成多个步骤，并将每个步骤的输入和输出明确化，从而方便进行单元测试。我们可以对每个柯里化函数进行独立测试，而无需考虑其他参数的影响。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//普通写法</span><br><span class="line"><span class="keyword">function</span> add(a,b,c)&#123;</span><br><span class="line">    <span class="built_in">return</span> a+b+c</span><br><span class="line">&#125;</span><br><span class="line">console.log(add(10,20,30))</span><br><span class="line"></span><br><span class="line">//柯里化</span><br><span class="line"><span class="keyword">function</span> sum1(a)&#123;</span><br><span class="line">    <span class="built_in">return</span> <span class="keyword">function</span>(b)&#123;</span><br><span class="line">        <span class="built_in">return</span> <span class="keyword">function</span>(c)&#123;</span><br><span class="line">            <span class="built_in">return</span> a+b+c</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//简化后</span><br><span class="line">var sum2 = a=&gt;b=&gt;c=&gt;&#123;</span><br><span class="line">    <span class="built_in">return</span> a+b+c &#125;</span><br><span class="line">var sum2 = a=&gt;b=&gt;c=&gt;a+b+c</span><br><span class="line">console.log(sum2(10)(20)(30))</span><br></pre></td></tr></table></figure>
+
+<p>例题 1：<br>&#x2F;&#x2F;实现 add(1)(4)(3)(…)(n)<br><a href="https://blog.csdn.net/double_sweet1/article/details/122786636">详细</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">add</span></span>() &#123;</span><br><span class="line">    <span class="built_in">let</span> args = [...arguments];</span><br><span class="line">    <span class="built_in">let</span> inner = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">        args = [...args, ...arguments];</span><br><span class="line">        <span class="built_in">return</span> inner;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //inner本身就是一个函数，因此最后的输出结果就是一个函数，控制台输出的函数是被转换为string类型的字符串了的，转换为string是因为调用了toString方法,所以要改写一下toString方法。</span><br><span class="line">    inner.toString = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">        <span class="built_in">return</span> args.reduce((a, b) =&gt; a + b);</span><br><span class="line">    &#125;</span><br><span class="line">    return inner;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(parseInt(add(<span class="number">1</span>)(<span class="number">3</span>)(<span class="number">4</span>)(<span class="number">5</span>)));</span><br></pre></td></tr></table></figure>
+
+<h3 id="js-函数缓存"><a href="#js-函数缓存" class="headerlink" title="js 函数缓存"></a>js 函数缓存</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// 传统函数写法</span><br><span class="line"><span class="keyword">function</span> add(a, b) &#123;</span><br><span class="line">  <span class="built_in">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line">// 箭头函数写法</span><br><span class="line">const add = (a, b) =&gt; a + b;</span><br><span class="line"></span><br><span class="line">//箭头函数可以使用剩余参数（rest parameter）的语法，用来表示一个不定长度的参数列表，剩余参数会被收集到一个数组中。例如：</span><br><span class="line">const printArgs = (a, ...restArgs) =&gt; &#123;</span><br><span class="line">  console.log(a); // 输出第一个参数</span><br><span class="line">  console.log(restArgs); // 输出剩余参数的数组</span><br><span class="line">&#125;</span><br><span class="line">printArgs(<span class="string">&#x27;foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>); // 输出 <span class="string">&#x27;foo&#x27;</span> 和 [<span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">const memoize = (func, content) =&gt; &#123;</span><br><span class="line">    //在当前函数作用域定义一个空对象，用于缓存函数的运行结果</span><br><span class="line">    <span class="built_in">let</span> cache = Object.create(null);</span><br><span class="line">    content = content || null;</span><br><span class="line">    //运用柯里化返回一个函数</span><br><span class="line">    <span class="built_in">return</span> (...args) =&gt; &#123;</span><br><span class="line">        console.log(<span class="string">&#x27;concent&#x27;</span>, content);</span><br><span class="line">        console.log(<span class="string">&quot;cache&quot;</span>,cache);</span><br><span class="line">        <span class="keyword">if</span> (!cache[args]) &#123;</span><br><span class="line">            console.log(<span class="string">&#x27;调用了:&#x27;</span> , args);</span><br><span class="line">            //call()和apply()：这两个方法允许你在指定的上下文中调用函数，并传递参数。</span><br><span class="line">            //它们的区别在于传递参数的方式不同。call()方法使用逗号分隔的参数列表，而apply()方法使用一个数组作为参数。</span><br><span class="line">            cache[args] = func.call(content, ...args);</span><br><span class="line">            // cache[args] = func.apply(content, args);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> cache[args];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">const add = (a, b) =&gt; a + b</span><br><span class="line">const memoizeAdd = memoize(add);</span><br><span class="line">console.log(memoizeAdd(1,3));</span><br><span class="line">console.log(memoizeAdd(1,3));</span><br><span class="line">console.log(memoizeAdd(3,3));</span><br><span class="line">console.log(memoizeAdd(1,3));</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">在 JavaScript 中， [a, b] = [b, a] 这样的语法是一种常见的用法，用于交换两个变量的值。实际上，这种写法利用了解构赋值的特性，可以很方便地交换两个变量的值，而不需要借助临时变量。</span><br><span class="line">具体来说，当执行 [a, b] = [b, a] 这行代码时，会先创建一个临时数组 [b, a]，然后按顺序将这个数组中的值分别赋给变量 a 和 b，从而实现 a 和 b 的值交换。</span><br><span class="line">因此，[a, b] = [b, a] 是一种优雅且简洁的方法来交换两个变量的值，在实际编程中也比较常见。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">div*3&gt;lorem4 //lorem随机生成字符串。</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> strNum = <span class="string">&#x27;45&#x27;</span></span><br><span class="line">+str  ---&gt; 快速将字符串数字变成number类型</span><br></pre></td></tr></table></figure>
+
+<h3 id="this-指向"><a href="#this-指向" class="headerlink" title="this 指向"></a>this 指向</h3><table>
+<thead>
+<tr>
+<th>调用方式</th>
+<th>示例</th>
+<th>函数中的 this 指向</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>通过 new 调用</td>
+<td>new method()</td>
+<td>新对象</td>
+</tr>
+<tr>
+<td>直接调用</td>
+<td>method()</td>
+<td>全局对象</td>
+</tr>
+<tr>
+<td>通过对象调用</td>
+<td>obj.method()</td>
+<td>前面的对象</td>
+</tr>
+<tr>
+<td>call,apply,bind</td>
+<td>method.call(ctx)</td>
+<td>第一个参数</td>
+</tr>
+</tbody></table>
+<p>congsole.log()完整的写法是 window.console.log(),window 可以省略，window 调用了 console.log()方法，所以此时 this 指向 window。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var <span class="built_in">id</span> = 222</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">test</span></span>() &#123;</span><br><span class="line">    console.log(this.id);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">test</span>(&#123;<span class="built_in">id</span>:123&#125;)  //222</span><br><span class="line">//指向的是外层window</span><br></pre></td></tr></table></figure>
+
+<p>call、apply 和 bind 都是用来修改 this 指向的，这三个方法都是函数对象的方法 bind 可自行测试<br>区别：call 和 apply 是立即执行的，而 bind 是不会立即执行的，因为 bind 返回的是函数<br>call()和 bind()可以传递很多实参———————— call(对象，a,b,c,d…)<br>apply()可以传递两个参数，第二个参数是数组 apply(对象，[a,b,c,d…])</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">test</span></span>() &#123;</span><br><span class="line">    console.log(this);</span><br><span class="line">&#125;</span><br><span class="line">test.call(&#123;<span class="built_in">id</span>:123&#125;) //123</span><br><span class="line">//改变this指向</span><br></pre></td></tr></table></figure>
+
+<p>另外，箭头函数没有 this</p>
+<h3 id="js-取整"><a href="#js-取整" class="headerlink" title="js 取整"></a>js 取整</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">parseInt()   //向0取整</span><br><span class="line">Math.floor()  //向下取整</span><br><span class="line">Math.ceil()  //向上取整</span><br><span class="line">Math.trunc()  //去除数字的小数部分，保留整数部分</span><br><span class="line">Math.round()  //返回一个数字四舍五入后的整数部分</span><br></pre></td></tr></table></figure>
+
+<h3 id="var-const-let区别"><a href="#var-const-let区别" class="headerlink" title="var const let区别"></a>var const let区别</h3><table>
+<thead>
+<tr>
+<th><strong>区别</strong></th>
+<th><strong>var</strong></th>
+<th><strong>let</strong></th>
+<th><strong>const</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>是否有块级作用域</td>
+<td>×</td>
+<td>✔️</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>是否存在变量提升</td>
+<td>✔️</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>是否添加全局属性</td>
+<td>✔️</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>能否重复声明变量</td>
+<td>✔️</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>是否存在暂时性死区</td>
+<td>×</td>
+<td>✔️</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>是否必须设置初始值</td>
+<td>×</td>
+<td>×</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>能否改变指针指向</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>×</td>
+</tr>
+</tbody></table>
+]]></content>
+  </entry>
+  <entry>
     <title>js数据结构与算法</title>
     <url>/2024/01/08/js%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<p>js基本数据类型,js中的Object, Array 的方法,栈数据结构，ES5 和 ES6 区别</p>
+    <content><![CDATA[<p>js基本数据类型,js中的Object, Array 的方法,栈数据结构</p>
 <span id="more"></span>
 
 <h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><h3 id="Array-的方法"><a href="#Array-的方法" class="headerlink" title="Array 的方法"></a>Array 的方法</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">arr.push() //数组末尾追加</span><br><span class="line">arr.pop()  //数组末尾删除一个，返回删除值</span><br><span class="line">arr.shift()</span><br><span class="line">arr.unshift()</span><br><span class="line">arr.splice(0,2) //删除数组前两个</span><br><span class="line">arr.slice(0,2) //选择数组前两个</span><br><span class="line">arr.splice(0,2,5) //数组前两个换成一个5</span><br><span class="line">arr.sort((x,y)=&gt;x-y)  //正序</span><br><span class="line">arr.sort((x,y)=&gt;y-x)  //倒序</span><br><span class="line">arr.sort((x,y)=&gt;y.age-x.age)</span><br><span class="line"></span><br><span class="line">let arr1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">let arr2 = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">arr1.concat(arr2)  //数组追加</span><br><span class="line">arr1.concat(arr2,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>)</span><br><span class="line"></span><br><span class="line">//使用slice()方法返回一个子数组，在进行reverse； 不会改变原数组</span><br><span class="line">time1 = time.slice().reverse()  //time1数组反转  time数组不变</span><br></pre></td></tr></table></figure>
@@ -200,43 +388,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>零散</title>
-    <url>/2024/01/08/%E9%9B%B6%E6%95%A3/</url>
-    <content><![CDATA[<p>filter,数组去重，防抖节流封装，函数柯里化，js 函数缓存</p>
-<span id="more"></span>
-
-<h3 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span> a = [1, 2, 3, 14, 15]</span><br><span class="line">//current=&gt;当前值，index=&gt;当前值的下标，array=&gt;这个数组对象</span><br><span class="line"><span class="built_in">let</span> b = a.filter((current, index, array) =&gt; &#123;</span><br><span class="line">    return current &lt; <span class="number">10</span></span><br><span class="line">&#125;)</span><br><span class="line">console.log(b,a);</span><br></pre></td></tr></table></figure>
-
-<h3 id="去重"><a href="#去重" class="headerlink" title="去重"></a>去重</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1.</span><br><span class="line"><span class="built_in">let</span> arr = [12,23,45,32,12,55]</span><br><span class="line">//Set结构不会添加重复的值</span><br><span class="line">//Set实例转数组</span><br><span class="line"><span class="built_in">let</span> item = [...new Set(arr)]  //ES6写法</span><br><span class="line">Array.from(new Set(arr))</span><br><span class="line"></span><br><span class="line">2.</span><br><span class="line"><span class="built_in">let</span> a = [2,3,4,4,2,2,null,null]</span><br><span class="line"><span class="built_in">let</span> b = []</span><br><span class="line">a.forEach((item ,index)=&gt;&#123;</span><br><span class="line">    if(!b.includes(a[index]))&#123;</span><br><span class="line">        b.push(item)&#125;</span><br><span class="line">&#125;)</span><br><span class="line">// console.log(b);</span><br><span class="line"></span><br><span class="line">3.</span><br><span class="line">// indexOf(要搜索的,开始搜索的索引)</span><br><span class="line"><span class="built_in">let</span> xx = a.filter((item,index)=&gt;&#123;</span><br><span class="line">    return a.indexOf(item,<span class="number">0</span>) === index</span><br><span class="line">&#125;)</span><br><span class="line">console.log(xx);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="防抖节流封装"><a href="#防抖节流封装" class="headerlink" title="防抖节流封装"></a>防抖节流封装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//防抖   一直提交，直到最后一次停留<span class="built_in">wait</span>秒才发起请求</span><br><span class="line"><span class="keyword">function</span> antiShake(fn,<span class="built_in">wait</span>) &#123;</span><br><span class="line">    <span class="built_in">let</span> timeOut = null</span><br><span class="line">    <span class="built_in">return</span> args =&gt;&#123;</span><br><span class="line">        <span class="keyword">if</span>(timeOut) clearTimeout(timeOut)</span><br><span class="line">        timeOut = setTimeout(fn,<span class="built_in">wait</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//测试</span><br><span class="line"><span class="built_in">let</span> ceshi = antiShake(func, 2000)</span><br><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line">    ceshi()</span><br><span class="line">&#125;, <span class="number">1000</span>)</span><br><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line">    ceshi()</span><br><span class="line">&#125;, <span class="number">2000</span>)</span><br><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line">    ceshi()</span><br><span class="line">&#125;, <span class="number">3000</span>)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//节流   一直提交，每隔time秒执行一次。还可以通过时间戳执行</span><br><span class="line"><span class="keyword">function</span> throttle(event,time) &#123;</span><br><span class="line">    <span class="built_in">let</span> timer = null</span><br><span class="line">    <span class="built_in">return</span> <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">        <span class="keyword">if</span>(!timer)&#123;</span><br><span class="line">            timer = setTimeout(() =&gt; &#123;</span><br><span class="line">                event()</span><br><span class="line">                timer = null</span><br><span class="line">            &#125;, time);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">let ceshi2 = throttle(func,<span class="number">1000</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="js-函数柯里化"><a href="#js-函数柯里化" class="headerlink" title="js 函数柯里化"></a>js 函数柯里化</h3><p>函数柯里化（Currying）是一种将多个参数的函数转变为接收单一参数的函数序列的过程。通过柯里化，我们可以将多个参数的函数转化为接收一个参数的函数，然后再返回一个新函数，该函数可以继续接收下一个参数，以此类推，直到满足所有参数的条件，最后返回期望的结果。<br>函数柯里化的作用有以下几个方面：<br>1.参数复用：柯里化允许我们创建可以重复使用的小函数。通过将一个多参数函数转化为接收单一参数的函数，我们可以使用部分应用函数来创建新的函数，并将其应用于具有不同参数的不同上下文中。<br>2.延迟执行：柯里化也可以用于延迟执行函数。通过转化为接收单一参数的函数序列，我们可以先传递一部分参数，然后在后续需要的时候再传递剩余的参数来执行函数，从而实现函数的延迟执行。<br>3.函数组合：柯里化可以与函数组合配合使用，实现更复杂的函数操作。通过将多个柯里化函数组合起来，可以实现更高阶的函数组合，从而简化代码并增加代码的可读性。<br>4.提高函数可测试性：通过柯里化，我们可以将函数的逻辑拆分成多个步骤，并将每个步骤的输入和输出明确化，从而方便进行单元测试。我们可以对每个柯里化函数进行独立测试，而无需考虑其他参数的影响。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//普通写法</span><br><span class="line"><span class="keyword">function</span> add(a,b,c)&#123;</span><br><span class="line">    <span class="built_in">return</span> a+b+c</span><br><span class="line">&#125;</span><br><span class="line">console.log(add(10,20,30))</span><br><span class="line"></span><br><span class="line">//柯里化</span><br><span class="line"><span class="keyword">function</span> sum1(a)&#123;</span><br><span class="line">    <span class="built_in">return</span> <span class="keyword">function</span>(b)&#123;</span><br><span class="line">        <span class="built_in">return</span> <span class="keyword">function</span>(c)&#123;</span><br><span class="line">            <span class="built_in">return</span> a+b+c</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//简化后</span><br><span class="line">var sum2 = a=&gt;b=&gt;c=&gt;&#123;</span><br><span class="line">    <span class="built_in">return</span> a+b+c &#125;</span><br><span class="line">var sum2 = a=&gt;b=&gt;c=&gt;a+b+c</span><br><span class="line">console.log(sum2(10)(20)(30))</span><br></pre></td></tr></table></figure>
-
-<p>例题 1：<br>&#x2F;&#x2F;实现 add(1)(4)(3)(…)(n)<br><a href="https://blog.csdn.net/double_sweet1/article/details/122786636">详细</a></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">add</span></span>() &#123;</span><br><span class="line">    <span class="built_in">let</span> args = [...arguments];</span><br><span class="line">    <span class="built_in">let</span> inner = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">        args = [...args, ...arguments];</span><br><span class="line">        <span class="built_in">return</span> inner;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //inner本身就是一个函数，因此最后的输出结果就是一个函数，控制台输出的函数是被转换为string类型的字符串了的，转换为string是因为调用了toString方法,所以要改写一下toString方法。</span><br><span class="line">    inner.toString = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">        <span class="built_in">return</span> args.reduce((a, b) =&gt; a + b);</span><br><span class="line">    &#125;</span><br><span class="line">    return inner;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(parseInt(add(<span class="number">1</span>)(<span class="number">3</span>)(<span class="number">4</span>)(<span class="number">5</span>)));</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="js-函数缓存"><a href="#js-函数缓存" class="headerlink" title="js 函数缓存"></a>js 函数缓存</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// 传统函数写法</span><br><span class="line"><span class="keyword">function</span> add(a, b) &#123;</span><br><span class="line">  <span class="built_in">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line">// 箭头函数写法</span><br><span class="line">const add = (a, b) =&gt; a + b;</span><br><span class="line"></span><br><span class="line">//箭头函数可以使用剩余参数（rest parameter）的语法，用来表示一个不定长度的参数列表，剩余参数会被收集到一个数组中。例如：</span><br><span class="line">const printArgs = (a, ...restArgs) =&gt; &#123;</span><br><span class="line">  console.log(a); // 输出第一个参数</span><br><span class="line">  console.log(restArgs); // 输出剩余参数的数组</span><br><span class="line">&#125;</span><br><span class="line">printArgs(<span class="string">&#x27;foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>); // 输出 <span class="string">&#x27;foo&#x27;</span> 和 [<span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">const memoize = (func, content) =&gt; &#123;</span><br><span class="line">    //在当前函数作用域定义一个空对象，用于缓存函数的运行结果</span><br><span class="line">    <span class="built_in">let</span> cache = Object.create(null);</span><br><span class="line">    content = content || null;</span><br><span class="line">    //运用柯里化返回一个函数</span><br><span class="line">    <span class="built_in">return</span> (...args) =&gt; &#123;</span><br><span class="line">        console.log(<span class="string">&#x27;concent&#x27;</span>, content);</span><br><span class="line">        console.log(<span class="string">&quot;cache&quot;</span>,cache);</span><br><span class="line">        <span class="keyword">if</span> (!cache[args]) &#123;</span><br><span class="line">            console.log(<span class="string">&#x27;调用了:&#x27;</span> , args);</span><br><span class="line">            //call()和apply()：这两个方法允许你在指定的上下文中调用函数，并传递参数。</span><br><span class="line">            //它们的区别在于传递参数的方式不同。call()方法使用逗号分隔的参数列表，而apply()方法使用一个数组作为参数。</span><br><span class="line">            cache[args] = func.call(content, ...args);</span><br><span class="line">            // cache[args] = func.apply(content, args);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> cache[args];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">const add = (a, b) =&gt; a + b</span><br><span class="line">const memoizeAdd = memoize(add);</span><br><span class="line">console.log(memoizeAdd(1,3));</span><br><span class="line">console.log(memoizeAdd(1,3));</span><br><span class="line">console.log(memoizeAdd(3,3));</span><br><span class="line">console.log(memoizeAdd(1,3));</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">在 JavaScript 中， [a, b] = [b, a] 这样的语法是一种常见的用法，用于交换两个变量的值。实际上，这种写法利用了解构赋值的特性，可以很方便地交换两个变量的值，而不需要借助临时变量。</span><br><span class="line">具体来说，当执行 [a, b] = [b, a] 这行代码时，会先创建一个临时数组 [b, a]，然后按顺序将这个数组中的值分别赋给变量 a 和 b，从而实现 a 和 b 的值交换。</span><br><span class="line">因此，[a, b] = [b, a] 是一种优雅且简洁的方法来交换两个变量的值，在实际编程中也比较常见。</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">div*3&gt;lorem4 //lorem随机生成字符串。</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> strNum = <span class="string">&#x27;45&#x27;</span></span><br><span class="line">+str  ---&gt; 快速将字符串数字变成number类型</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-]]></content>
-  </entry>
-  <entry>
     <title>js输入框自动换行</title>
     <url>/2024/01/08/%E8%BE%93%E5%85%A5%E6%A1%86%E8%87%AA%E5%8A%A8%E6%8D%A2%E8%A1%8C/</url>
     <content><![CDATA[<p>通过js,使textarea实现自动换行功能。</p>
@@ -250,7 +401,7 @@
   <entry>
     <title>经典题</title>
     <url>/2024/01/08/%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE/</url>
-    <content><![CDATA[<p>unshift，js 的数据类型，数组的常用方法，字符串的常用方法，对象的常用方法，属性描述符，原型和原型链，js 中的值类型和引用类型区别，判读对象数据类型</p>
+    <content><![CDATA[<p>unshift，js 的数据类型，数组的常用方法，字符串的常用方法，对象的常用方法，属性描述符，原型和原型链，js 中的值类型和引用类型区别，判读对象数据类型,ES6基本语法</p>
 <span id="more"></span>
 
 <h3 id="1-写-unshift"><a href="#1-写-unshift" class="headerlink" title="1.写 unshift"></a>1.写 unshift</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span> a = [1,2,3]</span><br><span class="line"><span class="built_in">let</span> b = [4,5,6]</span><br><span class="line">// a.unshift(b)</span><br><span class="line">// console.log(a);</span><br><span class="line"></span><br><span class="line">Array.prototype.myUnshift = <span class="function"><span class="title">function</span></span> ()&#123;</span><br><span class="line">    <span class="built_in">let</span> len = arguments.length</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">let</span> i = len-1; i &gt;=0; i--) &#123;</span><br><span class="line">        this.splice(0,0,arguments[i])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> this.length;</span><br><span class="line">&#125;</span><br><span class="line">// a.myUnshift(5,6,7)</span><br><span class="line">// console.log(a);</span><br><span class="line">console.log(a.unshift(7,8,9));</span><br><span class="line">console.log(a);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -286,11 +437,12 @@
 <h3 id="10-js-中的值类型和引用类型区别"><a href="#10-js-中的值类型和引用类型区别" class="headerlink" title="10.js 中的值类型和引用类型区别"></a>10.js 中的值类型和引用类型区别</h3><p><a href="https://blog.csdn.net/sinat_22480443/article/details/115179848">查看</a></p>
 <h3 id="11-如何判断哪个对象是属于哪种基本数据类型呢"><a href="#11-如何判断哪个对象是属于哪种基本数据类型呢" class="headerlink" title="11.如何判断哪个对象是属于哪种基本数据类型呢"></a>11.如何判断哪个对象是属于哪种基本数据类型呢</h3><p>1.typeof 能判断出以下 8 种类型：Number、Boolean、String、undefined、Symbol、BigInt、Object、Function。需要注意的几点：<br>typeof null &#x3D;&#x3D;&#x3D; ‘object’<br>typeof NaN &#x3D;&#x3D;&#x3D; ‘number’<br>缺点：function 之外的其它引用数据类型、基础数据类型 null 以及使用构造函数创建的 Number 、String、Boolean 等都被判断为 object</p>
 <p>2.Object.prototype.toString.call()（最推荐使用）<br>能够检测出所有的数据类型</p>
+<h3 id="12-ES6基本语法"><a href="#12-ES6基本语法" class="headerlink" title="12.ES6基本语法"></a>12.ES6基本语法</h3><p><a href="https://blog.csdn.net/See_Star/article/details/121566165">查看</a></p>
 ]]></content>
   </entry>
   <entry>
     <title>手撕底层</title>
-    <url>/2024/01/08/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</url>
+    <url>/2024/01/08/%E6%89%8B%E6%92%95%E5%BA%95%E5%B1%82/</url>
     <content><![CDATA[<p>prototype，Map 底层是怎么实现的，Promise 应用和原理，手写一个 promise，Vuex4 的底层原理，js 深拷贝，重置表单,this 指向问题，js 闭包,new 关键字</p>
 <span id="more"></span>
 
@@ -331,18 +483,11 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//vue3</span><br><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;Form ref=<span class="string">&quot;formValidateRef&quot;</span> :model=<span class="string">&quot;formValidate&quot;</span> :rules=<span class="string">&quot;ruleValidate&quot;</span> :label-width=<span class="string">&quot;80&quot;</span>&gt;&lt;/Form&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script setup&gt;</span><br><span class="line">	import &#123; reactive &#125; from <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line">	// 初始化数据</span><br><span class="line">	const initFormValldate = () =&gt; (&#123;</span><br><span class="line">		xxxa:<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">		xxxb:<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">	&#125;)</span><br><span class="line">	// 表单赋值</span><br><span class="line">	const formValidate = reactive(initFormValidate());</span><br><span class="line">	// 清除表单数据</span><br><span class="line">	Object.asslgn(formValidate, initFormValidate()):</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-<h2 id="六-this-指向"><a href="#六-this-指向" class="headerlink" title="六.this 指向"></a>六.this 指向</h2><p>congsole.log()完整的写法是 window.console.log(),window 可以省略，window 调用了 console.log()方法，所以此时 this 指向 window。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var <span class="built_in">id</span> = 222</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">test</span></span>() &#123;</span><br><span class="line">    console.log(this.id);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">test</span>(&#123;<span class="built_in">id</span>:123&#125;)  //222</span><br><span class="line">//指向的是外层window</span><br></pre></td></tr></table></figure>
-
-<p>call、apply 和 bind 都是用来修改 this 指向的，这三个方法都是函数对象的方法 bind 可自行测试<br>区别：call 和 apply 是立即执行的，而 bind 是不会立即执行的，因为 bind 返回的是函数<br>call()和 bind()可以传递很多实参———————— call(对象，a,b,c,d…)<br>apply()可以传递两个参数，第二个参数是数组 apply(对象，[a,b,c,d…])</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">test</span></span>() &#123;</span><br><span class="line">    console.log(this);</span><br><span class="line">&#125;</span><br><span class="line">test.call(&#123;<span class="built_in">id</span>:123&#125;) //123</span><br><span class="line">//改变this指向</span><br></pre></td></tr></table></figure>
-
-<p>另外，箭头函数没有 this</p>
-<h2 id="七-js-闭包"><a href="#七-js-闭包" class="headerlink" title="七.js 闭包"></a>七.js 闭包</h2><p>1.避免变量污染；2.私有化；3.保存变量，常驻内存</p>
+<h2 id="六-js-闭包"><a href="#六-js-闭包" class="headerlink" title="六.js 闭包"></a>六.js 闭包</h2><p>1.避免变量污染；2.私有化；3.保存变量，常驻内存</p>
 <p>应用场景：防抖，节流，库的封装</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">bibao</span></span>() &#123;</span><br><span class="line">    <span class="built_in">let</span> num = 1;</span><br><span class="line">    <span class="keyword">function</span> nbFn(val) &#123;</span><br><span class="line">        num += val;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span>&#123;</span><br><span class="line">        add:<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">            nbFn(2);</span><br><span class="line">        &#125;,</span><br><span class="line">        delate:<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">            nbFn(-2);</span><br><span class="line">        &#125;,</span><br><span class="line">        value:<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">            <span class="built_in">return</span> num</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">let</span> c1 = bibao();</span><br><span class="line">console.log(c1);</span><br></pre></td></tr></table></figure>
 
-<h2 id="八-new-关键字"><a href="#八-new-关键字" class="headerlink" title="八.new 关键字"></a>八.new 关键字</h2><p>1.创建一个空对象</p>
+<h2 id="七-new-关键字"><a href="#七-new-关键字" class="headerlink" title="七.new 关键字"></a>七.new 关键字</h2><p>1.创建一个空对象</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span> obj = Object.create()</span><br></pre></td></tr></table></figure>
 
 <p>2.设置它的原型链</p>
@@ -465,8 +610,7 @@
     <content><![CDATA[<p>包括搭建项目，父子组件传值，兄弟组件传值，插槽，Teleport 组件，依赖注入</p>
 <span id="more"></span>
 
-<h4 id="搭建项目-点击"><a href="#搭建项目-点击" class="headerlink" title="搭建项目: 点击"></a>搭建项目: <a href="https://blog.csdn.net/weixin_59916662/article/details/127331094">点击</a></h4><h2 id="数据代理"><a href="#数据代理" class="headerlink" title="数据代理"></a>数据代理</h2><p>vue2.x : Object.defineProperty()<br>vue3.x : Proxy</p>
-<h2 id="父子组件传值"><a href="#父子组件传值" class="headerlink" title="父子组件传值"></a>父子组件传值</h2><h3 id="1-父传子"><a href="#1-父传子" class="headerlink" title="1.父传子"></a>1.父传子</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;div&gt;父组件</span><br><span class="line">  &lt;list :msg=<span class="string">&quot;msg&quot;</span>&gt;&lt;/list&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> msg = ref(<span class="string">&#x27;传过去的&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="搭建项目-点击"><a href="#搭建项目-点击" class="headerlink" title="搭建项目: 点击"></a>搭建项目: <a href="https://blog.csdn.net/weixin_59916662/article/details/127331094">点击</a></h4><h4 id="vue官网-进入"><a href="#vue官网-进入" class="headerlink" title="vue官网: 进入"></a>vue官网: <a href="https://cn.vuejs.org/guide/components/v-model.html">进入</a></h4><h2 id="父子组件传值"><a href="#父子组件传值" class="headerlink" title="父子组件传值"></a>父子组件传值</h2><h3 id="1-父传子"><a href="#1-父传子" class="headerlink" title="1.父传子"></a>1.父传子</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;div&gt;父组件</span><br><span class="line">  &lt;list :msg=<span class="string">&quot;msg&quot;</span>&gt;&lt;/list&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> msg = ref(<span class="string">&#x27;传过去的&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;div&gt;这是子组件&#123;&#123;msg&#125;&#125;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">defineProps(&#123;</span><br><span class="line">    msg:&#123;</span><br><span class="line">        <span class="built_in">type</span>:String,</span><br><span class="line">        default:<span class="string">&quot;默认值&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
@@ -474,10 +618,7 @@
 
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;div&gt;父组件</span><br><span class="line">  &lt;list @fn=<span class="string">&#x27;changeHome&#x27;</span>&gt;&lt;/list&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> changeHome = (n)=&gt;&#123;</span><br><span class="line">    console.log(n)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-v-model-传值"><a href="#3-v-model-传值" class="headerlink" title="3.v-model 传值"></a>3.v-model 传值</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;div&gt;父组件</span><br><span class="line">  &lt;list v-model:num = <span class="string">&quot;num&quot;</span>&gt;&lt;/list&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> num = ref(1)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;div&gt;这是子组件&#123;&#123;num&#125;&#125;</span><br><span class="line">  &lt;button @click=<span class="string">&quot;btn&quot;</span>&gt;按钮&lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">const props = refineProps(&#123;</span><br><span class="line">    num:&#123;</span><br><span class="line">        <span class="built_in">type</span>:Number,</span><br><span class="line">        default:100</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">const emit = defineEmits([<span class="string">&#x27;update:num&#x27;</span>])</span><br><span class="line">const btn = ()=&gt;&#123;</span><br><span class="line">    emit(<span class="string">&#x27;update:num&#x27;</span>,200)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
+<h3 id="3-v-model-传值"><a href="#3-v-model-传值" class="headerlink" title="3.v-model 传值"></a>3.v-model 传值</h3><p><a href="https://cn.vuejs.org/guide/components/v-model.html">看官网</a></p>
 <h2 id="兄弟组件传值"><a href="#兄弟组件传值" class="headerlink" title="兄弟组件传值"></a>兄弟组件传值</h2><h3 id="1-通过父组件比较繁琐"><a href="#1-通过父组件比较繁琐" class="headerlink" title="1.通过父组件比较繁琐"></a>1.通过父组件比较繁琐</h3><h3 id="2-通过-mitt"><a href="#2-通过-mitt" class="headerlink" title="2.通过 mitt"></a>2.通过 mitt</h3><h4 id="1）-下载安装"><a href="#1）-下载安装" class="headerlink" title="1）.下载安装"></a>1）.下载安装</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install mitt -S</span><br></pre></td></tr></table></figure>
 
 <h4 id="2）-新建文件夹"><a href="#2）-新建文件夹" class="headerlink" title="2）.新建文件夹"></a>2）.新建文件夹</h4><p>src&#x2F;plugins&#x2F;Bus.js</p>
@@ -510,8 +651,7 @@
 <h2 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//父组件：提供</span><br><span class="line">provide(/* 注入名 */ <span class="string">&#x27;message&#x27;</span>, /* 值 */ <span class="string">&#x27;hello!&#x27;</span>)</span><br><span class="line">//如果你想确保提供的数据不能被注入方的组件更改，你可以使用 <span class="built_in">readonly</span>() 来包装提供的值</span><br><span class="line">provide(<span class="string">&#x27;read-only-message&#x27;</span>, <span class="built_in">readonly</span>(message))</span><br><span class="line"></span><br><span class="line">//子孙组件：注入</span><br><span class="line">const message = inject(<span class="string">&#x27;message&#x27;</span>)</span><br><span class="line"></span><br><span class="line">//注入默认值</span><br><span class="line">// 如果没有祖先组件提供 <span class="string">&quot;message&quot;</span></span><br><span class="line">// `value` 会是 <span class="string">&quot;这是默认值&quot;</span></span><br><span class="line">const value = inject(<span class="string">&#x27;message&#x27;</span>, <span class="string">&#x27;这是默认值&#x27;</span>)</span><br><span class="line"></span><br><span class="line">//使用 Symbol 作注入名</span><br><span class="line">我们通常推荐在一个单独的文件中导出这些注入名 Symbol：</span><br><span class="line">// keys.js</span><br><span class="line"><span class="built_in">export</span> const myInjectionKey = Symbol()</span><br><span class="line"></span><br><span class="line">// 在供给方组件中</span><br><span class="line">import &#123; provide &#125; from <span class="string">&#x27;vue&#x27;</span></span><br><span class="line">import &#123; myInjectionKey &#125; from <span class="string">&#x27;./keys.js&#x27;</span></span><br><span class="line">provide(myInjectionKey, &#123; /*</span><br><span class="line">  要提供的数据</span><br><span class="line">*/ &#125;);</span><br><span class="line"></span><br><span class="line">// 注入方组件</span><br><span class="line">import &#123; inject &#125; from <span class="string">&#x27;vue&#x27;</span></span><br><span class="line">import &#123; myInjectionKey &#125; from <span class="string">&#x27;./keys.js&#x27;</span></span><br><span class="line">const injected = inject(myInjectionKey)</span><br></pre></td></tr></table></figure>
 
 
-<h2 id="js-数组"><a href="#js-数组" class="headerlink" title="js 数组"></a>js 数组</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//使用slice()方法返回一个子数组，在进行reverse； 不会改变原数组</span><br><span class="line">time1 = time.slice().reverse()  //time1数组反转  time数组不变</span><br></pre></td></tr></table></figure>
-<h2 id="js-取整"><a href="#js-取整" class="headerlink" title="js 取整"></a>js 取整</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">parseInt()   //向0取整</span><br><span class="line">Math.floor()  //向下取整</span><br><span class="line">Math.ceil()  //向上取整</span><br><span class="line">Math.trunc()  //去除数字的小数部分，保留整数部分</span><br><span class="line">Math.round()  //返回一个数字四舍五入后的整数部分</span><br></pre></td></tr></table></figure>
+
 
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//刷新页面</span><br><span class="line">&lt;meta http-equiv=<span class="string">&quot;refresh&quot;</span> content=<span class="string">&quot;5&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
 
