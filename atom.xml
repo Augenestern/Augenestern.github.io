@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2024-04-13T08:10:18.894Z</updated>
+  <updated>2024-04-13T08:41:41.040Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,21 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>sass和less</title>
+    <link href="http://example.com/2024/04/13/sass%E5%92%8Cless/"/>
+    <id>http://example.com/2024/04/13/sass%E5%92%8Cless/</id>
+    <published>2024-04-13T08:16:56.499Z</published>
+    <updated>2024-04-13T08:41:41.040Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;sass,less&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>git常用命令</title>
@@ -301,21 +316,6 @@
     
     
     <summary type="html">&lt;p&gt;js基本数据类型,js中的Object, Array 的方法,栈数据结构&lt;/p&gt;</summary>
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo 基本使用</title>
-    <link href="http://example.com/2024/01/08/hexo/"/>
-    <id>http://example.com/2024/01/08/hexo/</id>
-    <published>2024-01-08T05:40:20.274Z</published>
-    <updated>2024-04-11T05:18:35.862Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;Hexo是一款基于Node.js的静态博客框架,依赖少易于安装使用,可以方便的生成静态网页托管在GitHub和Coding上,是搭建博客的首选框架。&lt;/p&gt;</summary>
     
     
     
