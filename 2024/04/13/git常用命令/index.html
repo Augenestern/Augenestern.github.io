@@ -8,7 +8,7 @@
   
   
   <title>
-    前端-浏览器缓存 |
+    git常用命令 |
     
     慕杰BLOG
   </title>
@@ -33,7 +33,7 @@
 <body>
   <main class="content">
     <section class="outer">
-  <article id="post-前端课程-浏览器缓存" class="article article-type-post" itemscope
+  <article id="post-git常用命令" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -42,7 +42,7 @@
       
   
   <h1 class="article-title" itemprop="name">
-    前端-浏览器缓存
+    git常用命令
   </h1>
   
   
@@ -52,8 +52,8 @@
 
     
     <div class="article-meta">
-      <a href="/2024/04/09/%E5%89%8D%E7%AB%AF%E8%AF%BE%E7%A8%8B-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/" class="article-date">
-  <time datetime="2024-04-09T06:07:41.905Z" itemprop="datePublished">2024-04-09</time>
+      <a href="/2024/04/13/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="article-date">
+  <time datetime="2024-04-13T07:42:35.117Z" itemprop="datePublished">2024-04-13</time>
 </a>
       
     </div>
@@ -67,14 +67,15 @@
       
       
       
-        <span id="more"></span>
+        <p>git 常用命令</p>
+<span id="more"></span>
 
-
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> XXXX; //克隆远程分支</span><br><span class="line"></span><br><span class="line">git add .  //添加到本地仓库</span><br><span class="line"></span><br><span class="line">git commit -m<span class="string">&quot;操作&quot;</span><span class="string">&quot; //提交</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">git branch //查看本地分支； -a 查看本地和远程所有分支； -r 查看所有远程分支； -vv 查看本地对应远程的分支；</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">git checkout -b XXX //以当前本地分支作为基础新建一个XXX分支</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">git checkout XXX //切换分支</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">git checkout . //修改的代码(未提交),不修改了</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">git push origin newtest  //push到远程分支newtest</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">git push origin --delete newtest //删除远程分支</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">git branch --set-upstream-to=origin/newtest //切换当前分支推送的远程分支</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">git branch -d newtest //删除本地分支。-D强制删除没有合并的分支</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">git status //状态</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">git diff //查看差异</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">git pull //拉取代码</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">git merge xxxx //合并分支，xxx往当前分支插入；</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">git reset --mixed  //文件退出暂存区，但是修改保留；</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">git reset HEAD . //</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">git reset HEAD fileName // 撤销某个文件；</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">git reset --soft HEAD^ //撤销commit之后返回成暂存区add状态；</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">git reset --hard HEAD^  //直接撤销commit和add</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/04/09/%E5%89%8D%E7%AB%AF%E8%AF%BE%E7%A8%8B-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/" data-id="cluxtkyx6000hncv14zzhflwe" class="article-share-link">
+      <a data-url="http://example.com/2024/04/13/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" data-id="cluxtkywt0006ncv1auhr5kp2" class="article-share-link">
         分享
       </a>
       
@@ -86,19 +87,10 @@
   
 <nav class="article-nav">
   
-  <a href="/2024/04/11/vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86/" class="article-nav-link">
-    <strong class="article-nav-caption">前一篇</strong>
-    <div class="article-nav-title">
-      
-      vue双向绑定原理
-      
-    </div>
-  </a>
   
-  
-  <a href="/2024/03/30/webpack%E5%92%8Cvite%E9%9D%A2%E8%AF%95%E9%A2%98/" class="article-nav-link">
+  <a href="/2024/04/13/typescript%E5%AD%A6%E4%B9%A0/" class="article-nav-link">
     <strong class="article-nav-caption">后一篇</strong>
-    <div class="article-nav-title">webpack和vite笔记</div>
+    <div class="article-nav-title">typescript学习</div>
   </a>
   
 </nav>
@@ -136,7 +128,7 @@
 
   
 
-  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">0</span>字
+  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">264</span>字
   &emsp;<i class="fe fe-clock"></i> <span class="post-count">1</span>分钟
 
 </article>

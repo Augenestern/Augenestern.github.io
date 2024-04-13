@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2024-04-09T06:08:04.914Z</updated>
+  <updated>2024-04-13T08:10:18.894Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,51 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git常用命令</title>
+    <link href="http://example.com/2024/04/13/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>http://example.com/2024/04/13/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
+    <published>2024-04-13T07:42:35.117Z</published>
+    <updated>2024-04-13T08:10:18.894Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;git 常用命令&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>typescript学习</title>
+    <link href="http://example.com/2024/04/13/typescript%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://example.com/2024/04/13/typescript%E5%AD%A6%E4%B9%A0/</id>
+    <published>2024-04-13T04:11:21.106Z</published>
+    <updated>2024-04-13T06:18:15.355Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;typescript 学习&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>vue双向绑定原理</title>
+    <link href="http://example.com/2024/04/11/vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86/"/>
+    <id>http://example.com/2024/04/11/vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86/</id>
+    <published>2024-04-11T02:52:45.240Z</published>
+    <updated>2024-04-11T05:11:22.175Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;vue 双向绑定原理&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>前端-浏览器缓存</title>
@@ -57,7 +102,7 @@
     <link href="http://example.com/2024/03/25/css%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     <id>http://example.com/2024/03/25/css%E9%9D%A2%E8%AF%95%E9%A2%98/</id>
     <published>2024-03-25T10:54:53.670Z</published>
-    <updated>2024-04-09T05:38:23.371Z</updated>
+    <updated>2024-04-11T05:18:25.887Z</updated>
     
     
     <summary type="html">&lt;p&gt;position 布局，transform 的基本使用和常用特效，display常用方法,外边距塌陷,css 中的伪类：before 与 after&lt;/p&gt;</summary>
@@ -72,7 +117,7 @@
     <link href="http://example.com/2024/03/17/vue%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     <id>http://example.com/2024/03/17/vue%E9%9D%A2%E8%AF%95%E9%A2%98/</id>
     <published>2024-03-17T05:52:28.866Z</published>
-    <updated>2024-04-09T06:04:37.281Z</updated>
+    <updated>2024-04-11T05:18:48.338Z</updated>
     
     
     <summary type="html">&lt;p&gt;谈谈你对 vue 的理解&lt;/p&gt;</summary>
@@ -102,7 +147,7 @@
     <link href="http://example.com/2024/02/29/%E5%89%8D%E7%AB%AF%E8%AF%BE%E7%A8%8B-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/"/>
     <id>http://example.com/2024/02/29/%E5%89%8D%E7%AB%AF%E8%AF%BE%E7%A8%8B-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/</id>
     <published>2024-02-29T06:33:32.662Z</published>
-    <updated>2024-03-21T08:08:45.589Z</updated>
+    <updated>2024-04-11T05:17:59.277Z</updated>
     
     
     <summary type="html">&lt;p&gt;事件循环，如何理解 js 的异步？js 为什么会阻碍渲染？任务优先级？阐述一下js的事件循环？js计时器能做到精准吗？&lt;/p&gt;</summary>
@@ -117,7 +162,7 @@
     <link href="http://example.com/2024/01/08/%E9%9B%B6%E6%95%A3/"/>
     <id>http://example.com/2024/01/08/%E9%9B%B6%E6%95%A3/</id>
     <published>2024-01-08T05:40:20.288Z</published>
-    <updated>2024-04-09T06:12:28.146Z</updated>
+    <updated>2024-04-11T05:17:50.730Z</updated>
     
     
     <summary type="html">&lt;p&gt;filter,数组去重，防抖节流封装，函数柯里化，js 函数缓存，this 指向,js 取整，var const let区别,&lt;/p&gt;</summary>
@@ -132,7 +177,7 @@
     <link href="http://example.com/2024/01/08/%E8%BE%93%E5%85%A5%E6%A1%86%E8%87%AA%E5%8A%A8%E6%8D%A2%E8%A1%8C/"/>
     <id>http://example.com/2024/01/08/%E8%BE%93%E5%85%A5%E6%A1%86%E8%87%AA%E5%8A%A8%E6%8D%A2%E8%A1%8C/</id>
     <published>2024-01-08T05:40:20.286Z</published>
-    <updated>2023-09-12T05:13:21.335Z</updated>
+    <updated>2024-04-11T05:18:14.353Z</updated>
     
     
     <summary type="html">&lt;p&gt;通过js,使textarea实现自动换行功能。&lt;/p&gt;</summary>
@@ -147,7 +192,7 @@
     <link href="http://example.com/2024/01/08/%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE/"/>
     <id>http://example.com/2024/01/08/%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE/</id>
     <published>2024-01-08T05:40:20.285Z</published>
-    <updated>2024-04-09T05:40:24.757Z</updated>
+    <updated>2024-04-11T05:16:42.225Z</updated>
     
     
     <summary type="html">&lt;p&gt;unshift，js 的数据类型，数组的常用方法，字符串的常用方法，对象的常用方法，属性描述符，原型和原型链，js 中的值类型和引用类型区别，判读对象数据类型,ES6基本语法&lt;/p&gt;</summary>
@@ -162,7 +207,7 @@
     <link href="http://example.com/2024/01/08/%E6%89%8B%E6%92%95%E5%BA%95%E5%B1%82/"/>
     <id>http://example.com/2024/01/08/%E6%89%8B%E6%92%95%E5%BA%95%E5%B1%82/</id>
     <published>2024-01-08T05:40:20.283Z</published>
-    <updated>2024-04-09T05:51:18.217Z</updated>
+    <updated>2024-04-11T05:18:11.133Z</updated>
     
     
     <summary type="html">&lt;p&gt;prototype，Map 底层是怎么实现的，Promise 应用和原理，手写一个 promise，Vuex4 的底层原理，js 深拷贝，重置表单,this 指向问题，js 闭包,new 关键字&lt;/p&gt;</summary>
@@ -177,7 +222,7 @@
     <link href="http://example.com/2024/01/08/%E6%97%B6%E9%97%B4%E5%A4%84%E7%90%86/"/>
     <id>http://example.com/2024/01/08/%E6%97%B6%E9%97%B4%E5%A4%84%E7%90%86/</id>
     <published>2024-01-08T05:40:20.282Z</published>
-    <updated>2023-07-07T08:00:28.322Z</updated>
+    <updated>2024-04-11T05:18:07.657Z</updated>
     
     
     <summary type="html">&lt;p&gt;Day.js 是一个轻量的处理时间和日期的 JavaScript 库&lt;/p&gt;</summary>
@@ -192,7 +237,7 @@
     <link href="http://example.com/2024/01/08/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD/"/>
     <id>http://example.com/2024/01/08/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD/</id>
     <published>2024-01-08T05:40:20.281Z</published>
-    <updated>2024-03-25T10:45:21.429Z</updated>
+    <updated>2024-04-11T05:18:17.111Z</updated>
     
     
     <summary type="html">&lt;p&gt;图片上传前压缩，图片懒加载,页面变成pdf下载&lt;/p&gt;</summary>
@@ -207,7 +252,7 @@
     <link href="http://example.com/2024/01/08/Vuex%E5%92%8CPinia/"/>
     <id>http://example.com/2024/01/08/Vuex%E5%92%8CPinia/</id>
     <published>2024-01-08T05:40:20.280Z</published>
-    <updated>2023-07-17T03:28:10.094Z</updated>
+    <updated>2024-04-11T05:18:55.461Z</updated>
     
     
     <summary type="html">&lt;p&gt;应用程序开发的状态管理模式，它采用集中式存储管理应用的所有组件状态，并以相应的规则保证状态以一种可预测的方式发生变化。&lt;/p&gt;</summary>
@@ -222,7 +267,7 @@
     <link href="http://example.com/2024/01/08/vue3%E7%AC%94%E8%AE%B0/"/>
     <id>http://example.com/2024/01/08/vue3%E7%AC%94%E8%AE%B0/</id>
     <published>2024-01-08T05:40:20.278Z</published>
-    <updated>2024-04-09T06:53:17.531Z</updated>
+    <updated>2024-04-11T05:18:43.472Z</updated>
     
     
     <summary type="html">&lt;p&gt;包括搭建项目，父子组件传值，兄弟组件传值，插槽，Teleport 组件，依赖注入&lt;/p&gt;</summary>
@@ -237,7 +282,7 @@
     <link href="http://example.com/2024/01/08/vue3%E5%BC%82%E6%AD%A5%E7%BB%84%E4%BB%B6/"/>
     <id>http://example.com/2024/01/08/vue3%E5%BC%82%E6%AD%A5%E7%BB%84%E4%BB%B6/</id>
     <published>2024-01-08T05:40:20.277Z</published>
-    <updated>2023-07-17T03:11:50.533Z</updated>
+    <updated>2024-04-11T05:18:46.511Z</updated>
     
     
     <summary type="html">&lt;p&gt;在大型项目中，我们可能需要拆分应用为更小的块，并仅在需要时再从服务器加载相关组件。Vue 提供了 defineAsyncComponent 方法来实现此功能&lt;br&gt;异步组价打包时会分包&lt;/p&gt;</summary>
@@ -252,7 +297,7 @@
     <link href="http://example.com/2024/01/08/js%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
     <id>http://example.com/2024/01/08/js%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</id>
     <published>2024-01-08T05:40:20.276Z</published>
-    <updated>2024-04-09T05:40:39.486Z</updated>
+    <updated>2024-04-11T05:18:40.239Z</updated>
     
     
     <summary type="html">&lt;p&gt;js基本数据类型,js中的Object, Array 的方法,栈数据结构&lt;/p&gt;</summary>
@@ -267,25 +312,10 @@
     <link href="http://example.com/2024/01/08/hexo/"/>
     <id>http://example.com/2024/01/08/hexo/</id>
     <published>2024-01-08T05:40:20.274Z</published>
-    <updated>2023-11-05T04:18:33.567Z</updated>
+    <updated>2024-04-11T05:18:35.862Z</updated>
     
     
     <summary type="html">&lt;p&gt;Hexo是一款基于Node.js的静态博客框架,依赖少易于安装使用,可以方便的生成静态网页托管在GitHub和Coding上,是搭建博客的首选框架。&lt;/p&gt;</summary>
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>CSS布局和transform笔记</title>
-    <link href="http://example.com/2024/01/08/css%E7%AC%94%E8%AE%B0/"/>
-    <id>http://example.com/2024/01/08/css%E7%AC%94%E8%AE%B0/</id>
-    <published>2024-01-08T05:40:20.272Z</published>
-    <updated>2024-04-08T12:34:35.119Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;position 布局，transform 的基本使用和常用特效，display常用方法,外边距塌陷&lt;/p&gt;</summary>
     
     
     
