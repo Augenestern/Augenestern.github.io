@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <title>
+    前端-事件循环 |
+    
+    慕杰BLOG
+  </title>
+  <!-- Icon -->
+  
+    <link rel="shortcut icon" href="/study.svg">
+    
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="慕杰BLOG" type="application/atom+xml">
+</head>
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-前端课程-事件循环" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+  <h1 class="article-title" itemprop="name">
+    前端-事件循环
+  </h1>
+  
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2024/04/03/%E5%89%8D%E7%AB%AF%E8%AF%BE%E7%A8%8B-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/" class="article-date">
+  <time datetime="2024-04-02T21:53:17.000Z" itemprop="datePublished">2024-04-03</time>
+</a>
+      
+    </div>
+    
+
+    
+    
+<div class="tocbot"></div>
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        <p>事件循环，如何理解 js 的异步？js 为什么会阻碍渲染？任务优先级？阐述一下js的事件循环？js计时器能做到精准吗？</p>
+<span id="more"></span>
+
+<h3 id="浏览器的进程模型"><a href="#浏览器的进程模型" class="headerlink" title="浏览器的进程模型"></a>浏览器的进程模型</h3><h4 id="浏览器有哪些进程和线程？"><a href="#浏览器有哪些进程和线程？" class="headerlink" title="浏览器有哪些进程和线程？"></a>浏览器有哪些进程和线程？</h4><p>浏览器是一个多进程和多线程的应用程序。主要有浏览器进程，网络进程，渲染进程：进程开始时会开启渲染主线程，主要负责执行 html,css,js 代码，渲染界面。</p>
+<h4 id="面试题：如何理解-js-的异步？"><a href="#面试题：如何理解-js-的异步？" class="headerlink" title="面试题：如何理解 js 的异步？"></a>面试题：如何理解 js 的异步？</h4><p>js 是一门单线程语言，因为运行在浏览器的渲染主线程中，而浏览器每个渲染进程的渲染主线程只有一个，承担着许多工作，渲染页面,执行界面。如同步，会造成主线程阻塞，导致消息队列的其他任务无法进行，白白消耗时间，还会造成页面无法更新，用户卡死。<br>所以浏览器采用异步的方式处理，比如计时器、网络、时间监听、主线程将任务交给其他线程处理，其他线程处理完将回调函数包装成任务放到消息队列队尾，在等待主线程调度。这样就保证了单线程的流畅运行。</p>
+<h4 id="js-为什么会阻碍渲染？"><a href="#js-为什么会阻碍渲染？" class="headerlink" title="js 为什么会阻碍渲染？"></a>js 为什么会阻碍渲染？</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="keyword">class</span>=<span class="string">&quot;testText&quot;</span>&gt;</span><br><span class="line">    哈哈哈</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;testButton&quot;</span>&gt;</span>测试1<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;testButton2&quot;</span>&gt;</span>测试2<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//死循环指定时间</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">delay</span>(<span class="params">duration</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> start = <span class="title class_">Date</span>.<span class="title function_">now</span>()</span><br><span class="line">    <span class="keyword">while</span> (<span class="title class_">Date</span>.<span class="title function_">now</span>() - start &lt; duration)&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 通过 JavaScript 在按钮上添加点击事件监听器</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;testButton&#x27;</span>).<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.testText&#x27;</span>).<span class="property">innerHTML</span> = <span class="string">&quot;呵呵呵&quot;</span>  <span class="comment">//此处会立即执行，但是渲染绘制任务会排在消息队列后，所以页面得 delay(3000) 之后才会开始，也会导致阻塞页面其他功能。</span></span><br><span class="line">    <span class="title function_">delay</span>(<span class="number">3000</span>)</span><br><span class="line">&#125;);</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;testButton2&#x27;</span>).<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.testText&#x27;</span>).<span class="property">innerHTML</span> = <span class="string">&quot;嘻嘻嘻&quot;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="任务优先级？"><a href="#任务优先级？" class="headerlink" title="任务优先级？"></a>任务优先级？</h4><p>任务没有优先级，在消息队列里先进先出。但是消息队列有优先级。<br>根据 W3C 最新解释：<br>每个任务都有一个任务类型，同一任务类型必须在一个队列，不同类型任务可以分属于不同的队列。<br>浏览器必须准备一个微队列 microtask,优先于其他队列。</p>
+<p>微队列 》交互队列 》延时队列</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//立即把一个函数添加到微队列</span></span><br><span class="line"><span class="title class_">Promise</span>.<span class="title function_">resolve</span>().<span class="title function_">then</span>(函数)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">delay</span>(<span class="params">duration</span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> start = <span class="title class_">Date</span>.<span class="title function_">now</span>()</span><br><span class="line">      <span class="keyword">while</span> (<span class="title class_">Date</span>.<span class="title function_">now</span>() - start &lt; duration)&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1</span>);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"><span class="title function_">delay</span>(<span class="number">1000</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">2</span>); <span class="comment">//会输出2 1</span></span><br></pre></td></tr></table></figure>
+<h4 id="面试题：阐述一下js的事件循环？"><a href="#面试题：阐述一下js的事件循环？" class="headerlink" title="面试题：阐述一下js的事件循环？"></a>面试题：阐述一下js的事件循环？</h4><p>事件循环又叫做消息循环，是浏览器渲染主线程的工作方式。<br>在Chrome的源码中，它开启了不会结束的for循环，每次取第一个任务执行，其他任务加到队尾。<br>过去把消息队列简单分为宏队列和微队列，这种已经无法满足当前复杂的浏览器环境。<br>根据 W3C 最新解释：<br>每个任务都有一个任务类型，同一任务类型必须在一个队列，不同类型任务可以分属于不同的队列。<br>浏览器必须准备一个微队列 microtask,优先于其他队列。</p>
+<h4 id="面试题：js计时器能做到精准吗？为什么？"><a href="#面试题：js计时器能做到精准吗？为什么？" class="headerlink" title="面试题：js计时器能做到精准吗？为什么？"></a>面试题：js计时器能做到精准吗？为什么？</h4><p>不行。<br>.按照W3C标准，嵌套层级超过5层，则带有4毫秒的最少时间，就会有偏差。<br>.受事件循环影响，计时器的回调函数只能在主线程空闲时运行，因此又带来了偏差。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/04/03/%E5%89%8D%E7%AB%AF%E8%AF%BE%E7%A8%8B-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/" data-id="clv4wdvv8000g70v12s7rdl70" class="article-share-link">
+        分享
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+  
+<nav class="article-nav">
+  
+  <a href="/2024/04/09/%E5%89%8D%E7%AB%AF%E8%AF%BE%E7%A8%8B-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/" class="article-nav-link">
+    <strong class="article-nav-caption">前一篇</strong>
+    <div class="article-nav-title">
+      
+      前端-浏览器缓存
+      
+    </div>
+  </a>
+  
+  
+  <a href="/2024/04/01/%E5%89%8D%E7%AB%AF%E8%AF%BE%E7%A8%8B-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86/" class="article-nav-link">
+    <strong class="article-nav-caption">后一篇</strong>
+    <div class="article-nav-title">前端-浏览器渲染原理</div>
+  </a>
+  
+</nav>
+
+  
+
+  
+  
+  
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '5c428a36d9a70c430942',
+    clientSecret: '3b4c82d3877613930437eeade7101706d718c5d8',
+    repo: 'gitalk',
+    owner: 'Augenestern',
+    admin: ['Augenestern'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+
+  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">939</span>字
+  &emsp;<i class="fe fe-clock"></i> <span class="post-count">3</span>分钟
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <!-- <ul class="list-inline">
+        <li>全站共<span class="post-count">25.7k</span>字</li>
+      </ul>        -->
+      <li>慕杰BLOG &copy; 2024</li>
+      
+        <li>
+          
+            <a href="https://beian.miit.gov.cn/" target="_blank"></a>
+            
+        </li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+    <p><!-- <ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt tooltip" data-tooltip="UV"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark tooltip" data-tooltip="PV"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul> -->
+<div class="powered-by">
+  
+	&emsp;<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">访客数:<span id="busuanzi_value_site_uv"></span></span>&emsp;
+  
+    <i class="fe fe-bookmark"></i>文章访问量:<span id="busuanzi_value_page_pv"></span>
+  
+</div>
+</p>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/shark.svg" alt="慕杰BLOG"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">首页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">相册</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/favorites">收藏</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="fe fe-feed"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+  });
+</script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+
+	
+<script src="/js/love.js"></script>
+
+ 
+
+
+</body>
+
+</html>

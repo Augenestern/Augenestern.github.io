@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <title>
+    sass和less |
+    
+    慕杰BLOG
+  </title>
+  <!-- Icon -->
+  
+    <link rel="shortcut icon" href="/study.svg">
+    
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="慕杰BLOG" type="application/atom+xml">
+</head>
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-sass和less" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+  <h1 class="article-title" itemprop="name">
+    sass和less
+  </h1>
+  
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2023/11/21/sass%E5%92%8Cless/" class="article-date">
+  <time datetime="2023-11-21T10:50:17.000Z" itemprop="datePublished">2023-11-21</time>
+</a>
+      
+    </div>
+    
+
+    
+    
+<div class="tocbot"></div>
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        <p>sass,less</p>
+<span id="more"></span>
+
+<h3 id="sass"><a href="#sass" class="headerlink" title="sass"></a>sass</h3><p>安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cnpm i -S node-sass sass-loader</span><br><span class="line">npm i -D sass@1.32.10 sass-loader@10.1.0</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-变量"><a href="#1-变量" class="headerlink" title="1.变量"></a>1.变量</h4><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$baseColor</span>: red;</span><br><span class="line"><span class="variable">$baseColor</span>: red !default; <span class="comment">//!default 给一个未通过 !default 声明赋值的变量赋值，此时，如果变量已经被赋值，不会再被重新赋值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//如果变量需要镶嵌在字符串之中</span></span><br><span class="line"><span class="variable">$side</span>: bottom;</span><br><span class="line"><span class="selector-class">.aaa</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>-#&#123;<span class="variable">$side</span>&#125;: <span class="number">2px</span> solid red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-嵌套"><a href="#2-嵌套" class="headerlink" title="2.嵌套"></a>2.嵌套</h4><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span> &#123;</span><br><span class="line">  　　&amp;<span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-继承"><a href="#3-继承" class="headerlink" title="3.继承"></a>3.继承</h4><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.a</span> &#123;</span><br><span class="line">  <span class="keyword">@extend</span> .b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.b</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_15911201/article/details/130772891">详细</a></p>
+<h3 id="less"><a href="#less" class="headerlink" title="less"></a>less</h3><p>安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g less</span><br></pre></td></tr></table></figure>
+
+<h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@color:</span> <span class="number">#999</span>;</span><br></pre></td></tr></table></figure>
+
+<h5 id="选择器变量"><a href="#选择器变量" class="headerlink" title="选择器变量:"></a>选择器变量:</h5><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Less */</span></span><br><span class="line"><span class="variable">@mySelector:</span> #wrap;</span><br><span class="line"><span class="variable">@Wrap:</span> wrap;</span><br><span class="line"><span class="variable">@&#123;mySelector&#125;</span>&#123; <span class="comment">//变量名 必须使用大括号包裹</span></span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#999</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">50%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.@&#123;Wrap&#125;</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>:<span class="number">#ccc</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#@&#123;Wrap&#125;</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>:<span class="number">#666</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 生成的 CSS */</span></span><br><span class="line"><span class="selector-id">#wrap</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#999</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">50%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.wrap</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>:<span class="number">#ccc</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#wrap</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>:<span class="number">#666</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="属性变量："><a href="#属性变量：" class="headerlink" title="属性变量："></a>属性变量：</h5><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Less */</span></span><br><span class="line"><span class="variable">@borderStyle:</span> border-style;</span><br><span class="line"><span class="variable">@Soild:</span> solid;</span><br><span class="line"><span class="selector-id">#wrap</span> &#123;</span><br><span class="line">  @&#123;borderStyle&#125;: @<span class="selector-tag">Soild</span>; <span class="comment">//变量名 必须使用大括号包裹</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 生成的 CSS */</span></span><br><span class="line"><span class="selector-id">#wrap</span> &#123;</span><br><span class="line">  <span class="attribute">border-style</span>: solid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="url-变量"><a href="#url-变量" class="headerlink" title="url 变量:"></a>url 变量:</h5><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Less */</span></span><br><span class="line"><span class="variable">@images:</span> <span class="string">&quot;../img&quot;</span>; <span class="comment">//需要加引号</span></span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: url(<span class="string">&quot;@&#123;images&#125;/dog.png&quot;</span>); <span class="comment">//变量名 必须使用大括号包裹</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 生成的 CSS */</span></span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: url(<span class="string">&quot;../img/dog.png&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="声明变量"><a href="#声明变量" class="headerlink" title="声明变量:"></a>声明变量:</h5><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Less */</span></span><br><span class="line"><span class="variable">@background:</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: red;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="selector-id">#main</span> &#123;</span><br><span class="line">  <span class="variable">@background</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">@Rules:</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">border</span>: solid <span class="number">1px</span> red;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="selector-id">#con</span> &#123;</span><br><span class="line">  <span class="variable">@Rules</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 生成的 CSS */</span></span><br><span class="line"><span class="selector-id">#main</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#con</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">border</span>: solid <span class="number">1px</span> red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="变量运算："><a href="#变量运算：" class="headerlink" title="变量运算："></a>变量运算：</h5><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Less */</span></span><br><span class="line"><span class="variable">@width:</span> <span class="number">300px</span>;</span><br><span class="line"><span class="variable">@color:</span> <span class="number">#222</span>;</span><br><span class="line"><span class="selector-id">#wrap</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="variable">@width</span> - <span class="number">20</span>; <span class="comment">// 尽量有空格，防止识别不出变量名</span></span><br><span class="line">  <span class="attribute">height</span>: <span class="variable">@width</span> - <span class="number">20</span> * <span class="number">5</span>;</span><br><span class="line">  <span class="attribute">margin</span>: (<span class="variable">@width</span> -<span class="number">20</span>) * <span class="number">5</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="variable">@color</span>*<span class="number">2</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="variable">@color</span> + <span class="number">#111</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 生成的 CSS */</span></span><br><span class="line"><span class="selector-id">#wrap</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">280px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">1400px</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#444</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#333</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="变量定义变量："><a href="#变量定义变量：" class="headerlink" title="变量定义变量："></a>变量定义变量：</h5><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Less */</span></span><br><span class="line"><span class="variable">@fnord:</span> <span class="string">&quot;I am fnord.&quot;</span>;</span><br><span class="line"><span class="variable">@var:</span> <span class="string">&quot;fnord&quot;</span>;</span><br><span class="line"><span class="selector-id">#wrap</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="variable">@@var</span>; <span class="comment">//将@var替换为其值 content:@fnord;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 生成的 CSS */</span></span><br><span class="line"><span class="selector-id">#wrap</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;I am fnord.&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Vvaans/article/details/130421103">详细</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/11/21/sass%E5%92%8Cless/" data-id="clv4wdvuu000870v17x4zc4xp" class="article-share-link">
+        分享
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+  
+<nav class="article-nav">
+  
+  <a href="/2023/12/12/typescript%E5%AD%A6%E4%B9%A0/" class="article-nav-link">
+    <strong class="article-nav-caption">前一篇</strong>
+    <div class="article-nav-title">
+      
+      typescript学习
+      
+    </div>
+  </a>
+  
+  
+  <a href="/2023/11/12/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="article-nav-link">
+    <strong class="article-nav-caption">后一篇</strong>
+    <div class="article-nav-title">git常用命令</div>
+  </a>
+  
+</nav>
+
+  
+
+  
+  
+  
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '5c428a36d9a70c430942',
+    clientSecret: '3b4c82d3877613930437eeade7101706d718c5d8',
+    repo: 'gitalk',
+    owner: 'Augenestern',
+    admin: ['Augenestern'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+
+  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">455</span>字
+  &emsp;<i class="fe fe-clock"></i> <span class="post-count">2</span>分钟
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <!-- <ul class="list-inline">
+        <li>全站共<span class="post-count">25.7k</span>字</li>
+      </ul>        -->
+      <li>慕杰BLOG &copy; 2024</li>
+      
+        <li>
+          
+            <a href="https://beian.miit.gov.cn/" target="_blank"></a>
+            
+        </li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+    <p><!-- <ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt tooltip" data-tooltip="UV"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark tooltip" data-tooltip="PV"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul> -->
+<div class="powered-by">
+  
+	&emsp;<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">访客数:<span id="busuanzi_value_site_uv"></span></span>&emsp;
+  
+    <i class="fe fe-bookmark"></i>文章访问量:<span id="busuanzi_value_page_pv"></span>
+  
+</div>
+</p>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/shark.svg" alt="慕杰BLOG"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">首页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">相册</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/favorites">收藏</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="fe fe-feed"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+  });
+</script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+
+	
+<script src="/js/love.js"></script>
+
+ 
+
+
+</body>
+
+</html>

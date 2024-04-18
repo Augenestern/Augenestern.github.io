@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <title>
+    零散 |
+    
+    慕杰BLOG
+  </title>
+  <!-- Icon -->
+  
+    <link rel="shortcut icon" href="/study.svg">
+    
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="慕杰BLOG" type="application/atom+xml">
+</head>
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-零散" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+  <h1 class="article-title" itemprop="name">
+    零散
+  </h1>
+  
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2024/03/01/%E9%9B%B6%E6%95%A3/" class="article-date">
+  <time datetime="2024-03-01T07:53:17.000Z" itemprop="datePublished">2024-03-01</time>
+</a>
+      
+    </div>
+    
+
+    
+    
+<div class="tocbot"></div>
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        <p>filter,数组去重，防抖节流封装，函数柯里化，js 函数缓存，this 指向,js 取整，var const let区别,</p>
+<span id="more"></span>
+
+<h3 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">14</span>, <span class="number">15</span>]</span><br><span class="line"><span class="comment">//current=&gt;当前值，index=&gt;当前值的下标，array=&gt;这个数组对象</span></span><br><span class="line"><span class="keyword">let</span> b = a.<span class="title function_">filter</span>(<span class="function">(<span class="params">current, index, array</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> current &lt; <span class="number">10</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b,a);</span><br></pre></td></tr></table></figure>
+
+<h3 id="去重"><a href="#去重" class="headerlink" title="去重"></a>去重</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">12</span>,<span class="number">23</span>,<span class="number">45</span>,<span class="number">32</span>,<span class="number">12</span>,<span class="number">55</span>]</span><br><span class="line"><span class="comment">//Set结构不会添加重复的值</span></span><br><span class="line"><span class="comment">//Set实例转数组</span></span><br><span class="line"><span class="keyword">let</span> item = [...<span class="keyword">new</span> <span class="title class_">Set</span>(arr)]  <span class="comment">//ES6写法</span></span><br><span class="line"><span class="title class_">Array</span>.<span class="title function_">from</span>(<span class="keyword">new</span> <span class="title class_">Set</span>(arr))</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span></span><br><span class="line"><span class="keyword">let</span> a = [<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="literal">null</span>,<span class="literal">null</span>]</span><br><span class="line"><span class="keyword">let</span> b = []</span><br><span class="line">a.<span class="title function_">forEach</span>(<span class="function">(<span class="params">item ,index</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!b.<span class="title function_">includes</span>(a[index]))&#123;</span><br><span class="line">        b.<span class="title function_">push</span>(item)&#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// console.log(b);</span></span><br><span class="line"></span><br><span class="line"><span class="number">3.</span></span><br><span class="line"><span class="comment">// indexOf(要搜索的,开始搜索的索引)</span></span><br><span class="line"><span class="keyword">let</span> xx = a.<span class="title function_">filter</span>(<span class="function">(<span class="params">item,index</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.<span class="title function_">indexOf</span>(item,<span class="number">0</span>) === index</span><br><span class="line">&#125;)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(xx);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="防抖节流封装"><a href="#防抖节流封装" class="headerlink" title="防抖节流封装"></a>防抖节流封装</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//防抖   一直提交，直到最后一次停留wait秒才发起请求</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">antiShake</span>(<span class="params">fn,wait</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> timeOut = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">args</span> =&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(timeOut) <span class="built_in">clearTimeout</span>(timeOut)</span><br><span class="line">        timeOut = <span class="built_in">setTimeout</span>(fn,wait);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//测试</span></span><br><span class="line"><span class="keyword">let</span> ceshi = <span class="title function_">antiShake</span>(func, <span class="number">2000</span>)</span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">ceshi</span>()</span><br><span class="line">&#125;, <span class="number">1000</span>)</span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">ceshi</span>()</span><br><span class="line">&#125;, <span class="number">2000</span>)</span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">ceshi</span>()</span><br><span class="line">&#125;, <span class="number">3000</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//节流   一直提交，每隔time秒执行一次。还可以通过时间戳执行</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">throttle</span>(<span class="params">event,time</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> timer = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(!timer)&#123;</span><br><span class="line">            timer = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">                <span class="title function_">event</span>()</span><br><span class="line">                timer = <span class="literal">null</span></span><br><span class="line">            &#125;, time);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> ceshi2 = <span class="title function_">throttle</span>(func,<span class="number">1000</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="js-函数柯里化"><a href="#js-函数柯里化" class="headerlink" title="js 函数柯里化"></a>js 函数柯里化</h3><p>函数柯里化（Currying）是一种将多个参数的函数转变为接收单一参数的函数序列的过程。通过柯里化，我们可以将多个参数的函数转化为接收一个参数的函数，然后再返回一个新函数，该函数可以继续接收下一个参数，以此类推，直到满足所有参数的条件，最后返回期望的结果。<br>函数柯里化的作用有以下几个方面： 1.参数复用：柯里化允许我们创建可以重复使用的小函数。通过将一个多参数函数转化为接收单一参数的函数，我们可以使用部分应用函数来创建新的函数，并将其应用于具有不同参数的不同上下文中。 2.延迟执行：柯里化也可以用于延迟执行函数。通过转化为接收单一参数的函数序列，我们可以先传递一部分参数，然后在后续需要的时候再传递剩余的参数来执行函数，从而实现函数的延迟执行。 3.函数组合：柯里化可以与函数组合配合使用，实现更复杂的函数操作。通过将多个柯里化函数组合起来，可以实现更高阶的函数组合，从而简化代码并增加代码的可读性。 4.提高函数可测试性：通过柯里化，我们可以将函数的逻辑拆分成多个步骤，并将每个步骤的输入和输出明确化，从而方便进行单元测试。我们可以对每个柯里化函数进行独立测试，而无需考虑其他参数的影响。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//普通写法</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">a,b,c</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> a+b+c</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">add</span>(<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">//柯里化</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sum1</span>(<span class="params">a</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span>(<span class="params">b</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">function</span>(<span class="params">c</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> a+b+c</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//简化后</span></span><br><span class="line"><span class="keyword">var</span> <span class="title function_">sum2</span> = a=&gt;<span class="function"><span class="params">b</span>=&gt;</span><span class="function"><span class="params">c</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a+b+c &#125;</span><br><span class="line"><span class="keyword">var</span> <span class="title function_">sum2</span> = a=&gt;<span class="function"><span class="params">b</span>=&gt;</span><span class="function"><span class="params">c</span>=&gt;</span>a+b+c</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">sum2</span>(<span class="number">10</span>)(<span class="number">20</span>)(<span class="number">30</span>))</span><br></pre></td></tr></table></figure>
+
+<p>例题 1：<br>&#x2F;&#x2F;实现 add(1)(4)(3)(…)(n)<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/double_sweet1/article/details/122786636">详细</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> args = [...<span class="variable language_">arguments</span>];</span><br><span class="line">    <span class="keyword">let</span> inner = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        args = [...args, ...<span class="variable language_">arguments</span>];</span><br><span class="line">        <span class="keyword">return</span> inner;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//inner本身就是一个函数，因此最后的输出结果就是一个函数，控制台输出的函数是被转换为string类型的字符串了的，转换为string是因为调用了toString方法,所以要改写一下toString方法。</span></span><br><span class="line">    inner.<span class="property">toString</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> args.<span class="title function_">reduce</span>(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a + b);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> inner;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseInt</span>(<span class="title function_">add</span>(<span class="number">1</span>)(<span class="number">3</span>)(<span class="number">4</span>)(<span class="number">5</span>)));</span><br></pre></td></tr></table></figure>
+
+<h3 id="js-函数缓存"><a href="#js-函数缓存" class="headerlink" title="js 函数缓存"></a>js 函数缓存</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 传统函数写法</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">a, b</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 箭头函数写法</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">add</span> = (<span class="params">a, b</span>) =&gt; a + b;</span><br><span class="line"></span><br><span class="line"><span class="comment">//箭头函数可以使用剩余参数（rest parameter）的语法，用来表示一个不定长度的参数列表，剩余参数会被收集到一个数组中。例如：</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">printArgs</span> = (<span class="params">a, ...restArgs</span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">// 输出第一个参数</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(restArgs); <span class="comment">// 输出剩余参数的数组</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">printArgs</span>(<span class="string">&#x27;foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>); <span class="comment">// 输出 &#x27;foo&#x27; 和 [&#x27;bar&#x27;, &#x27;baz&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">memoize</span> = (<span class="params">func, content</span>) =&gt; &#123;</span><br><span class="line">    <span class="comment">//在当前函数作用域定义一个空对象，用于缓存函数的运行结果</span></span><br><span class="line">    <span class="keyword">let</span> cache = <span class="title class_">Object</span>.<span class="title function_">create</span>(<span class="literal">null</span>);</span><br><span class="line">    content = content || <span class="literal">null</span>;</span><br><span class="line">    <span class="comment">//运用柯里化返回一个函数</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function">(<span class="params">...args</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;concent&#x27;</span>, content);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;cache&quot;</span>,cache);</span><br><span class="line">        <span class="keyword">if</span> (!cache[args]) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;调用了:&#x27;</span> , args);</span><br><span class="line">            <span class="comment">//call()和apply()：这两个方法允许你在指定的上下文中调用函数，并传递参数。</span></span><br><span class="line">            <span class="comment">//它们的区别在于传递参数的方式不同。call()方法使用逗号分隔的参数列表，而apply()方法使用一个数组作为参数。</span></span><br><span class="line">            cache[args] = func.<span class="title function_">call</span>(content, ...args);</span><br><span class="line">            <span class="comment">// cache[args] = func.apply(content, args);</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cache[args];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">add</span> = (<span class="params">a, b</span>) =&gt; a + b</span><br><span class="line"><span class="keyword">const</span> memoizeAdd = <span class="title function_">memoize</span>(add);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">memoizeAdd</span>(<span class="number">1</span>,<span class="number">3</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">memoizeAdd</span>(<span class="number">1</span>,<span class="number">3</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">memoizeAdd</span>(<span class="number">3</span>,<span class="number">3</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">memoizeAdd</span>(<span class="number">1</span>,<span class="number">3</span>));</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在 <span class="title class_">JavaScript</span> 中， [a, b] = [b, a] 这样的语法是一种常见的用法，用于交换两个变量的值。实际上，这种写法利用了解构赋值的特性，可以很方便地交换两个变量的值，而不需要借助临时变量。</span><br><span class="line">具体来说，当执行 [a, b] = [b, a] 这行代码时，会先创建一个临时数组 [b, a]，然后按顺序将这个数组中的值分别赋给变量 a 和 b，从而实现 a 和 b 的值交换。</span><br><span class="line">因此，[a, b] = [b, a] 是一种优雅且简洁的方法来交换两个变量的值，在实际编程中也比较常见。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">div*<span class="number">3</span>&gt;lorem4 <span class="comment">//lorem随机生成字符串。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> strNum = <span class="string">&#x27;45&#x27;</span></span><br><span class="line">+str  ---&gt; 快速将字符串数字变成number类型</span><br></pre></td></tr></table></figure>
+
+<h3 id="this-指向"><a href="#this-指向" class="headerlink" title="this 指向"></a>this 指向</h3><table>
+<thead>
+<tr>
+<th>调用方式</th>
+<th>示例</th>
+<th>函数中的 this 指向</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>通过 new 调用</td>
+<td>new method()</td>
+<td>新对象</td>
+</tr>
+<tr>
+<td>直接调用</td>
+<td>method()</td>
+<td>全局对象</td>
+</tr>
+<tr>
+<td>通过对象调用</td>
+<td>obj.method()</td>
+<td>前面的对象</td>
+</tr>
+<tr>
+<td>call,apply,bind</td>
+<td>method.call(ctx)</td>
+<td>第一个参数</td>
+</tr>
+</tbody></table>
+<p>congsole.log()完整的写法是 window.console.log(),window 可以省略，window 调用了 console.log()方法，所以此时 this 指向 window。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> id = <span class="number">222</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">id</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">test</span>(&#123;<span class="attr">id</span>:<span class="number">123</span>&#125;)  <span class="comment">//222</span></span><br><span class="line"><span class="comment">//指向的是外层window</span></span><br></pre></td></tr></table></figure>
+
+<p>call、apply 和 bind 都是用来修改 this 指向的，这三个方法都是函数对象的方法 bind 可自行测试<br>区别：call 和 apply 是立即执行的，而 bind 是不会立即执行的，因为 bind 返回的是函数<br>call()和 bind()可以传递很多实参———————— call(对象，a,b,c,d…)<br>apply()可以传递两个参数，第二个参数是数组 apply(对象，[a,b,c,d…])</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line">&#125;</span><br><span class="line">test.<span class="title function_">call</span>(&#123;<span class="attr">id</span>:<span class="number">123</span>&#125;) <span class="comment">//123</span></span><br><span class="line"><span class="comment">//改变this指向</span></span><br></pre></td></tr></table></figure>
+
+<p>另外，箭头函数没有 this</p>
+<h3 id="js-取整"><a href="#js-取整" class="headerlink" title="js 取整"></a>js 取整</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">parseInt</span>()   <span class="comment">//向0取整</span></span><br><span class="line"><span class="title class_">Math</span>.<span class="title function_">floor</span>()  <span class="comment">//向下取整</span></span><br><span class="line"><span class="title class_">Math</span>.<span class="title function_">ceil</span>()  <span class="comment">//向上取整</span></span><br><span class="line"><span class="title class_">Math</span>.<span class="title function_">trunc</span>()  <span class="comment">//去除数字的小数部分，保留整数部分</span></span><br><span class="line"><span class="title class_">Math</span>.<span class="title function_">round</span>()  <span class="comment">//返回一个数字四舍五入后的整数部分</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="var-const-let区别"><a href="#var-const-let区别" class="headerlink" title="var const let区别"></a>var const let区别</h3><table>
+<thead>
+<tr>
+<th><strong>区别</strong></th>
+<th><strong>var</strong></th>
+<th><strong>let</strong></th>
+<th><strong>const</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>是否有块级作用域</td>
+<td>×</td>
+<td>✔️</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>是否存在变量提升</td>
+<td>✔️</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>是否添加全局属性</td>
+<td>✔️</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>能否重复声明变量</td>
+<td>✔️</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>是否存在暂时性死区</td>
+<td>×</td>
+<td>✔️</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>是否必须设置初始值</td>
+<td>×</td>
+<td>×</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>能否改变指针指向</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>×</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/03/01/%E9%9B%B6%E6%95%A3/" data-id="clv4wdvvc000n70v14mrmcqat" class="article-share-link">
+        分享
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+  
+<nav class="article-nav">
+  
+  <a href="/2024/03/21/%E6%89%8B%E6%92%95%E5%BA%95%E5%B1%82/" class="article-nav-link">
+    <strong class="article-nav-caption">前一篇</strong>
+    <div class="article-nav-title">
+      
+      手撕底层
+      
+    </div>
+  </a>
+  
+  
+  <a href="/2024/02/01/%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE/" class="article-nav-link">
+    <strong class="article-nav-caption">后一篇</strong>
+    <div class="article-nav-title">经典题</div>
+  </a>
+  
+</nav>
+
+  
+
+  
+  
+  
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '5c428a36d9a70c430942',
+    clientSecret: '3b4c82d3877613930437eeade7101706d718c5d8',
+    repo: 'gitalk',
+    owner: 'Augenestern',
+    admin: ['Augenestern'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+
+  &emsp;<i class="fe fe-bar-chart"></i> <span class="post-count">1.9k</span>字
+  &emsp;<i class="fe fe-clock"></i> <span class="post-count">7</span>分钟
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <!-- <ul class="list-inline">
+        <li>全站共<span class="post-count">25.7k</span>字</li>
+      </ul>        -->
+      <li>慕杰BLOG &copy; 2024</li>
+      
+        <li>
+          
+            <a href="https://beian.miit.gov.cn/" target="_blank"></a>
+            
+        </li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+    <p><!-- <ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt tooltip" data-tooltip="UV"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark tooltip" data-tooltip="PV"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul> -->
+<div class="powered-by">
+  
+	&emsp;<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">访客数:<span id="busuanzi_value_site_uv"></span></span>&emsp;
+  
+    <i class="fe fe-bookmark"></i>文章访问量:<span id="busuanzi_value_page_pv"></span>
+  
+</div>
+</p>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/shark.svg" alt="慕杰BLOG"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">首页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">相册</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/favorites">收藏</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="fe fe-feed"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+  });
+</script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+
+	
+<script src="/js/love.js"></script>
+
+ 
+
+
+</body>
+
+</html>
