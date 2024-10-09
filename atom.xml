@@ -57,7 +57,7 @@
     <link href="http://example.com/2024/04/01/%E5%89%8D%E7%AB%AF%E8%AF%BE%E7%A8%8B-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86/"/>
     <id>http://example.com/2024/04/01/%E5%89%8D%E7%AB%AF%E8%AF%BE%E7%A8%8B-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86/</id>
     <published>2024-04-01T09:50:17.000Z</published>
-    <updated>2024-08-28T03:10:00.550Z</updated>
+    <updated>2024-10-07T08:18:32.853Z</updated>
     
     
     <summary type="html">&lt;p&gt;浏览器渲染原理。什么是 reflow?什么是 repaint?为什么 transform 的效率高?&lt;/p&gt;</summary>
@@ -117,10 +117,10 @@
     <link href="http://example.com/2024/03/01/%E9%9B%B6%E6%95%A3/"/>
     <id>http://example.com/2024/03/01/%E9%9B%B6%E6%95%A3/</id>
     <published>2024-03-01T07:53:17.000Z</published>
-    <updated>2024-08-28T01:54:34.592Z</updated>
+    <updated>2024-10-09T06:05:26.182Z</updated>
     
     
-    <summary type="html">&lt;p&gt;filter,数组去重，防抖节流封装，函数柯里化，js 函数缓存，this 指向,js 取整，var const let区别,&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;filter,数组去重，防抖节流封装，函数柯里化，js 函数缓存，this 指向,js 取整，var const let区别,bind apply call区别,&lt;/p&gt;</summary>
     
     
     
@@ -132,7 +132,7 @@
     <link href="http://example.com/2024/02/01/%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE/"/>
     <id>http://example.com/2024/02/01/%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE/</id>
     <published>2024-02-01T07:53:17.000Z</published>
-    <updated>2024-04-18T06:58:37.630Z</updated>
+    <updated>2024-10-07T06:58:56.271Z</updated>
     
     
     <summary type="html">&lt;p&gt;unshift，js 的数据类型，数组的常用方法，字符串的常用方法，对象的常用方法，属性描述符，原型和原型链，js 中的值类型和引用类型区别，判读对象数据类型,ES6基本语法&lt;/p&gt;</summary>
@@ -282,7 +282,7 @@
     <link href="http://example.com/2023/11/12/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
     <id>http://example.com/2023/11/12/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
     <published>2023-11-12T01:53:17.000Z</published>
-    <updated>2024-10-07T05:26:25.607Z</updated>
+    <updated>2024-10-07T05:30:04.934Z</updated>
     
     
     <summary type="html">&lt;p&gt;git 常用命令&lt;/p&gt;</summary>
@@ -297,7 +297,7 @@
     <link href="http://example.com/2023/10/01/css%E7%AC%94%E8%AE%B0/"/>
     <id>http://example.com/2023/10/01/css%E7%AC%94%E8%AE%B0/</id>
     <published>2023-10-01T02:53:17.000Z</published>
-    <updated>2024-04-18T07:00:28.328Z</updated>
+    <updated>2024-10-07T05:57:03.448Z</updated>
     
     
     <summary type="html">&lt;p&gt;position 布局，transform 的基本使用和常用特效，display 常用方法,外边距塌陷,css 中的伪类：before 与 after&lt;/p&gt;</summary>
